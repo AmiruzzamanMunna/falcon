@@ -28,6 +28,7 @@ class AdminController extends Controller
     {
     	$events=EventIndex::where('id',$id)->get();
         return view('Admin.event-index')
+        ->with('id',$id)
         ->with('events',$events);
     }
     public function eventIndexUpdate(EventIndexRequest $request,$id)

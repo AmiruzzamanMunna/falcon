@@ -138,16 +138,18 @@
                 </div>
             </li>
             <li class="nav-item">
+                @foreach($events as $event)
                 <a class="nav-link" data-toggle="collapse" data-target="#demo13" href="#">Event Management<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo13">
-                    <a href="{{route('admin.eventIndex')}}" class="nav-link">Event Management Index</a>
-                    <a href="{{route('admin.eventWedding')}}" class="nav-link">Wedding Item</a>
-                    <a href="{{route('admin.eventBirthday')}}" class="nav-link">Birthday Item</a>
-                    <a href="{{route('admin.eventHospitality')}}" class="nav-link">Hospitality Item</a>
-                    <a href="{{route('admin.eventOthers')}}" class="nav-link">Others</a>
+                    <a href="{{route('admin.eventIndexEdit',[$event->id])}}" class="nav-link">Event Management Index</a>
+                    <a href="{{route('admin.weddingEdit',[$event->id])}}" class="nav-link">Wedding Item</a>
+                    <a href="{{route('admin.eventBirthdayEdit',[$event->id])}}" class="nav-link">Birthday Item</a>
+                    <a href="{{route('admin.eventHospitalityEdit',[$event->id])}}" class="nav-link">Hospitality Item</a>
+                    <a href="{{route('admin.eventOthersEdit',[$event->id])}}" class="nav-link">Others</a>
                 </div>
             </li>
-            <li class="nav-item"><a href="{{route('admin.lighIndex')}}" class="nav-link">Lighting & Decoration</a></li>
+            <li class="nav-item"><a href="{{route('admin.lightIndexEdit',[$event->id])}}" class="nav-link">Lighting & Decoration</a></li>
+            @endforeach
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" data-target="#demo11" href="#">Famous & Traditional<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo11">

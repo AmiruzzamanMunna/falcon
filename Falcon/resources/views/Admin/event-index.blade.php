@@ -77,10 +77,6 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            
-                                            <div class="col-sm-3 ml-auto">
-                                                <a href="{{route('admin.eventIndexEdit',[$event->id])}}" class="btn btn-success">Edit</a>
-                                            </div>
                                             @endforeach
                                             <div class="col-sm-3 ml-auto">
                                                 <input type="submit" name="" class="btn btn-success" value="Submit">

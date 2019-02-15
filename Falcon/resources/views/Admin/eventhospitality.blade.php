@@ -94,11 +94,7 @@
                                                 <textarea type=text rows="4" cols="45" class="col" name="paragraph5">{{$event->paragraph5}}</textarea>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            
-                                            <div class="col-sm-3 ml-auto">
-                                                <a href="{{route('admin.eventHospitalityEdit',[$event->id])}}" class="btn btn-success">Edit</a>
-                                            </div>
+                                        <div class="row">   
                                             @endforeach
                                             <div class="col-sm-3 ml-auto">
                                                 <input type="submit" name="" class="btn btn-success" value="Submit">

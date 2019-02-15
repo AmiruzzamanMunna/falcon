@@ -1,0 +1,47 @@
+*{
+  margin:0px;
+  padding: 0px;
+}
+#sidebar{
+  margin-top: 55px;
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  background-color: #343a40;
+  left: -200px;
+}
+#sidebar.active{
+  overflow: scroll;
+  left: 0px;
+  z-index: 999;
+}
+#sidebar ul li{
+  color: white;
+  padding: 20px 10px;
+  border-bottom: 1px solid;
+}
+#sidebar .toggle-btn{
+  position: absolute;
+  left: 220px;
+  top: 20px;
+}
+#sidebar .toggle-btn span{
+  display: block;
+  height: 5px;
+  width: 30px;
+  background-color: #343a40;
+  margin: 4px 0px;
+}
+a{
+    color: white;
+}
+a:hover{
+  text-decoration: none;
+}
+#listicon{
+  float: right;
+}
+/*Home*/
+.itemhome{
+  margin-top: 100px;
+}

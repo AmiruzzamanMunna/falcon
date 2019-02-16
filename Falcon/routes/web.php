@@ -19,6 +19,9 @@ Route::get('/event/hospitalitypage', 'UserController@HospitalityEventPage')->nam
 Route::get('/event/otherspage', 'UserController@othersEventPage')->name('user.othersEventPage');
 Route::get('/event/otherspage', 'UserController@othersEventPage')->name('user.othersEventPage');
 Route::get('/lighting', 'UserController@lightIndex')->name('user.lightIndex');
+Route::get('/famous&tradational-index', 'UserController@famousTradionalIndex')->name('user.famousTradionalIndex');
+Route::get('/parts&accessories-index', 'UserController@partsAccessoriesIndex')->name('user.partsAccessoriesIndex');
+Route::get('/medicineEmergency-Index', 'UserController@medicineEmergencyIndex')->name('user.medicineEmergencyIndex');
 
 
 // Admin
@@ -47,3 +50,12 @@ Route::post('/admin/otherseventedit/{id}','AdminController@eventOthersUpdate')->
 Route::get('/admin/lighting','AdminController@lighIndex')->name('admin.lighIndex');
 Route::get('/admin/lightingedit/{id}','AdminController@lightIndexEdit')->name('admin.lightIndexEdit');
 Route::post('/admin/lightingedit/{id}','AdminController@lightIndexUpdate')->name('admin.lightIndexUpdate');
+
+Route::get('/admin/famous&tradationaledit/{id}','AdminController@famousTraditionalEdit')->name('admin.famousTraditionalEdit');
+Route::post('/admin/famous&tradationaledit/{id}','AdminController@famousTraditionalUpdate')->name('admin.famousTraditionalUpdate');
+
+Route::get('/admin/parts&accessoriesedit/{id}','AdminController@partsAccessoriesEdit')->name('admin.partsAccessoriesEdit');
+Route::post('/admin/parts&accessoriesedit/{id}','AdminController@partsAccessoriesUpdate')->name('admin.partsAccessoriesUpdate');
+
+Route::get('/admin/medicine&emergency/{id}','AdminController@medicineAccessoriesEdit')->name('admin.medicineAccessoriesEdit');
+Route::post('/admin/medicine&emergency/{id}','AdminController@medicineAccessoriesUpdate')->name('admin.medicineAccessoriesUpdate');

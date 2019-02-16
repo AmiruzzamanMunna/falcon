@@ -5,18 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventWeddingRequest;
 use App\Http\Requests\EventIndexRequest;
+use App\Http\Requests\PartsAccessoriesRequest;
 use App\EventWedding;
 use App\EventBirthday;
 use App\EventHospitality;
 use App\EventOthers;
 use App\EventIndex;
 use App\Light;
+use App\FamousTraditional;
+use App\PartsAccessories;
+use App\MedicineEmergency;
 
 class AdminController extends Controller
 {
-    public function index($value='')
+    public function index(Request $request)
     {
-    	return view('Admin.index');
+        $events=EventIndex::all();
+    	return view('Admin.index')
+        ->with('events',$events);
     }
     public function eventIndex(Request $request)
     {
@@ -342,6 +348,117 @@ class AdminController extends Controller
         $event->paragraph4=$request->paragraph4;
         $event->heading5=$request->heading5;
         $event->paragraph5=$request->paragraph5;
+        $event->save();
+
+        $request->session()->flash('message','Data Updated');
+        return back();
+    }
+    public function famousTraditionalEdit(Request $request,$id)
+    {
+        $events=FamousTraditional::where('id',$id)->get();
+        return view('Admin.famous&tradition-index')
+        ->with('events',$events);
+    }
+    public function famousTraditionalUpdate(EventIndexRequest $request,$id)
+    {
+        $event=FamousTraditional::find($request->id);
+        $event->heading1=$request->heading1;
+        $event->paragraph=$request->paragraph;
+        $event->heading2=$request->heading2;
+        if ($request->hasFile('image1')) {
+          $image1 = $request->file('image1');
+          $filename1 = time() . 'famousindex-1.' . $image1->getClientOriginalExtension();
+          $location1 = public_path('images/uploads');
+          $image1->move($location1, $filename1);
+          // Image::make($image)->resize(800, 400)->save($location);
+          $event->image1 = $filename1;
+        }
+        $event->heading3=$request->heading3;
+        if ($request->hasFile('image2')) {
+          $image2 = $request->file('image2');
+          $filename2 = time() . 'famousindex-2.' . $image2->getClientOriginalExtension();
+          $location2 = public_path('images/uploads');
+          $image2->move($location2, $filename2);
+          // Image::make($image)->resize(800, 400)->save($location);
+          $event->image2 = $filename2;
+        }
+        $event->heading4=$request->heading4;
+        if ($request->hasFile('image3')) {
+          $image3 = $request->file('image3');
+          $filename3 = time() . 'famousindex-3.' . $image3->getClientOriginalExtension();
+          $location3 = public_path('images/uploads');
+          $image3->move($location3, $filename3);
+          // Image::make($image)->resize(800, 400)->save($location);
+          $event->image3 = $filename3;
+        }
+        $event->save();
+
+        $request->session()->flash('message','Data Updated');
+        return back();
+    }
+    public function partsAccessoriesEdit(Request $request,$id)
+    {
+        $events=PartsAccessories::where('id',$id)->get();
+        return view('Admin.parts&accessories-index')
+        ->with('events',$events);
+    }
+    public function partsAccessoriesUpdate(PartsAccessoriesRequest $request,$id)
+    {
+        $event=PartsAccessories::find($request->id);
+        $event->heading1=$request->heading1;
+        $event->paragraph=$request->paragraph;
+        $event->heading2=$request->heading2;
+        if ($request->hasFile('image1')) {
+          $image1 = $request->file('image1');
+          $filename1 = time() . 'Bikescarsindex-1.' . $image1->getClientOriginalExtension();
+          $location1 = public_path('images/uploads');
+          $image1->move($location1, $filename1);
+          // Image::make($image)->resize(800, 400)->save($location);
+          $event->image1 = $filename1;
+        }
+        $event->heading3=$request->heading3;
+        if ($request->hasFile('image2')) {
+          $image2 = $request->file('image2');
+          $filename2 = time() . 'Bikescarsindex-2.' . $image2->getClientOriginalExtension();
+          $location2 = public_path('images/uploads');
+          $image2->move($location2, $filename2);
+          // Image::make($image)->resize(800, 400)->save($location);
+          $event->image2 = $filename2;
+        }
+        $event->save();
+
+        $request->session()->flash('message','Data Updated');
+        return back();
+    }
+    public function medicineAccessoriesEdit(Request $request,$id)
+    {
+        $events=MedicineEmergency::where('id',$id)->get();
+        return view('Admin.medicineemergency-index')
+        ->with('events',$events);
+    }
+    public function medicineAccessoriesUpdate(PartsAccessoriesRequest $request,$id)
+    {
+        $event=MedicineEmergency::find($request->id);
+        $event->heading1=$request->heading1;
+        $event->paragraph=$request->paragraph;
+        $event->heading2=$request->heading2;
+        if ($request->hasFile('image1')) {
+          $image1 = $request->file('image1');
+          $filename1 = time() . 'medicineindex-1.' . $image1->getClientOriginalExtension();
+          $location1 = public_path('images/uploads');
+          $image1->move($location1, $filename1);
+          // Image::make($image)->resize(800, 400)->save($location);
+          $event->image1 = $filename1;
+        }
+        $event->heading3=$request->heading3;
+        if ($request->hasFile('image2')) {
+          $image2 = $request->file('image2');
+          $filename2 = time() . 'medicineindex-2.' . $image2->getClientOriginalExtension();
+          $location2 = public_path('images/uploads');
+          $image2->move($location2, $filename2);
+          // Image::make($image)->resize(800, 400)->save($location);
+          $event->image2 = $filename2;
+        }
         $event->save();
 
         $request->session()->flash('message','Data Updated');

@@ -149,25 +149,32 @@
                 </div>
             </li>
             <li class="nav-item"><a href="{{route('admin.lightIndexEdit',[$event->id])}}" class="nav-link">Lighting & Decoration</a></li>
-            @endforeach
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" data-target="#demo11" href="#">Famous & Traditional<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo11">
-                    <a href="" class="nav-link">Famous & Traditional Index</a>
+                    <a href="{{route('admin.famousTraditionalEdit',[$event->id])}}" class="nav-link">Famous & Traditional Index</a>
                     <a href="" class="nav-link">Nakshikatha Item</a>
                     <a href="" class="nav-link">Pottery and Terracotta Item</a>
                     <a href="" class="nav-link">Shital Pati Item</a>
                 </div>
             </li>
-            <li class="nav-item"><a href="" class="nav-link">Parts & Accessories of Bikes & Cars</a></li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" data-target="#demo14" href="#">Parts & Accessories of Bikes & Cars<i id="listicon" class="fa fa-caret-down"></i></a>
+                <div class="collapse" id="demo14">
+                    <a href="{{route('admin.partsAccessoriesEdit',[$event->id])}}" class="nav-link">Bikes & Cars Index</a>
+                    <a href="" class="nav-link">Bikes Item</a>
+                    <a href="" class="nav-link">Cars Item</a>
+                </div>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" data-target="#demo12" href="#">Medicine<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo12">
-                    <a href="" class="nav-link">Medicine Index</a>
+                    <a href="{{route('admin.medicineAccessoriesEdit',[$event->id])}}" class="nav-link">Medicine Index</a>
                     <a href="" class="nav-link">Medicine Item</a>
                     <a href="" class="nav-link">First-Aid kit Item</a>
                 </div>
             </li>
+            @endforeach
         </ul>
     </div>
     @yield('container')

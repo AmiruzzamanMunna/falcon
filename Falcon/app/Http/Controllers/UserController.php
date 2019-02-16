@@ -9,6 +9,9 @@ use App\EventHospitality;
 use App\EventOthers;
 use App\EventIndex;
 use App\Light;
+use App\FamousTraditional;
+use App\PartsAccessories;
+use App\MedicineEmergency;
 
 class UserController extends Controller
 {
@@ -51,5 +54,23 @@ class UserController extends Controller
     	$events=Light::all();
     	return view('User.event-page')
     	->with('events',$events);
+    }
+    public function famousTradionalIndex(Request $request)
+    {
+        $events=FamousTraditional::all();
+        return view('User.famous&traditional')
+        ->with('events',$events);
+    }
+    public function partsAccessoriesIndex(Request $request)
+    {
+        $events=PartsAccessories::all();
+        return view('User.parts&accessories')
+        ->with('events',$events);
+    }
+    public function medicineEmergencyIndex(Request $request)
+    {
+        $events=MedicineEmergency::all();
+        return view('User.medicineemergency')
+        ->with('events',$events);
     }
 }

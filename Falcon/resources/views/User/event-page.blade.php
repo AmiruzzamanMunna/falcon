@@ -1,27 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Event Management</title>
-  <link rel="shortcut icon" type="text/css" href="{{asset('images')}}/logo.jpg">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-  <link rel="stylesheet" type="text/css" href="{{asset('css')}}/user.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="./owl.carousel.min.css">
-  <link rel="stylesheet" type="text/css" href="./owl.theme.default.min.css">
-  <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous">
-  </script>
-  <script src="./owl.carousel.min.js"></script>
-<body>
-  
-  <div id="demo" class="carousel slide" data-ride="carousel">
+@extends('layouts.User-home');
+@section('title')
+  Wedding
+@endsection
+@section('container')
+<div id="demo" class="carousel slide" data-ride="carousel">
 
     <ul class="carousel-indicators">
       <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -91,5 +73,4 @@
       </div>
     </div>
   </div>
-</body>
-</html>
+@endsection

@@ -22,7 +22,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-		<a href="" class="navbar-brand m-auto">Falcon</a>
+		<a href="{{route('user.index')}}" class="navbar-brand m-auto">Falcon</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     		<span class="navbar-toggler-icon"></span>
   		</button>
@@ -45,9 +45,9 @@
 					    <a class="dropdown-item dropitem" href="#">Food & Grocery Items</a>
 					    <a class="dropdown-item dropitem" href="{{route('user.eventIndex')}}">Event Managment</a>
 					    <a class="dropdown-item dropitem" href="{{route('user.lightIndex')}}">Lighting & Decoration</a>
-					    <a class="dropdown-item dropitem" href="#">Famous & Traditional Item</a>
-					    <a class="dropdown-item dropitem" href="#">Parts and Accessories of Bikes & Cars</a>
-					    <a class="dropdown-item dropitem" href="#">Medicine & Emergency</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.famousTradionalIndex')}}">Famous & Traditional Item</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.partsAccessoriesIndex')}}">Parts and Accessories of Bikes & Cars</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.medicineEmergencyIndex')}}">Medicine & Emergency</a>
 				  	</div>
 				</li>
 			</ul>

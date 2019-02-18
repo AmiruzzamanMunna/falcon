@@ -45,3 +45,27 @@ a:hover{
 .itemhome{
   margin-top: 100px;
 }
+/*Product*/
+.containitem{
+  margin-top: 100px;
+}
+.span{
+  color: red;
+  
+}
+#src1{
+  width: 210px;
+  height: 170px;
+}
+#src2{
+  width: 210px;
+  height: 170px;
+}
+#src3{
+  width: 210px;
+  height: 170px;
+}
+.image{
+  width: 400px;
+  height: 470px;
+}

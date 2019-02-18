@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\EventWedding;
 use App\EventBirthday;
 use App\EventHospitality;
@@ -17,7 +18,10 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-    	return view('User.index');
+        $ladies=DB::table('view_product')
+        ->where('category_name','ladies clothing')->get();
+    	return view('User.index')
+        ->with('ladies',$ladies);
     }
     public function eventIndex($value='')
     {

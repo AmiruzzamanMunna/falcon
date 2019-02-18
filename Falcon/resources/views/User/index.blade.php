@@ -1,6 +1,6 @@
 @extends('layouts.User-home')
 @section('title')
-	Home
+	Falcon
 @endsection
 @section('script')
 <script>
@@ -167,134 +167,36 @@
 			<h1 class="contain-head">Women's clothing Collection</h1>
 		</div>
 		<div class="owl-carousel owl-theme owlitem">
+			@forelse($ladies as $lady)
 		    <div class="item">
+		    	@if($lady->discount)
 		    	<div class="discount">
 		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
+		    			<span class="mr-auto discount_price">{{$lady->discount}}%</span>
 		    		</div>
 		    	</div>
-		    	<img src="{{asset('images')}}/cloth5.jpg">
+		    	@endif
+		    	<img src="{{asset('images/product')}}/{{$lady->image1}}" class="imagesize">
 		    	<div class="buyname col-md-12">
-		    		<a href="">kamiz</a>
+		    		<a href="">{{$lady->product_name}}</a>
 		    	</div>
 		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
+		    		@if($lady->discount)
+		    		<?php
+		    			$result=0;
+		    			$result=$lady->price-($lady->price * $lady->discount/100);
+		    		?>
+		    		<del class="errorprice">{{$lady->price}}</del>
+		    		<span>{{$result}} TK</span>
+		    		@else
+		    		<span>{{$lady->price}} TK</span>
+		    		@endif
 		    	</div>
 		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
 		    </div>
-		    <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth6.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Borka</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		    <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth7.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Shorts</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		    <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth5.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Kamiz</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		    <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth6.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Borka</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		    <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth7.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Shorts</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		    <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth5.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Shirt</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		    <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth6.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Shirt</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
+		    @empty
+		    <h1>Sorry No Product is Available</h1>
+		    @endforelse
 		</div>
 	</div>
 	<div class="row">

@@ -12,6 +12,7 @@
     <script src="{{asset('js')}}/adminscript.js"></script>
     <link rel="stylesheet" type="text/css" href="{{asset('css')}}/admin.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    @yield('script')
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">

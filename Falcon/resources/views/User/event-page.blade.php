@@ -1,6 +1,6 @@
-@extends('layouts.User-home');
+@extends('layouts.User-home')
 @section('title')
-  Wedding
+  Events Management
 @endsection
 @section('container')
 <div id="demo" class="carousel slide" data-ride="carousel">

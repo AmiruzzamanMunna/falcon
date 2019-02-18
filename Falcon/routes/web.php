@@ -59,3 +59,6 @@ Route::post('/admin/parts&accessoriesedit/{id}','AdminController@partsAccessorie
 
 Route::get('/admin/medicine&emergency/{id}','AdminController@medicineAccessoriesEdit')->name('admin.medicineAccessoriesEdit');
 Route::post('/admin/medicine&emergency/{id}','AdminController@medicineAccessoriesUpdate')->name('admin.medicineAccessoriesUpdate');
+
+Route::get('/admin/product/new','ProductController@index')->name('product.index');
+Route::post('/admin/product/new','ProductController@productStore')->name('product.productStore');

@@ -22,7 +22,9 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-		<a href="{{route('user.index')}}" class="navbar-brand m-auto">Falcon</a>
+		<a href="{{route('user.index')}}" class="navbar-brand m-auto">
+			<img src="{{asset('images')}}/falcon.jpg" class="navbarimage"> 	Falcon
+		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     		<span class="navbar-toggler-icon"></span>
   		</button>
@@ -31,10 +33,10 @@
 				<li class="nav-item dropdown">
 					<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Department</a>
 					 <div class="dropdown-menu dropmenu">
-					    <a class="dropdown-item dropitem" href="file:///D:/All%20Project/Ecommerce/Design/ladis-index.html">Ladies</a>
-					    <a class="dropdown-item dropitem" href="#">Gents</a>
-					    <a class="dropdown-item dropitem" href="#">Leather Item</a>
-					    <a class="dropdown-item dropitem" href="#">Electric & Electronics</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.ladiesIndex')}}">Ladies</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.gentsIndex')}}">Gents</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.leatherIndex')}}">Leather Item</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.electricIndex')}}">Electric & Electronics</a>
 					    <a class="dropdown-item dropitem" href="#">Gadget</a>
 					    <a class="dropdown-item dropitem" href="#">Household Accessories</a>
 					    <a class="dropdown-item dropitem" href="#">Furniture</a>

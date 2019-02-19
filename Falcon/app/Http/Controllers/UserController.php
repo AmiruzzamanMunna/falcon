@@ -23,6 +23,113 @@ class UserController extends Controller
     	return view('User.index')
         ->with('ladies',$ladies);
     }
+    public function ladiesIndex(Request $Request)
+    {
+        return view('User.ladies-index');
+    }
+    public function ladiesClothing(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function ladiesJuwellay(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function ladiesCosmatic(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function ladiesShoes(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function gentsIndex(Request $request)
+    {
+        return view('User.gents-index');
+    }
+    public function gentsClothing(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function gentsCosmatic(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function gentsShoes(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function leatherIndex(Request $request)
+    {
+        return view('User.leather-index');
+    }
+    public function leatherBag(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function leatherBelt(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function leatherShoes(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function electricIndex(Request $request)
+    {
+        return view('User.electrical&electronics-index');
+    }
+    public function computerAccessories(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function electronics(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
+    public function securityServillance(Request $request,$name)
+    {
+        $products=DB::table('view_product')
+        ->where('category_name',$name)->get();
+        return view('User.allproduct')
+        ->with('products',$products);
+    }
     public function eventIndex($value='')
     {
     	$events=EventIndex::all();

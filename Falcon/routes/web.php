@@ -12,6 +12,27 @@
 */
 
 Route::get('/', 'UserController@index')->name('user.index');
+Route::get('/ladies-index', 'UserController@ladiesIndex')->name('user.ladiesIndex');
+Route::get('/ladies/clothingpage/{name}','UserController@ladiesClothing')->name('user.ladiesClothing');
+Route::get('/ladies/Juwellaypage/{name}','UserController@ladiesJuwellay')->name('user.ladiesJuwellay');
+Route::get('/ladies/Cosmaticpage/{name}','UserController@ladiesCosmatic')->name('user.ladiesCosmatic');
+Route::get('/ladies/Shoespage/{name}','UserController@ladiesShoes')->name('user.ladiesShoes');
+
+Route::get('/gents-index', 'UserController@gentsIndex')->name('user.gentsIndex');
+Route::get('/gents/clothingpage/{name}','UserController@gentsClothing')->name('user.gentsClothing');
+Route::get('/gents/Cosmaticpage/{name}','UserController@gentsCosmatic')->name('user.gentsCosmatic');
+Route::get('/gents/Shoespage/{name}','UserController@gentsShoes')->name('user.gentsShoes');
+
+Route::get('/leather-index', 'UserController@leatherIndex')->name('user.leatherIndex');
+Route::get('/leather/bagpage/{name}','UserController@leatherBag')->name('user.leatherBag');
+Route::get('/leather/beltpage/{name}','UserController@leatherBelt')->name('user.leatherBelt');
+Route::get('/leather/Shoespage/{name}','UserController@leatherShoes')->name('user.leatherShoes');
+
+Route::get('/electric-index', 'UserController@electricIndex')->name('user.electricIndex');
+Route::get('/computeraccessoriespage/{name}','UserController@computerAccessories')->name('user.computerAccessories');
+Route::get('/electronicspage/{name}','UserController@electronics')->name('user.electronics');
+Route::get('/securityServillancepage/{name}','UserController@securityServillance')->name('user.securityServillance');
+
 Route::get('/event-index', 'UserController@eventIndex')->name('user.eventIndex');
 Route::get('/event/page', 'UserController@weddingEventPage')->name('user.weddingEventPage');
 Route::get('/event/birthdaypage', 'UserController@birthdayEventPage')->name('user.birthdayEventPage');

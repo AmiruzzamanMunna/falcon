@@ -12,6 +12,10 @@ a{
 	font-family: Georgia;
 	color: black;
 }*/
+.navbarimage{
+	width: 60px;
+	height: 50px;
+}
 .srchicon{
 	color: white;
 }
@@ -60,6 +64,7 @@ a{
 	margin-top: 50px;
 	background-color: #fafafa;
 }
+
 .imagesize{
 	width: 250px;
 	height: 380px;
@@ -70,9 +75,12 @@ a{
     font-size: 18px;
 }
 .buyprice{
+	margin: 10px;
+	padding: 10px;
 	font-family: Russo one;
     font-size: 18px;
 }
+
 .errorprice{
 	color: red;
 }
@@ -232,5 +240,10 @@ a:hover{
 .contain-item{
 	margin-top: 20px;
 	margin-left: 15px;
+}
+/*All Product Page*/
+.allproductsize{
+	width: 230px;
+	height: 260px;
 }
 

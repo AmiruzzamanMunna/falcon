@@ -91,7 +91,7 @@
 		    		<a href="">Panjabi</a>
 		    	</div>
 		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
+		    		<del class="errorprice">Price: 1000TK</del>
 		    		<span>550TK</span>
 		    	</div>
 		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
@@ -186,10 +186,10 @@
 		    			$result=0;
 		    			$result=$lady->price-($lady->price * $lady->discount/100);
 		    		?>
-		    		<del class="errorprice">{{$lady->price}}</del>
+		    		<span>Price: <del class="errorprice">{{$lady->price}}</del></span>
 		    		<span>{{$result}} TK</span>
 		    		@else
-		    		<span>{{$lady->price}} TK</span>
+		    		<span>Price: {{$lady->price}} TK</span>
 		    		@endif
 		    	</div>
 		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>

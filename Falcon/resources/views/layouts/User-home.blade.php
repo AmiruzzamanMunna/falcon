@@ -37,14 +37,14 @@
 					    <a class="dropdown-item dropitem" href="{{route('user.gentsIndex')}}">Gents</a>
 					    <a class="dropdown-item dropitem" href="{{route('user.leatherIndex')}}">Leather Item</a>
 					    <a class="dropdown-item dropitem" href="{{route('user.electricIndex')}}">Electric & Electronics</a>
-					    <a class="dropdown-item dropitem" href="#">Gadget</a>
-					    <a class="dropdown-item dropitem" href="#">Household Accessories</a>
-					    <a class="dropdown-item dropitem" href="#">Furniture</a>
-					    <a class="dropdown-item dropitem" href="#">Toys & Show Pieces</a>
-					    <a class="dropdown-item dropitem" href="#">Gift Items</a>
-					    <a class="dropdown-item dropitem" href="#">Flower & Bouquets</a>
-					    <a class="dropdown-item dropitem" href="#">Books & Magazine</a>
-					    <a class="dropdown-item dropitem" href="#">Food & Grocery Items</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.gadgetPage','gadget')}}">Gadget</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.houseHoldIndex')}}">Household Accessories</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.furnitureIndex')}}">Furniture</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.toysShowIndex')}}">Toys & Show Pieces</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.giftIndex','gifts')}}">Gift Items</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.flowersindex')}}">Flower & Bouquets</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.booksIndex')}}">Books & Magazine</a>
+					    <a class="dropdown-item dropitem" href="{{route('user.foodIndex')}}">Food & Grocery Items</a>
 					    <a class="dropdown-item dropitem" href="{{route('user.eventIndex')}}">Event Managment</a>
 					    <a class="dropdown-item dropitem" href="{{route('user.lightIndex')}}">Lighting & Decoration</a>
 					    <a class="dropdown-item dropitem" href="{{route('user.famousTradionalIndex')}}">Famous & Traditional Item</a>

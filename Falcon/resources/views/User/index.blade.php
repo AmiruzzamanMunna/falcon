@@ -32,134 +32,36 @@
 			<h1 class="contain-head">Men's clothing Collection</h1>
 		</div>
 		<div class="owl-carousel owl-theme owlitem"">
+		    @forelse($gents as $gent)
 		    <div class="item">
+		    	@if($gent->discount)
 		    	<div class="discount">
 		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
+		    			<span class="mr-auto discount_price">{{$gent->discount}}%</span>
 		    		</div>
 		    	</div>
-		    	<img src="{{asset('images')}}/cloth2.jpg">
+		    	@endif
+		    	<img src="{{asset('images/product')}}/{{$gent->image1}}" class="imagesize">
 		    	<div class="buyname col-md-12">
-		    		<a href="">Panjabi</a>
+		    		<a href="">{{$gent->product_name}}</a>
 		    	</div>
 		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
+		    		@if($gent->discount)
+		    		<?php
+		    			$result=0;
+		    			$result=$gent->price-($gent->price * $gent->discount/100);
+		    		?>
+		    		<span>Price: <del class="errorprice">{{$gent->price}}</del></span>
+		    		<span>{{$result}} TK</span>
+		    		@else
+		    		<span>Price: {{$gent->price}} TK</span>
+		    		@endif
 		    	</div>
 		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
 		    </div>
-		    <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth1.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Panjabi</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		    <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth3.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Panjabi</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		    <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth1.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Panjabi</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">Price: 1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		   <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth4.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Panjabi</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		   <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth2.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Panjabi</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		   <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth1.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Panjabi</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		   <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/cloth3.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Panjabi</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
+		    @empty
+		    <h1>Sorry No Product is Available</h1>
+		    @endforelse
 		</div>
 	</div>
 	<div class="row">
@@ -204,134 +106,36 @@
 			<h1 class="contain-head">Popular Gadget Items</h1>
 		</div>
 		<div class="owl-carousel owl-theme owlitem">
+		    @forelse($gadgets as $gadget)
 		    <div class="item">
+		    	@if($gadget->discount)
 		    	<div class="discount">
 		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
+		    			<span class="mr-auto discount_price">{{$gadget->discount}}%</span>
 		    		</div>
 		    	</div>
-		    	<img src="{{asset('images')}}/mobile1.jpg">
+		    	@endif
+		    	<img src="{{asset('images/product')}}/{{$gadget->image1}}" class="imagesize">
 		    	<div class="buyname col-md-12">
-		    		<a href="">Mobile Phone</a>
+		    		<a href="">{{$gadget->product_name}}</a>
 		    	</div>
 		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
+		    		@if($gadget->discount)
+		    		<?php
+		    			$result=0;
+		    			$result=$gadget->price-($gadget->price * $gadget->discount/100);
+		    		?>
+		    		<span>Price: <del class="errorprice">{{$gadget->price}}</del></span>
+		    		<span>{{$result}} TK</span>
+		    		@else
+		    		<span>Price: {{$gadget->price}} TK</span>
+		    		@endif
 		    	</div>
 		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
 		    </div>
-		     <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/mobile1.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Mobile Phone</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		     <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/mobile2.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Mobile Phone</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		     <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/mobile1.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Mobile Phone</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		     <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/mobile2.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Mobile Phone</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		    <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/mobile1.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Mobile Phone</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		     <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/mobile2.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Mobile Phone</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
-		     <div class="item">
-		    	<div class="discount">
-		    		<div class="col-md-2 col-sm-2 discount_contain">
-		    			<span class="mr-auto discount_price">10%</span>
-		    		</div>
-		    	</div>
-		    	<img src="{{asset('images')}}/mobile2.jpg">
-		    	<div class="buyname col-md-12">
-		    		<a href="">Mobile Phone</a>
-		    	</div>
-		    	<div class="buyprice">
-		    		<del class="errorprice">1000TK</del>
-		    		<span>550TK</span>
-		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
-		    </div>
+		    @empty
+		    <h1>Sorry No Product is Available</h1>
+		    @endforelse
 		</div>
 	</div>
 </div>

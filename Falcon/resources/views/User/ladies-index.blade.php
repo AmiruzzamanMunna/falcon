@@ -21,10 +21,10 @@
 				</div>
 				<div class="col-md-4 col-sm-4 m-auto">
 					<div class="col-md-5 col-sm-6 section-item-name m-auto">
-						<a class="m-auto" href="{{route('user.ladiesJuwellay','ladies juwellary')}}">Juwellary</a>
+						<a class="m-auto" href="{{route('user.ladiesJuwellay','ladies Juwellary')}}">Juwellary</a>
 					</div>
 					<div class="itemcontain">
-						<a href="{{route('user.ladiesCosmatic','ladies cosmatic')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/jewelry1.jpg"></a>
+						<a href="{{route('user.ladiesJuwellay','ladies Juwellary')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/jewelry1.jpg"></a>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-4 m-auto">

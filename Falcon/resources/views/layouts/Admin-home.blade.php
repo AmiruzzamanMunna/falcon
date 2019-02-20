@@ -16,7 +16,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-        <a class="navbar-brand" href="#">Falcon</a>
+        <a class="navbar-brand" href="{{route('admin.index')}}">Falcon</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsenavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,6 +39,16 @@
         </div>
         <ul>
             <li class="nav-item"><a class="nav-link" href="">Order</a></li>
+             <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" data-target="#demo15" href="#">Product<i id="listicon" class="fa fa-caret-down"></i></a>
+                <div class="collapse" id="demo15">
+                    <a href="{{route('product.index')}}" class="nav-link">Add Product</a>
+                    <a href="" class="nav-link">View Product</a>
+                    <a href="" class="nav-link">Juwellay Item</a>
+                    <!-- <a href="" class="nav-link">Cosmetic Item</a>
+                    <a href="" class="nav-link">Shoes Item</a> -->
+                </div>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" data-target="#demo1" href="#">Ladis<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo1">

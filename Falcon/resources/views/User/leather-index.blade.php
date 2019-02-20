@@ -11,7 +11,7 @@
 	<div class="row">
 		<div class="col-md-12 col-sm-12">
 			<div class="row">
-				<div class="col-md-6 col-sm-4 m-auto">
+				<div class="col-md-8 col-sm-4 m-auto">
 					<div class="col-md-8 col-sm-6 section-item-name m-auto">
 						<a class="m-auto" href="{{route('user.leatherBag','leather-bag')}}">Bag</a>
 					</div>
@@ -19,7 +19,7 @@
 						<a href="{{route('user.leatherBag','leather-bag')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/leather.jpg"></a>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-4 m-auto">
+				<div class="col-md-4 col-sm-4 m-auto">
 					<div class="col-md-8 col-sm-6 section-item-name m-auto">
 						<a class="m-auto" href="{{route('user.leatherBag','leather-belt')}}">Belt</a>
 					</div>

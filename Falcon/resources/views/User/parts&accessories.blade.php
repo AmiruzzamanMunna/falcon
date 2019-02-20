@@ -14,18 +14,18 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-4 m-auto">
 					<div class="col-md-8 col-sm-6 section-item-name m-auto">
-						<a class="m-auto" href="">{{$event->heading2}}</a>
+						<a class="m-auto" href="{{route('user.bikes','bikes-parts')}}">{{$event->heading2}}</a>
 					</div>
 					<div class="itemcontain">
-						<a href=""><img class="img-fluid" id="itemcontain-img" src="{{asset('images/uploads')}}/{{$event->image1}}"></a>
+						<a href="{{route('user.bikes','bikes-parts')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images/uploads')}}/{{$event->image1}}"></a>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4 m-auto">
 					<div class="col-md-10 col-sm-6 section-item-name m-auto">
-						<a class="m-auto" href="">{{$event->heading3}}</a>
+						<a class="m-auto" href="{{route('user.cars','cars-parts')}}">{{$event->heading3}}</a>
 					</div>
 					<div class="itemcontain">
-						<a href=""><img class="img-fluid" id="itemcontain-img" src="{{asset('images/uploads')}}/{{$event->image2}}"></a>
+						<a href="{{route('user.cars','cars-parts')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images/uploads')}}/{{$event->image2}}"></a>
 					</div>
 				</div>
 				@endforeach

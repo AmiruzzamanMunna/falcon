@@ -21,10 +21,10 @@
 				</div>
 				<div class="col-md-4 col-sm-4 m-auto">
 					<div class="col-md-7 col-sm-6 section-item-name m-auto">
-						<a class="m-auto" href="{{route('user.throwsBlankets','throwsBlankets')}}">Throws & Blankets</a>
+						<a class="m-auto" href="{{route('user.throwsBlankets','Throws & Blankets')}}">Throws & Blankets</a>
 					</div>
 					<div class="itemcontain">
-						<a href="{{route('user.throwsBlankets','throwsBlankets')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/Throws & Blankets.jpg"></a>
+						<a href="{{route('user.throwsBlankets','Throws & Blankets')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/Throws & Blankets.jpg"></a>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-4 m-auto">
@@ -37,10 +37,10 @@
 				</div>
 				<div class="col-md-4 col-sm-4 m-auto">
 					<div class="col-md-5 col-sm-6 section-item-name m-auto">
-						<a class="m-auto" href="{{route('user.curtains','ucurtains')}}">Curtains</a>
+						<a class="m-auto" href="{{route('user.curtains','curtains')}}">Curtains</a>
 					</div>
 					<div class="itemcontain">
-						<a href="{{route('user.curtains','ucurtains')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/Curtains.jpg"></a>
+						<a href="{{route('user.curtains','curtains')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/Curtains.jpg"></a>
 					</div>
 				</div>
 			</div>

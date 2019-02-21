@@ -452,4 +452,13 @@ class UserController extends Controller
         return view('User.allproduct')
         ->with('products',$products);
     }
+    public function productDetails(Request $request,$id)
+    {
+        $products=DB::table('view_product')
+        ->where('id',$id)->first();
+        $sizes = json_decode($products->size);
+        return view('User.product-details')
+        ->with('products',$products)
+        ->with('sizes',$sizes);
+    }
 }

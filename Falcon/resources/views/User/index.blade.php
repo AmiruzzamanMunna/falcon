@@ -41,9 +41,11 @@
 		    		</div>
 		    	</div>
 		    	@endif
-		    	<img src="{{asset('images/product')}}/{{$gent->image1}}" class="imagesize">
+		    	<a href="{{route('productDetails',[$gent->id])}}" class="">{{$gent->product_name}}
+		    		<img src="{{asset('images/product')}}/{{$gent->image1}}" class="imagesize">
+		    	</a>
 		    	<div class="buyname col-md-12">
-		    		<a href="">{{$gent->product_name}}</a>
+		    		<a href="{{route('productDetails',[$gent->id])}}">{{$gent->product_name}}</a>
 		    	</div>
 		    	<div class="buyprice">
 		    		@if($gent->discount)
@@ -57,7 +59,7 @@
 		    		<span>Price: {{$gent->price}} TK</span>
 		    		@endif
 		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
+		    	<a href="{{route('productDetails',[$gent->id])}}" class="btn btn-success col-md-12">Buy Now</a>
 		    </div>
 		    @empty
 		    <h1>Sorry No Product is Available</h1>
@@ -78,7 +80,9 @@
 		    		</div>
 		    	</div>
 		    	@endif
-		    	<img src="{{asset('images/product')}}/{{$lady->image1}}" class="imagesize">
+		    	<a href="{{route('productDetails',[$lady->id])}}" class="">{{$gent->product_name}}
+		    		<img src="{{asset('images/product')}}/{{$lady->image1}}" class="imagesize">
+		    	</a>
 		    	<div class="buyname col-md-12">
 		    		<a href="">{{$lady->product_name}}</a>
 		    	</div>
@@ -94,7 +98,7 @@
 		    		<span>Price: {{$lady->price}} TK</span>
 		    		@endif
 		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
+		    	<a href="{{route('productDetails',[$lady->id])}}" class="btn btn-success col-md-12">Buy Now</a>
 		    </div>
 		    @empty
 		    <h1>Sorry No Product is Available</h1>
@@ -115,9 +119,11 @@
 		    		</div>
 		    	</div>
 		    	@endif
-		    	<img src="{{asset('images/product')}}/{{$gadget->image1}}" class="imagesize">
+		    	<a href="{{route('productDetails',[$gadget->id])}}" class="">{{$gent->product_name}}
+		    		<img src="{{asset('images/product')}}/{{$gadget->image1}}" class="imagesize">
+		    	</a>
 		    	<div class="buyname col-md-12">
-		    		<a href="">{{$gadget->product_name}}</a>
+		    		<a href="{{route('productDetails',[$gadget->id])}}">{{$gadget->product_name}}</a>
 		    	</div>
 		    	<div class="buyprice">
 		    		@if($gadget->discount)
@@ -131,7 +137,7 @@
 		    		<span>Price: {{$gadget->price}} TK</span>
 		    		@endif
 		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
+		    	<a href="{{route('productDetails',[$gadget->id])}}" class="btn btn-success col-md-12">Buy Now</a>
 		    </div>
 		    @empty
 		    <h1>Sorry No Product is Available</h1>

@@ -45,10 +45,10 @@
 				</div>
 				<div class="col-md-6 col-sm-4 m-auto">
 					<div class="col-md-8 col-sm-6 section-item-name m-auto">
-						<a class="m-auto" href="{{route('user.thankyou','thankyou')}}">Thank You</a>
+						<a class="m-auto" href="{{route('user.thankyou','thank you')}}">Thank You</a>
 					</div>
 					<div class="itemcontain">
-						<a href="{{route('user.thankyou','thankyou')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/toys.jpg"></a>
+						<a href="{{route('user.thankyou','thank you')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/toys.jpg"></a>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4 m-auto">

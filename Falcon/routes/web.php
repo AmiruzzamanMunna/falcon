@@ -97,6 +97,8 @@ Route::get('/medicineEmergency-Index', 'UserController@medicineEmergencyIndex')-
 Route::get('/medicineEmergency/medicinepage/{name}', 'UserController@medicine')->name('user.medicine');
 Route::get('/medicineEmergency/fastaidkitpage/{name}', 'UserController@fastAidKit')->name('user.fastAidKit');
 
+Route::get('/productDetails/{id}','UserController@productDetails')->name('productDetails');
+
 
 // Admin
 

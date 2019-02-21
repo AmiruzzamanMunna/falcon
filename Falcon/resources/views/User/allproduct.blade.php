@@ -38,9 +38,13 @@
 		    		</div>
 		    	</div>
 		    	@endif
-		    	<img src="{{asset('images/product')}}/{{$product->image1}}" class="allproductsize">
+		    	<a href="{{route('productDetails',[$product->id])}}" class="">{{$product->product_name}}
+		    		<img src="{{asset('images/product')}}/{{$product->image1}}" class="allproductsize">
+		    	</a>
 		    	<div class="buyname col-md-12">
-		    		<a href="">{{$product->product_name}}</a>
+		    		<div class="row">
+		    			<a href="{{route('productDetails',[$product->id])}}" class="">{{$product->product_name}}</a>
+		    		</div>
 		    	</div>
 		    	<div class="row">
 		    		<div class="buyprice col-md-12 col-sm-6">
@@ -56,7 +60,7 @@
 			    		@endif
 		    		</div>
 		    	</div>
-		    	<button type="button" class="btn btn-success col-md-12">Buy Now</button>
+		    	<a href="{{route('productDetails',[$product->id])}}" class="btn btn-success col-md-12">Buy Now</a>
 		    </div>
 		    @empty
 		    <h1>Sorry No Product is Available</h1>

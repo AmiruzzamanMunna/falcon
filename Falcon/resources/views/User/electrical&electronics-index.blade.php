@@ -21,10 +21,10 @@
 				</div>
 				<div class="col-md-6 col-sm-4 m-auto">
 					<div class="col-md-7 col-sm-6 section-item-name m-auto">
-						<a class="m-auto" href="{{route('user.electronics','user.electronics')}}">Electronics</a>
+						<a class="m-auto" href="{{route('user.electronics','electronics')}}">Electronics</a>
 					</div>
 					<div class="itemcontain">
-						<a href="{{route('user.electronics','user.electronics')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/electronics.jpg"></a>
+						<a href="{{route('user.electronics','electronics')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/electronics.jpg"></a>
 					</div>
 				</div>
 				<div class="col-md-12 col-sm-4 m-auto">

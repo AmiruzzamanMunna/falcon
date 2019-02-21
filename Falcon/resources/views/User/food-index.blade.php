@@ -29,9 +29,10 @@
 				</div>
 				<div class="col-md-6 col-sm-4 m-auto">
 					<div class="col-md-9 col-sm-6 section-item-name m-auto">
-						<a class="m-auto" href="{{route('user.fruitsVegitables','food-fruits&vegitables')}}">Fruits & Meat Fish			</div>
+						<a class="m-auto" href="{{route('user.fruitsVegitables','food-fruits&vegitable')}}">Fruits & Vegitables			
+					</div>
 					<div class="itemcontain">
-						<a href="{{route('user.fruitsVegitables','food-fruits&vegitables')}}"><img class="img-fluid" id=user.meatFish"itemcontain-img" src="{{asset('images')}}/fruits-veggies.jpg"></a>
+						<a href="{{route('user.fruitsVegitables','food-fruits&vegitable')}}"><img class="img-fluid" id=user.meatFish"itemcontain-img" src="{{asset('images')}}/fruits-veggies.jpg"></a>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4 m-auto">

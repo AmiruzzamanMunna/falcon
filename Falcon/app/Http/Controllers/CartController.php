@@ -12,7 +12,7 @@ class CartController extends Controller
 	public function cartIndex(Request $request)
     {
     	$user = $request->session()->get('loggedUser');
-    	$carts=Cart::where('user_id',$request->session()->get('loggedUser'))->get();
+    	$carts=Cart::where('user_id',$user)->get();
     	$totals=0;
     	$quantity=0;
     	foreach($carts as $cart){

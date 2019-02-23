@@ -1,3 +1,7 @@
+/*signup*/
+.userregistration{
+	margin-top: 50px;
+}
 /*Home Page*/
 .navbar{
 	font-family: Georgia;
@@ -246,4 +250,10 @@ a:hover{
 	width: 230px;
 	height: 230px;
 }
-
+/*Cart Page*/
+.cartcard{
+	margin-top: 70px;
+}
+.cart_link{
+	color: black;
+}

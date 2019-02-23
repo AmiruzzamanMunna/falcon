@@ -40,7 +40,7 @@
 						<div class="col-md-12">
 							<div class="row">
 								<div class="col-md-12">
-									<form>
+									<form method="POST" action="{{route('cart.addCart')}}">
 										{{csrf_field()}}
 										<?php
 											$result=0;
@@ -48,7 +48,7 @@
 										<div class="card crd">
 											<h4 class="m-auto">Name</h4>
 											<div class="card-body">
-												<input type="hidden" name="" id="add-cart-id" value="{{$products->id}}">
+												<input type="hidden" name="product_id" id="add-cart-id" value="{{$products->id}}">
 												<div class="form-group row">
 													<label class="col-md-6 lbl">Category:</label>
 													<label class="col-md-6 lbl">{{$products->category_name}}</label>
@@ -61,9 +61,9 @@
 												<div class="form-group row">
 													<label class="col-md-6 lbl">Size:</label>
 													<div class="col-md-6">
-														<select class="form-control">
+														<select name="product_size" class="form-control">
 															@forelse($sizes as $size)
-															<option>{{$size}}</option>
+															<option value="{{$size}}">{{$size}}</option>
 															@empty
 															@endforelse
 														</select>
@@ -97,7 +97,7 @@
 													?>
 													<label class="col-md-6 lbl">Price:</label>
 													<label class="col-md-6 lbl">
-														<del>{{$products->price}} </del>{{$result}} TK
+														<del>{{$products->price}} </del> {{$result}} TK
 													</label>
 													@else
 													<label class="col-md-6 lbl">Price:</label>
@@ -106,12 +106,17 @@
 												</div>
 												<div class="form-group row">
 													<label class="col-md-6 lbl">Quantity:</label>
-													<input type="text" id="add-cart-quantity" name="Quantity" value="1">
+													<input type="number" id="add-cart-quantity" name="quantity" value="1">
 												</div>
 												<div class=" form-group row">
 													<div class="col-md-12">
-														<button type="button" id="add-cart-button" class="btn btn-success col-md-12">Add To Cart</button>
+														<button type="submit" id="add-cart-button" class="btn btn-success col-md-12">Add To Cart</button>
 													</div>
+													@if(session('message'))
+						                            <div class="alert alert-danger m-auto">
+						                                {{session('message')}}
+						                            </div>
+						                            @endif
 												</div>
 											</div>
 										</div>

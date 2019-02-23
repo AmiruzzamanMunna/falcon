@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
-{
-    protected $table="tbl_user";
+class Cart extends Model
+{	protected $table="tbl_cart";
     public $timestamps=false;
 }

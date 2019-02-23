@@ -11,7 +11,16 @@
 |
 */
 
+
+
 Route::get('/', 'UserController@index')->name('user.index');
+Route::get('/UserRegistration','UserController@signUP')->name('user.signUP');
+Route::post('/UserRegistration','UserController@signUPStore')->name('user.signUPStore');
+
+Route::get('/userlogin','UserController@login')->name('user.login');
+Route::post('/userlogin','UserController@loginCheck')->name('user.loginCheck');
+Route::get('/logout','UserController@logout')->name('user.logout');
+
 Route::get('/ladies-index', 'UserController@ladiesIndex')->name('user.ladiesIndex');
 Route::get('/ladies/clothingpage/{name}','UserController@ladiesClothing')->name('user.ladiesClothing');
 Route::get('/ladies/Juwellaypage/{name}','UserController@ladiesJuwellay')->name('user.ladiesJuwellay');
@@ -97,8 +106,15 @@ Route::get('/medicineEmergency-Index', 'UserController@medicineEmergencyIndex')-
 Route::get('/medicineEmergency/medicinepage/{name}', 'UserController@medicine')->name('user.medicine');
 Route::get('/medicineEmergency/fastaidkitpage/{name}', 'UserController@fastAidKit')->name('user.fastAidKit');
 
+Route::get('/search/','UserController@searchItem')->name('user.searchItem');
+
 Route::get('/productDetails/{id}','UserController@productDetails')->name('productDetails');
 
+Route::get('/cart','CartController@cartIndex')->name('cart.cartIndex');
+Route::post('/cart/add','CartController@addCart')->name('cart.addCart');
+Route::get('/cart/edit/{id}','CartController@cartEdit')->name('cart.cartEdit');
+Route::post('/cart/edit/{id}','CartController@cartUpdate')->name('cart.cartUpdate');
+Route::get('/cart/remove/{id}','CartController@cartRemove')->name('cart.cartRemove');
 
 // Admin
 

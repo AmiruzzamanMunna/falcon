@@ -53,8 +53,7 @@
 			    			$result=0;
 			    			$result=$product->price-($product->price * $product->discount/100);
 			    		?>
-			    		<span>Price:<del class="errorprice">{{$product->price}}</del></span>
-			    		<span>{{$result}}TK</span>
+			    		<span>Price:<del class="errorprice">{{$product->price}} </del>{{$result}} TK</span>
 			    		@else
 			    		<span>Price: {{$product->price}} TK</span>
 			    		@endif

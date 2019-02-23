@@ -29,10 +29,10 @@
 				</div>
 				<div class="col-md-12 col-sm-4 m-auto">
 					<div class="col-md-11 col-sm-6 section-item-name m-auto">
-						<a class="m-auto" href="{{route('user.securityServillance','security&servillance')}}">Security & Servillance</a>
+						<a class="m-auto" href="{{route('user.securityServillance','Security & Servillance')}}">Security & Servillance</a>
 					</div>
 					<div class="itemcontain">
-						<a href="{{route('user.securityServillance','security&servillance')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/Surveillance.jpg"></a>
+						<a href="{{route('user.securityServillance','Security & Servillance')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/Surveillance.jpg"></a>
 					</div>
 				</div>
 			</div>

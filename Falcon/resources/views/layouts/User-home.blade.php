@@ -54,9 +54,10 @@
 				</li>
 			</ul>
 			<div class="col-md-4 col-sm-6">
-				<form action="">
+				<form action="{{route('user.searchItem')}}" >
+					{{csrf_field()}}
 					<div class="input-group row">
-						<input type="search" class="form-control col-md-12" placeholder="search" name="searchbox">
+						<input type="search" class="form-control col-md-12" placeholder="search" name="search">
 					<span class="input-group-btn">
 						<button type="submit" class="btn btn-default">
 							<span class="fa fa-search srchicon"></span>
@@ -66,19 +67,28 @@
 				</form>
 			</div>
  			<ul class="navbar nav m-auto">
+ 				@if(Session::has('loggedUser'))
+ 				<li class="nav-item dropdown">
+ 					<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
+ 					<div class="dropdown-menu">
+ 						<a class="dropdown-item dropitem" href="{{route('user.logout')}}">Logout</a>
+ 					</div>
+ 				</li>
+ 				@else
  				<li class="nav-item dropdown">
  					<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Accounts</a>
  					<div class="dropdown-menu">
- 						<a class="dropdown-item dropitem" href="#">Login</a>
- 						<a class="dropdown-item dropitem" href="#">Sign-Up</a>
+ 						<a class="dropdown-item dropitem" href="{{route('user.login')}}">Login</a>
+ 						<a class="dropdown-item dropitem" href="{{route('user.signUP')}}">Sign-Up</a>
  					</div>
  				</li>
+ 				@endif
  			</ul>
  			<ul class="navbar nav">
  				<li class="nav-item">
  					<div class="row">
- 						<a href="" class="nav-link">
- 							<span class="cartitem ">Cart(10)
+						<a href="{{route('cart.cartIndex')}}" class="nav-link">
+ 							<span class="cartitem ">Cart({{$quantity}})
  								<i class="fas fa-cart-arrow-down cart"></i>
  							</span>
  						</a>

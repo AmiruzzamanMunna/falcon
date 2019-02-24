@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use App\Cart;
 use App\Product;
 use App\User;
+use App\Order;
 
 class CartController extends Controller
 {
@@ -54,20 +56,21 @@ class CartController extends Controller
     	}else{
     		$cart->unit_price=$product->price;
     	}
+    	$cart->total_price=$cart->unit_price*$cart->quantity;
     	$cart->save();
     	return back();
     }
     public function cartEdit(Request $request,$id)
     {
-    	$carts=Cart::where('id',$id)->get();
     	$carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
         $quantity=0;
         foreach($carts as $cart){
 
             $quantity+=$cart->quantity;
         }
+        $cart=Cart::where('id',$id)->get();
     	return view('User.updatecart')
-    	->with('carts',$carts)
+    	->with('cart',$cart)
     	->with('quantity',$quantity);
     }
     public function cartUpdate(Request $request,$id)
@@ -87,6 +90,7 @@ class CartController extends Controller
     		$request->session()->flash('message','Sorry ! Product is Out of Stock');
     		return back();
     	}
+    	$cart->total_price=$cart->unit_price*$cart->quantity;
     	$cart->save();
     	return redirect()->route('cart.cartIndex');
     }

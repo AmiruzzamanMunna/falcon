@@ -116,6 +116,12 @@ Route::get('/cart/edit/{id}','CartController@cartEdit')->name('cart.cartEdit');
 Route::post('/cart/edit/{id}','CartController@cartUpdate')->name('cart.cartUpdate');
 Route::get('/cart/remove/{id}','CartController@cartRemove')->name('cart.cartRemove');
 
+Route::get('/checkout','OrderController@checkOut')->name('order.checkOut');
+Route::post('/checkout','OrderController@checkOutStore')->name('order.checkOutStore');
+
+Route::get('/invoice/{id}','UserController@invoiceIndex')->name('user.invoice');
+Route::get('/download/{id}','PdfController@pdfdownload')->name('pdf.pdfdownload');
+
 // Admin
 
 Route::get('/admin/index','AdminController@index')->name('admin.index');

@@ -58,7 +58,7 @@
             					<a href="{{route('user.index')}}" class="btn btn-primary cart_link">Go Shopping</a>
             				</div>
             				<div class="col-md-4 ml-auto">
-            					<a href="" class="btn btn-success col-md-7 cart_link">Check Out</a>
+            					<a href="{{route('order.checkOut')}}" class="btn btn-success col-md-7 cart_link">Check Out</a>
             				</div>
             			</div>	
             		</form>

@@ -1017,4 +1017,20 @@ class UserController extends Controller
         ->with('products',$products)
         ->with('sizes',$sizes);
     }
+    public function invoiceIndex(Request $request,$id)
+    {
+        $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
+        $quantity=0;
+        foreach($carts as $cart){
+
+            $quantity+=$cart->quantity;
+        }
+        $users=DB::table('view_order')
+        ->where('user_id',$request->session()->get('loggedUser'))
+        ->where('invoice_id',$id)->get();
+        return view('User.invoice')
+            ->with('users',$users)
+            ->with('id',$id)
+            ->with('quantity',$quantity);
+    }
 }

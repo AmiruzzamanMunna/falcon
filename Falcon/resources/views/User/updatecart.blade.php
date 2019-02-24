@@ -12,17 +12,16 @@
 							<div class="col-md-12">
 								<div class="row">
 									<div class="col-md-12">
-										@foreach($carts as $cart)
+										@foreach($cart as $cart_item)
 										<form method="post">
 											{{csrf_field()}}
 											<div class="card crd">
-													<h4 class="m-auto">Product Id:{{$cart->product_id}}</h4>
-													
+													<h4 class="m-auto">Product Id:{{$cart_item->product_id}}</h4>
 												<div class="card-body">
 													
 													<div class="form-group row">
 														<label class="col-md-6">Quantity:</label>
-														<input type="number" name="quantity" value="{{$cart->quantity}}">
+														<input type="number" name="quantity" value="{{$cart_item->quantity}}">
 														@if($errors->any())
 															<ul class="m-auto">
 																@foreach($errors->all() as $error)

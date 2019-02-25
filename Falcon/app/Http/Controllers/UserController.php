@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\LoginRequest;
@@ -39,8 +40,8 @@ class UserController extends Controller
         $user->email=$request->email;
         $user->mobile=$request->mobile;
         $user->address=$request->address;
-        $user->password=$request->password;
-        $user->confirm_password=$request->confirm_password;
+        $user->password=Hash::make($request->password);
+        $user->confirm_password=Hash::make($request->confirm_password);
         $user->save();
         $request->session()->flash('message','Registered Successsfully');
         return back();
@@ -60,12 +61,14 @@ class UserController extends Controller
     public function loginCheck(LoginRequest $request)
     {
         $users=User::where('username', $request->username)
-                        ->where('password', $request->password)
-                        ->first();
-        if($users) {
+                    ->first();
+
+        if($users && Hash::check($request->password,$users->password)) {
+
             $request->session()->put('loggedUser', $users->id);
             $request->session()->flash('message','Login Successfull');
             return redirect()->route('user.index');
+
         }
         else{
             $request->session()->flash('message','Login Unseccessfull');

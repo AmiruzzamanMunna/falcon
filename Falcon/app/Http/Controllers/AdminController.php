@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EventWeddingRequest;
 use App\Http\Requests\EventIndexRequest;
 use App\Http\Requests\PartsAccessoriesRequest;
+use App\Http\Requests\LoginRequest;
 use App\EventWedding;
 use App\EventBirthday;
 use App\EventHospitality;
@@ -15,9 +16,36 @@ use App\Light;
 use App\FamousTraditional;
 use App\PartsAccessories;
 use App\MedicineEmergency;
+use App\Admin;
 
 class AdminController extends Controller
 {
+    public function adminLogin(Request $request)
+    {
+        $events=EventIndex::all();
+        return view('Admin.adminlogin')
+            ->with('events',$events);
+    }
+    public function adminLoginVerify(LoginRequest $request)
+    {
+        $admin=Admin::where('username',$request->username)
+                       ->where('password',$request->password)->first();
+        if ($admin) {
+            $request->session()->put('loggedAdmin',$admin->id);
+            $request->session()->flash('message','Login Successfull');
+            return redirect()->route('admin.index'); 
+        }
+        else{
+            $request->session()->flash('message','Login UnSuccessfull');
+            return back();
+        }
+    }
+    public function logOut(Request $request)
+    {
+        $request->session()->flush();
+        $request->session()->regenerate();
+        return redirect()->route('admin.adminLogin');
+    }
     public function index(Request $request)
     {
         $events=EventIndex::all();

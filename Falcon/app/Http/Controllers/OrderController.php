@@ -41,7 +41,9 @@ class OrderController extends Controller
     			$order= new Order();
     			$order->name=$request->name;
     			$order->mobile1=$request->mobile1;
-    			$order->mobile2=$request->mobile2;
+    			if ($request->mobile2) {
+                    $order->mobile2=$request->mobile2;
+                }
     			$order->address=$request->address;
     			$order->email=$request->email;
     			$order->invoice_id=$invoice->id;

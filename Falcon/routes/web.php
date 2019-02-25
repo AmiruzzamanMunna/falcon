@@ -122,9 +122,14 @@ Route::post('/checkout','OrderController@checkOutStore')->name('order.checkOutSt
 Route::get('/invoice/{id}','UserController@invoiceIndex')->name('user.invoice');
 Route::get('/download/{id}','PdfController@pdfdownload')->name('pdf.pdfdownload');
 
-// Admin
 
-Route::get('/admin/index','AdminController@index')->name('admin.index');
+// Admin Panel
+
+Route::get('/admin/index','AdminController@adminLogin')->name('admin.adminLogin');
+Route::post('/admin/index','AdminController@adminLoginVerify')->name('admin.adminLoginVerify');
+Route::get('/admin/logout','AdminController@logOut')->name('admin.logOut');
+
+Route::get('/admin/home','AdminController@index')->name('admin.index');
 Route::get('/admin/event-index','AdminController@eventIndex')->name('admin.eventIndex');
 Route::get('/admin/event-indexedit/{id}','AdminController@eventIndexEdit')->name('admin.eventIndexEdit');
 Route::post('/admin/event-indexedit/{id}','AdminController@eventIndexUpdate')->name('admin.eventIndexUpdate');
@@ -160,3 +165,7 @@ Route::post('/admin/medicine&emergency/{id}','AdminController@medicineAccessorie
 
 Route::get('/admin/product/new','ProductController@index')->name('product.index');
 Route::post('/admin/product/new','ProductController@productStore')->name('product.productStore');
+Route::get('/admin/viewproduct','ProductController@viewAllproduct')->name('product.viewAllproduct');
+Route::get('/admin/productedit/{id}','ProductController@productEdit')->name('product.productEdit');
+Route::post('/admin/productedit/{id}','ProductController@editProductStore')->name('product.editProductStore');
+Route::get('/admin/productdelete/{id}','ProductController@deleteProduct')->name('product.deleteProduct');

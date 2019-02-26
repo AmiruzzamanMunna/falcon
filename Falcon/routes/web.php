@@ -21,6 +21,8 @@ Route::get('/userlogin','UserController@login')->name('user.login');
 Route::post('/userlogin','UserController@loginCheck')->name('user.loginCheck');
 Route::get('/logout','UserController@logout')->name('user.logout');
 
+Route::get('/account','UserController@userAccount')->name('user.userAccount');
+
 Route::get('/ladies-index', 'UserController@ladiesIndex')->name('user.ladiesIndex');
 Route::get('/ladies/clothingpage/{name}','UserController@ladiesClothing')->name('user.ladiesClothing');
 Route::get('/ladies/Juwellaypage/{name}','UserController@ladiesJuwellay')->name('user.ladiesJuwellay');
@@ -109,6 +111,7 @@ Route::get('/medicineEmergency/fastaidkitpage/{name}', 'UserController@fastAidKi
 Route::get('/search/','UserController@searchItem')->name('user.searchItem');
 
 Route::get('/productDetails/{id}','UserController@productDetails')->name('productDetails');
+Route::get('/orderDetails/{id}','UserController@customerOrder')->name('user.customerOrder');
 
 Route::get('/cart','CartController@cartIndex')->name('cart.cartIndex');
 Route::post('/cart/add','CartController@addCart')->name('cart.addCart');
@@ -169,3 +172,9 @@ Route::get('/admin/viewproduct','ProductController@viewAllproduct')->name('produ
 Route::get('/admin/productedit/{id}','ProductController@productEdit')->name('product.productEdit');
 Route::post('/admin/productedit/{id}','ProductController@editProductStore')->name('product.editProductStore');
 Route::get('/admin/productdelete/{id}','ProductController@deleteProduct')->name('product.deleteProduct');
+
+Route::get('/admin/order','OrderController@orderShow')->name('order.orderShow');
+Route::get('/admin/orderinfo/{id}','OrderController@orderInfoShow')->name('order.orderInfoShow');
+
+Route::get('/admin/statusdelivered/{id}','OrderController@statusdelivered')->name('order.statusdelivered');
+Route::get('/admin/statuscancel/{id}','OrderController@statuscancel')->name('order.statuscancel');

@@ -1,6 +1,6 @@
 @extends('layouts.Admin-home')
 @section('title')
-	Admin Home
+	Order
 @endsection
 @section('css')
 	

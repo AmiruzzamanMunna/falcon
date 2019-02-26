@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\EventWeddingRequest;
 use App\Http\Requests\EventIndexRequest;
 use App\Http\Requests\PartsAccessoriesRequest;
@@ -49,7 +50,11 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $events=EventIndex::all();
+        $orders=DB::table('view_invoice')
+                ->orderby('id','desc')
+                ->paginate(10);
     	return view('Admin.index')
+        ->with('orders',$orders)
         ->with('events',$events);
     }
     public function eventIndex(Request $request)
@@ -392,7 +397,6 @@ class AdminController extends Controller
         $event=FamousTraditional::find($request->id);
         $event->heading1=$request->heading1;
         $event->paragraph=$request->paragraph;
-        $event->heading2=$request->heading2;
         if ($request->hasFile('image1')) {
           $image1 = $request->file('image1');
           $filename1 = time() . 'famousindex-1.' . $image1->getClientOriginalExtension();
@@ -401,7 +405,6 @@ class AdminController extends Controller
           // Image::make($image)->resize(800, 400)->save($location);
           $event->image1 = $filename1;
         }
-        $event->heading3=$request->heading3;
         if ($request->hasFile('image2')) {
           $image2 = $request->file('image2');
           $filename2 = time() . 'famousindex-2.' . $image2->getClientOriginalExtension();
@@ -410,7 +413,6 @@ class AdminController extends Controller
           // Image::make($image)->resize(800, 400)->save($location);
           $event->image2 = $filename2;
         }
-        $event->heading4=$request->heading4;
         if ($request->hasFile('image3')) {
           $image3 = $request->file('image3');
           $filename3 = time() . 'famousindex-3.' . $image3->getClientOriginalExtension();
@@ -435,7 +437,6 @@ class AdminController extends Controller
         $event=PartsAccessories::find($request->id);
         $event->heading1=$request->heading1;
         $event->paragraph=$request->paragraph;
-        $event->heading2=$request->heading2;
         if ($request->hasFile('image1')) {
           $image1 = $request->file('image1');
           $filename1 = time() . 'Bikescarsindex-1.' . $image1->getClientOriginalExtension();
@@ -444,7 +445,6 @@ class AdminController extends Controller
           // Image::make($image)->resize(800, 400)->save($location);
           $event->image1 = $filename1;
         }
-        $event->heading3=$request->heading3;
         if ($request->hasFile('image2')) {
           $image2 = $request->file('image2');
           $filename2 = time() . 'Bikescarsindex-2.' . $image2->getClientOriginalExtension();
@@ -469,7 +469,6 @@ class AdminController extends Controller
         $event=MedicineEmergency::find($request->id);
         $event->heading1=$request->heading1;
         $event->paragraph=$request->paragraph;
-        $event->heading2=$request->heading2;
         if ($request->hasFile('image1')) {
           $image1 = $request->file('image1');
           $filename1 = time() . 'medicineindex-1.' . $image1->getClientOriginalExtension();
@@ -478,7 +477,6 @@ class AdminController extends Controller
           // Image::make($image)->resize(800, 400)->save($location);
           $event->image1 = $filename1;
         }
-        $event->heading3=$request->heading3;
         if ($request->hasFile('image2')) {
           $image2 = $request->file('image2');
           $filename2 = time() . 'medicineindex-2.' . $image2->getClientOriginalExtension();

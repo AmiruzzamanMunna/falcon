@@ -29,33 +29,15 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-2 m-auto">Heading 2</label>
-                                            <div class="col-md-6 m-auto">
-                                                <input type="text" class="form-control" name="heading2" value="{{$event->heading2}}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <label class="col-md-2 m-auto">Image 1</label>
                                             <div class="col-md-6 m-auto">
                                                 <input type="file" class="form-control" name="image1">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-2 m-auto">Heading 3</label>
-                                            <div class="col-md-6 m-auto">
-                                                <input type="text" class="form-control" name="heading3" value="{{$event->heading3}}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <label class="col-md-2 m-auto">Image 2</label>
                                             <div class="col-md-6 m-auto">
                                                 <input type="file" class="form-control" name="image2">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-2 m-auto">Heading 4</label>
-                                            <div class="col-md-6 m-auto">
-                                                <input type="text" class="form-control" name="heading4" value="{{$event->heading4}}">
                                             </div>
                                         </div>
                                         <div class="form-group row">

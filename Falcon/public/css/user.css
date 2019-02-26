@@ -265,3 +265,12 @@ a:hover{
 .cardinvoice{
 	margin-top: 50px;
 }
+/*account*/
+.userorder{
+	margin-top: 50px;
+	margin-bottom: 40px;
+}
+#accountimage{
+	width: 70px;
+	height: 70px;
+}

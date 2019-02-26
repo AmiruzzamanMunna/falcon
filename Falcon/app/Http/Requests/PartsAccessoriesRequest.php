@@ -26,9 +26,7 @@ class PartsAccessoriesRequest extends FormRequest
         return [
             'heading1'=>'required',
             'paragraph'=>'required',
-            'heading2'=>'required',
             // 'image1'=>'required',
-            'heading3'=>'required',
             // 'image2'=>'required',
         ];
     }

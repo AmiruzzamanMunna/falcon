@@ -85,3 +85,19 @@ a:hover{
 .viewproduct{
   margin-top: 120px;
 }
+/*orderShow*/
+.ordercard{
+  margin-top: 100px;
+}
+.order{
+  color: black;
+}
+/*orderinfo*/
+#orderimage{
+  width: 70px;
+  height: 70px;
+}
+.orderinfo{
+  margin-top: 110px;
+  margin-bottom: 30px;
+}

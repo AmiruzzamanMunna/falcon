@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SignupRequest extends FormRequest
+class QuantityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,7 @@ class SignupRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'username'=>'required| unique:tbl_user,username',
-            'email'=>'required',
-            'mobile'=>'required',
-            'address'=>'required',
-            'password'=>'required',
-            'confirm_password'=>'required|same:password',
+            'quantity'=>'required|integer|min:1',
         ];
     }
 }

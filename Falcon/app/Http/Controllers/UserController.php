@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\QuantityRequest;
 use App\User;
 use App\EventWedding;
 use App\EventBirthday;
@@ -1035,5 +1036,37 @@ class UserController extends Controller
             ->with('users',$users)
             ->with('id',$id)
             ->with('quantity',$quantity);
+    }
+    public function userAccount(Request $request)
+    {
+        $users = User::where('id',$request->session()->get('loggedUser'))->get();
+         $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
+        $quantity=0;
+        foreach($carts as $cart){
+
+            $quantity+=$cart->quantity;
+        }
+        $orders=DB::table('view_order')
+                    ->where('user_id',$request->session()->get('loggedUser'))->get();
+        return view('User.account')
+            ->with('quantity',$quantity)
+            ->with('users',$users)
+            ->with('orders',$orders);
+    }
+    public function customerOrder(Request $request,$id)
+    {
+        $users = User::where('id',$request->session()->get('loggedUser'))->get();
+         $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
+        $quantity=0;
+        foreach($carts as $cart){
+
+            $quantity+=$cart->quantity;
+        }
+        $orders = DB::table('view_order')
+                    ->where('user_id',$id)->get();
+        return view('User.orderdetails')
+                ->with('users',$users)
+                ->with('quantity',$quantity)
+                ->with('orders',$orders);
     }
 }

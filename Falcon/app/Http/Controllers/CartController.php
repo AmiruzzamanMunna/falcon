@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\QuantityRequest;
 use App\Cart;
 use App\Product;
 use App\User;
@@ -42,7 +43,7 @@ class CartController extends Controller
     		$cart->size=$request->product_size;
     	}
     	
-    	if ($request->quantity<=$product->quantity) {
+    	if ($request->quantity<=$product->quantity && $request->quantity>0) {
     		$cart->quantity = $request->quantity;
     	}
     	else{
@@ -73,7 +74,7 @@ class CartController extends Controller
     	->with('cart',$cart)
     	->with('quantity',$quantity);
     }
-    public function cartUpdate(Request $request,$id)
+    public function cartUpdate(QuantityRequest $request,$id)
     {
     	$carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
         $quantity=0;

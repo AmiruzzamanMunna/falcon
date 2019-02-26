@@ -14,7 +14,7 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-4 m-auto">
 					<div class="col-md-8 col-sm-6 section-item-name m-auto">
-						<a class="m-auto" href="{{route('user.medicine','medicine')}}">{{$event->heading2}}</a>
+						<a class="m-auto" href="{{route('user.medicine','medicine')}}">Medicine</a>
 					</div>
 					<div class="itemcontain">
 						<a href="{{route('user.medicine','medicine')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images/uploads')}}/{{$event->image1}}"></a>
@@ -22,7 +22,7 @@
 				</div>
 				<div class="col-md-4 col-sm-4 m-auto">
 					<div class="col-md-10 col-sm-6 section-item-name m-auto">
-						<a class="m-auto" href="{{route('user.fastAidKit','fast aid')}}">{{$event->heading3}}</a>
+						<a class="m-auto" href="{{route('user.fastAidKit','fast aid')}}">First-Aid Kit</a>
 					</div>
 					<div class="itemcontain">
 						<a href="{{route('user.fastAidKit','fast aid')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images/uploads')}}/{{$event->image2}}"></a>

@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\OrderRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Cart;
 use App\Order;
 use App\Invoice;
 use App\Product;
+use App\EventIndex;
 
 class OrderController extends Controller
 {
@@ -64,5 +67,41 @@ class OrderController extends Controller
     		}
     	}
     	return redirect()->route('user.invoice',[$invoice->id]);
+    }
+    public function orderShow(Request $request)
+    {
+        $events=EventIndex::all();
+        $orders=DB::table('view_invoice')->paginate(10);
+        return view('Admin.order')
+            ->with('events',$events)
+            ->with('orders',$orders);
+    }
+    public function orderInfoShow(Request $request,$id)
+    {
+        $events=EventIndex::all();
+        $orders=DB::table('view_order')
+                ->where('invoice_id',$id)->get();
+        return view('Admin.orderinfo')
+            ->with('events',$events)
+            ->with('orders',$orders);
+    }
+    public function statusdelivered(Request $request,$id)
+    {
+        $orders=Invoice::where('id',$id)->first();
+        if($orders){
+            $orders->status=2;
+            // dd($orders);
+            $orders->save();
+        }
+        return back();
+    }
+    public function statuscancel(Request $request,$id)
+    {
+        $orders=Invoice::where('id',$id)->first();
+        if($orders){
+            $orders->status=3;
+            $orders->save();
+        }
+        return back();
     }
 }

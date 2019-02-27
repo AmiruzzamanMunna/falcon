@@ -46,6 +46,10 @@ a{
 	margin-left: 75px;
 	color: white;
 }
+.footeritemparagraph{
+	padding: 5px 12px;
+	color: white;
+}
 .contain-head{
 	margin-top: 70px;
 }
@@ -274,3 +278,18 @@ a:hover{
 	width: 70px;
 	height: 70px;
 }
+/*footer page*/
+.footer_aboutus{
+
+	padding: 25px;
+	margin-top: 30px;
+	margin-bottom: 100px;
+	font-family: Russo one;
+}
+.footer_heading{
+	margin-bottom: 50px;
+}
+.span_paragraph{
+	font-size: 20px;
+}
+

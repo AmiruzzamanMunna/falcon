@@ -12,16 +12,12 @@
 */
 
 
-
 Route::get('/', 'UserController@index')->name('user.index');
 Route::get('/UserRegistration','UserController@signUP')->name('user.signUP');
 Route::post('/UserRegistration','UserController@signUPStore')->name('user.signUPStore');
 
 Route::get('/userlogin','UserController@login')->name('user.login');
 Route::post('/userlogin','UserController@loginCheck')->name('user.loginCheck');
-Route::get('/logout','UserController@logout')->name('user.logout');
-
-Route::get('/account','UserController@userAccount')->name('user.userAccount');
 
 Route::get('/ladies-index', 'UserController@ladiesIndex')->name('user.ladiesIndex');
 Route::get('/ladies/clothingpage/{name}','UserController@ladiesClothing')->name('user.ladiesClothing');
@@ -111,70 +107,132 @@ Route::get('/medicineEmergency/fastaidkitpage/{name}', 'UserController@fastAidKi
 Route::get('/search/','UserController@searchItem')->name('user.searchItem');
 
 Route::get('/productDetails/{id}','UserController@productDetails')->name('productDetails');
-Route::get('/orderDetails/{id}','UserController@customerOrder')->name('user.customerOrder');
 
-Route::get('/cart','CartController@cartIndex')->name('cart.cartIndex');
-Route::post('/cart/add','CartController@addCart')->name('cart.addCart');
-Route::get('/cart/edit/{id}','CartController@cartEdit')->name('cart.cartEdit');
-Route::post('/cart/edit/{id}','CartController@cartUpdate')->name('cart.cartUpdate');
-Route::get('/cart/remove/{id}','CartController@cartRemove')->name('cart.cartRemove');
+Route::get('/falcon/aboutus','UserController@aboutUs')->name('user.aboutUs');
+Route::get('/falcon/policy','UserController@policy')->name('user.policy');
+Route::get('/falcon/contact us','UserController@contactus')->name('user.contactus');
 
-Route::get('/checkout','OrderController@checkOut')->name('order.checkOut');
-Route::post('/checkout','OrderController@checkOutStore')->name('order.checkOutStore');
+Route::group(['middleware'=>['userSess']],function(){
 
-Route::get('/invoice/{id}','UserController@invoiceIndex')->name('user.invoice');
-Route::get('/download/{id}','PdfController@pdfdownload')->name('pdf.pdfdownload');
+	Route::get('/logout','UserController@logout')->name('user.logout');
+
+	Route::get('/account','UserController@userAccount')->name('user.userAccount');
+
+	Route::get('/cart','CartController@cartIndex')->name('cart.cartIndex');
+	Route::post('/cart/add','CartController@addCart')->name('cart.addCart');
+	Route::get('/cart/edit/{id}','CartController@cartEdit')->name('cart.cartEdit');
+	Route::post('/cart/edit/{id}','CartController@cartUpdate')->name('cart.cartUpdate');
+	Route::get('/cart/remove/{id}','CartController@cartRemove')->name('cart.cartRemove');
+
+	Route::get('/checkout','OrderController@checkOut')->name('order.checkOut');
+	Route::post('/checkout','OrderController@checkOutStore')->name('order.checkOutStore');
+
+	Route::get('/invoice/{id}','UserController@invoiceIndex')->name('user.invoice');
+	Route::get('/download/{id}','PdfController@pdfdownload')->name('pdf.pdfdownload');
+	Route::get('/orderDetails/{id}','UserController@customerOrder')->name('user.customerOrder');
+
+});
+
+
+
 
 
 // Admin Panel
 
+
 Route::get('/admin/index','AdminController@adminLogin')->name('admin.adminLogin');
 Route::post('/admin/index','AdminController@adminLoginVerify')->name('admin.adminLoginVerify');
-Route::get('/admin/logout','AdminController@logOut')->name('admin.logOut');
 
-Route::get('/admin/home','AdminController@index')->name('admin.index');
-Route::get('/admin/event-index','AdminController@eventIndex')->name('admin.eventIndex');
-Route::get('/admin/event-indexedit/{id}','AdminController@eventIndexEdit')->name('admin.eventIndexEdit');
-Route::post('/admin/event-indexedit/{id}','AdminController@eventIndexUpdate')->name('admin.eventIndexUpdate');
+Route::group(['middleware'=>['adminSess']],function(){
+	Route::get('/admin/logout','AdminController@logOut')->name('admin.logOut');
 
-Route::get('/admin/weddingevent','AdminController@eventWedding')->name('admin.eventWedding');
-Route::get('/admin/weddingupdate/{id}','AdminController@weddingEdit')->name('admin.weddingEdit');
-Route::post('/admin/weddingupdate/{id}','AdminController@weddingUpdate')->name('admin.weddingUpdate');
+	Route::get('/admin/home','AdminController@index')->name('admin.index');
 
-Route::get('/admin/birthdayevent','AdminController@eventBirthday')->name('admin.eventBirthday');
-Route::get('/admin/birthdayedit/{id}','AdminController@eventBirthdayEdit')->name('admin.eventBirthdayEdit');
-Route::post('/admin/birthdayedit/{id}','AdminController@eventBirthdayUpdate')->name('admin.eventBirthdayUpdate');
+	Route::get('/admin/ladies-index/{id}','AdminController@ladiesIndexEdit')->name('admin.ladiesIndexEdit');
+	Route::post('/admin/ladies-index/{id}','AdminController@ladiesIndexUpdate')->name('admin.ladiesIndexUpdate');
 
-Route::get('/admin/hospitalityevent','AdminController@eventHospitality')->name('admin.eventHospitality');
-Route::get('/admin/hospitalityedit/{id}','AdminController@eventHospitalityEdit')->name('admin.eventHospitalityEdit');
-Route::post('/admin/hospitalityedit/{id}','AdminController@eventHospitalityUpdate')->name('admin.eventHospitalityUpdate');
+	Route::get('/admin/gents-index/{id}','AdminController@gentsIndexEdit')->name('admin.gentsIndexEdit');
+	Route::post('/admin/gents-index/{id}','AdminController@gentsIndexUpdate')->name('admin.gentsIndexUpdate');
 
-Route::get('/admin/othersevent','AdminController@eventOthers')->name('admin.eventOthers');
-Route::get('/admin/otherseventedit/{id}','AdminController@eventOthersEdit')->name('admin.eventOthersEdit');
-Route::post('/admin/otherseventedit/{id}','AdminController@eventOthersUpdate')->name('admin.eventOthersUpdate');
+	Route::get('/admin/leather-index/{id}','AdminController@leatherIndexEdit')->name('admin.leatherIndexEdit');
+	Route::post('/admin/leather-index/{id}','AdminController@leatherIndexUpdate')->name('admin.leatherIndexUpdate');
 
-Route::get('/admin/lighting','AdminController@lighIndex')->name('admin.lighIndex');
-Route::get('/admin/lightingedit/{id}','AdminController@lightIndexEdit')->name('admin.lightIndexEdit');
-Route::post('/admin/lightingedit/{id}','AdminController@lightIndexUpdate')->name('admin.lightIndexUpdate');
+	Route::get('/admin/electric-index/{id}','AdminController@electricIndexEdit')->name('admin.electricIndexEdit');
+	Route::post('/admin/electric-index/{id}','AdminController@electricIndexUpdate')->name('admin.electricIndexUpdate');
 
-Route::get('/admin/famous&tradationaledit/{id}','AdminController@famousTraditionalEdit')->name('admin.famousTraditionalEdit');
-Route::post('/admin/famous&tradationaledit/{id}','AdminController@famousTraditionalUpdate')->name('admin.famousTraditionalUpdate');
+	Route::get('/admin/house-index/{id}','AdminController@houseIndexEdit')->name('admin.houseIndexEdit');
+	Route::post('/admin/house-index/{id}','AdminController@houseIndexUpdate')->name('admin.houseIndexUpdate');
 
-Route::get('/admin/parts&accessoriesedit/{id}','AdminController@partsAccessoriesEdit')->name('admin.partsAccessoriesEdit');
-Route::post('/admin/parts&accessoriesedit/{id}','AdminController@partsAccessoriesUpdate')->name('admin.partsAccessoriesUpdate');
+	Route::get('/admin/furniture-index/{id}','AdminController@furnitureIndexEdit')->name('admin.furnitureIndexEdit');
+	Route::post('/admin/furniture-index/{id}','AdminController@furnitureIndexUpdate')->name('admin.furnitureIndexUpdate');
 
-Route::get('/admin/medicine&emergency/{id}','AdminController@medicineAccessoriesEdit')->name('admin.medicineAccessoriesEdit');
-Route::post('/admin/medicine&emergency/{id}','AdminController@medicineAccessoriesUpdate')->name('admin.medicineAccessoriesUpdate');
+	Route::get('/admin/toy-index/{id}','AdminController@toysIndexEdit')->name('admin.toysIndexEdit');
+	Route::post('/admin/toy-index/{id}','AdminController@toyIndexUpdate')->name('admin.toyIndexUpdate');
 
-Route::get('/admin/product/new','ProductController@index')->name('product.index');
-Route::post('/admin/product/new','ProductController@productStore')->name('product.productStore');
-Route::get('/admin/viewproduct','ProductController@viewAllproduct')->name('product.viewAllproduct');
-Route::get('/admin/productedit/{id}','ProductController@productEdit')->name('product.productEdit');
-Route::post('/admin/productedit/{id}','ProductController@editProductStore')->name('product.editProductStore');
-Route::get('/admin/productdelete/{id}','ProductController@deleteProduct')->name('product.deleteProduct');
+	Route::get('/admin/flower-index/{id}','AdminController@flowersIndexEdit')->name('admin.flowersIndexEdit');
+	Route::post('/admin/flower-index/{id}','AdminController@flowersIndexUpdate')->name('admin.flowersIndexUpdate');
 
-Route::get('/admin/order','OrderController@orderShow')->name('order.orderShow');
-Route::get('/admin/orderinfo/{id}','OrderController@orderInfoShow')->name('order.orderInfoShow');
+	Route::get('/admin/book-index/{id}','AdminController@booksIndexEdit')->name('admin.booksIndexEdit');
+	Route::post('/admin/book-index/{id}','AdminController@booksIndexUpdate')->name('admin.booksIndexUpdate');
 
-Route::get('/admin/statusdelivered/{id}','OrderController@statusdelivered')->name('order.statusdelivered');
-Route::get('/admin/statuscancel/{id}','OrderController@statuscancel')->name('order.statuscancel');
+	Route::get('/admin/food-index/{id}','AdminController@foodIndexEdit')->name('admin.foodIndexEdit');
+	Route::post('/admin/food-index/{id}','AdminController@foodIndexUpdate')->name('admin.foodIndexUpdate');
+
+	Route::get('/admin/event-index','AdminController@eventIndex')->name('admin.eventIndex');
+	Route::get('/admin/event-indexedit/{id}','AdminController@eventIndexEdit')->name('admin.eventIndexEdit');
+	Route::post('/admin/event-indexedit/{id}','AdminController@eventIndexUpdate')->name('admin.eventIndexUpdate');
+
+	Route::get('/admin/weddingevent','AdminController@eventWedding')->name('admin.eventWedding');
+	Route::get('/admin/weddingupdate/{id}','AdminController@weddingEdit')->name('admin.weddingEdit');
+	Route::post('/admin/weddingupdate/{id}','AdminController@weddingUpdate')->name('admin.weddingUpdate');
+
+	Route::get('/admin/birthdayevent','AdminController@eventBirthday')->name('admin.eventBirthday');
+	Route::get('/admin/birthdayedit/{id}','AdminController@eventBirthdayEdit')->name('admin.eventBirthdayEdit');
+	Route::post('/admin/birthdayedit/{id}','AdminController@eventBirthdayUpdate')->name('admin.eventBirthdayUpdate');
+
+	Route::get('/admin/hospitalityevent','AdminController@eventHospitality')->name('admin.eventHospitality');
+	Route::get('/admin/hospitalityedit/{id}','AdminController@eventHospitalityEdit')->name('admin.eventHospitalityEdit');
+	Route::post('/admin/hospitalityedit/{id}','AdminController@eventHospitalityUpdate')->name('admin.eventHospitalityUpdate');
+
+	Route::get('/admin/othersevent','AdminController@eventOthers')->name('admin.eventOthers');
+	Route::get('/admin/otherseventedit/{id}','AdminController@eventOthersEdit')->name('admin.eventOthersEdit');
+	Route::post('/admin/otherseventedit/{id}','AdminController@eventOthersUpdate')->name('admin.eventOthersUpdate');
+
+	Route::get('/admin/lighting','AdminController@lighIndex')->name('admin.lighIndex');
+	Route::get('/admin/lightingedit/{id}','AdminController@lightIndexEdit')->name('admin.lightIndexEdit');
+	Route::post('/admin/lightingedit/{id}','AdminController@lightIndexUpdate')->name('admin.lightIndexUpdate');
+
+	Route::get('/admin/famous&tradationaledit/{id}','AdminController@famousTraditionalEdit')->name('admin.famousTraditionalEdit');
+	Route::post('/admin/famous&tradationaledit/{id}','AdminController@famousTraditionalUpdate')->name('admin.famousTraditionalUpdate');
+
+	Route::get('/admin/parts&accessoriesedit/{id}','AdminController@partsAccessoriesEdit')->name('admin.partsAccessoriesEdit');
+	Route::post('/admin/parts&accessoriesedit/{id}','AdminController@partsAccessoriesUpdate')->name('admin.partsAccessoriesUpdate');
+
+	Route::get('/admin/medicine&emergency/{id}','AdminController@medicineAccessoriesEdit')->name('admin.medicineAccessoriesEdit');
+	Route::post('/admin/medicine&emergency/{id}','AdminController@medicineAccessoriesUpdate')->name('admin.medicineAccessoriesUpdate');
+
+	Route::get('/admin/aboutusedit/{id}','AdminController@aboutUsEdit')->name('admin.aboutUsEdit');
+	Route::post('/admin/aboutusedit/{id}','AdminController@aboutUsUpdate')->name('admin.aboutUsUpdate');
+
+	Route::get('/admin/policyedit/{id}','AdminController@policyEdit')->name('admin.policyEdit');
+	Route::post('/admin/policyedit/{id}','AdminController@policyUpdate')->name('admin.policyUpdate');
+
+	Route::get('/admin/contactusedit/{id}','AdminController@contactUsEdit')->name('admin.contactUsEdit');
+	Route::post('/admin/contactusedit/{id}','AdminController@contactUsUpdate')->name('admin.contactUsUpdate');
+
+	Route::get('/admin/product/new','ProductController@index')->name('product.index');
+	Route::post('/admin/product/new','ProductController@productStore')->name('product.productStore');
+	Route::get('/admin/viewproduct','ProductController@viewAllproduct')->name('product.viewAllproduct');
+	Route::get('/admin/productedit/{id}','ProductController@productEdit')->name('product.productEdit');
+	Route::post('/admin/productedit/{id}','ProductController@editProductStore')->name('product.editProductStore');
+	Route::get('/admin/productdelete/{id}','ProductController@deleteProduct')->name('product.deleteProduct');
+
+	Route::get('/admin/order','OrderController@orderShow')->name('order.orderShow');
+	Route::get('/admin/orderinfo/{id}','OrderController@orderInfoShow')->name('order.orderInfoShow');
+
+	Route::get('/admin/statusdelivered/{id}','OrderController@statusdelivered')->name('order.statusdelivered');
+	Route::get('/admin/statuscancel/{id}','OrderController@statuscancel')->name('order.statuscancel');
+
+});
+
+

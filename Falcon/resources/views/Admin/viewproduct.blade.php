@@ -10,7 +10,7 @@
 					<h2>All Products</h2>
 				</div>
 				<div class="card-body">
-					<table class="table table-bordered table-striped" id="product-list">
+					<table class="table table-bordered table-hover table-striped" id="product-list">
 						<tr>
 							<th>Image</th>
 							<th>Name</th>

@@ -44,40 +44,42 @@
 		<div class="card">
 			<div class="card-header"><h2>All Order</h2></div>
 			<div class="card-body">
-				<table class="table table-bordered table-md table-striped">
-					<tr>
-						<th>Image</th>
-						<th>Product Name</th>
-						<th>Quantity</th>
-						<th>Product Size</th>
-						<th>Status</th>
-					</tr>
-					@forelse($orders as $order)
-					<tr>
-						<td><img src="{{asset('images/product')}}/{{$order->image1}}" id="orderimage"></td>
-						<td>{{$order->product_name}}</td>
-						<td>{{$order->cart_quantity}}</td>
-						<td>{{$order->cart_size}}</td>
-						<td>
-							@if($order->status==1)
-								Pending
-							@elseif($order->status==2)
-								Delivered
-							@else
-								Cancel
-							@endif
-						</td>
-					</tr>
-					@empty
-					@endforelse
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>Total Price: {{$order->cart_totalprice}} TK</td>
-						<td></td>
-					</tr>
-				</table>
+				<div class="table-responsive">
+					<table class="table table-bordered table-md table-striped">
+						<tr>
+							<th>Image</th>
+							<th>Product Name</th>
+							<th>Quantity</th>
+							<th>Product Size</th>
+							<th>Status</th>
+						</tr>
+						@forelse($orders as $order)
+						<tr>
+							<td><img src="{{asset('images/product')}}/{{$order->image1}}" id="orderimage"></td>
+							<td>{{$order->product_name}}</td>
+							<td>{{$order->cart_quantity}}</td>
+							<td>{{$order->cart_size}}</td>
+							<td>
+								@if($order->status==1)
+									Pending
+								@elseif($order->status==2)
+									Delivered
+								@else
+									Cancel
+								@endif
+							</td>
+						</tr>
+						@empty
+						@endforelse
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>Total Price: {{$order->cart_totalprice}} TK</td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
 			</div>
 			<div class="card-footer">
 				<div class="row">

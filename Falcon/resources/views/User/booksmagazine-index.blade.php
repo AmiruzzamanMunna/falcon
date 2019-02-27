@@ -5,8 +5,9 @@
 @section('container')
 <div class="container">
 	<div class="item-heading">
-		<h1 class="headingelement">Books & Magazine Shop</h1>
-		<p>Shop Amazon Fashion including clothing, shoes, jewelry, watches, bags and more</p>
+		@forelse($events as $event)
+		<h1 class="headingelement">{{$event->heading1}}</h1>
+		<p>{{$event->paragraph}}</p>
 	</div>
 	<div class="row">
 		<div class="col-md-12 col-sm-12">
@@ -16,7 +17,7 @@
 						<a class="m-auto" href="{{route('user.books','books')}}">Books</a>
 					</div>
 					<div class="itemcontain">
-						<a href="{{route('user.books','books')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/books.jpg"></a>
+						<a href="{{route('user.books','books')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images/uploads')}}/{{$event->image1}}"></a>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4 m-auto">
@@ -24,11 +25,13 @@
 						<a class="m-auto" href="{{route('user.magazine','magazine')}}">Magazine</a>
 					</div>
 					<div class="itemcontain">
-						<a href="{{route('user.magazine','magazine')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images')}}/magazines.jpg"></a>
+						<a href="{{route('user.magazine','magazine')}}"><img class="img-fluid" id="itemcontain-img" src="{{asset('images/uploads')}}/{{$event->image2}}"></a>
 					</div>
 				</div>
 			</div>
 		</div>
+		@empty
+		@endforelse
 	</div>
 </div>
 @endsection

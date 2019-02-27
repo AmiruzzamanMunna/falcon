@@ -9,6 +9,7 @@ use App\Cart;
 use App\Product;
 use App\User;
 use App\Order;
+use App\ContactUs;
 
 class CartController extends Controller
 {
@@ -22,8 +23,10 @@ class CartController extends Controller
     		$totals+=$cart->unit_price*$cart->quantity;
     		$quantity+=$cart->quantity;
     	}
+        $footers=ContactUs::all();
         return view('User.cart')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('totals',$totals)
         ->with('carts',$carts)
         ->with('user',$user);

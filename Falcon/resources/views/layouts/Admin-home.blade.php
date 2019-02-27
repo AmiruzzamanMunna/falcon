@@ -50,57 +50,73 @@
                 </div>
             </li>
             <li class="nav-item">
+                @forelse($events as $event)
                 <a class="nav-link" data-toggle="collapse" data-target="#demo1" href="#">Ladis<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo1">
-                    <a href="" class="nav-link">Ladis Index</a>
+                    <a href="{{route('admin.ladiesIndexEdit',[$event->id])}}" class="nav-link">Ladis Index</a>
                     <a href="" class="nav-link">Clothing Item</a>
                     <a href="" class="nav-link">Juwellay Item</a>
                     <a href="" class="nav-link">Cosmetic Item</a>
                     <a href="" class="nav-link">Shoes Item</a>
                 </div>
+                @empty
+                @endforelse
             </li>
             <li class="nav-item">
+                @forelse($events as $event)
                 <a class="nav-link" data-toggle="collapse" data-target="#demo2" href="#">Gents<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo2">
-                    <a href="" class="nav-link">Gents Index</a>
+                    <a href="{{route('admin.gentsIndexEdit',[$event->id])}}" class="nav-link">Gents Index</a>
                     <a href="" class="nav-link">Clothing Item</a>
                     <a href="" class="nav-link">Cosmetic Item</a>
                     <a href="" class="nav-link">Shoes Item</a>
                 </div>
+                @empty
+                @endforelse
             </li>
             <li class="nav-item">
+                @forelse($events as $event)
                 <a class="nav-link" data-toggle="collapse" data-target="#demo3" href="#">Leather<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo3">
-                    <a href="" class="nav-link">Leather Index</a>
+                    <a href="{{route('admin.leatherIndexEdit',[$event->id])}}" class="nav-link">Leather Index</a>
                     <a href="" class="nav-link">Bag Item</a>
                     <a href="" class="nav-link">Belt Item</a>
                     <a href="" class="nav-link">Shoes Item</a>
                 </div>
+                @empty
+                @endforelse
             </li>
             <li class="nav-item">
+                @forelse($events as $event)
                 <a class="nav-link" data-toggle="collapse" data-target="#demo4" href="#">Electric & Electronics<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo4">
-                    <a href="" class="nav-link">Electric & Electronics Index</a>
+                    <a href="{{route('admin.electricIndexEdit',[$event->id])}}" class="nav-link">Electric & Electronics Index</a>
                     <a href="" class="nav-link">Computer & Accessories Item</a>
                     <a href="" class="nav-link">Electronics Item</a>
                     <a href="" class="nav-link">Security & Servillance Item</a>
                 </div>
+                @empty
+                @endforelse
             </li>
             <li class="nav-item"><a href="" class="nav-link">Gadget</a></li>
             <li class="nav-item">
+                @forelse($events as $event)
                 <a class="nav-link" data-toggle="collapse" data-target="#demo5" href="#">Household & Accessories<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo5">
-                    <a href="" class="nav-link">Household & Accessories Index</a>
+                    <a href="{{route('admin.houseIndexEdit',[$event->id])}}" class="nav-link">Household & Accessories Index</a>
                     <a href="" class="nav-link">Cushions Item</a>
                     <a href="" class="nav-link">Throws & Blankets Item</a>
                     <a href="" class="nav-link">Mirrors Item</a>
                     <a href="" class="nav-link">Curtains Item</a>
                 </div>
+                @empty
+                @endforelse
             </li>
             <li class="nav-item">
+                @forelse($events as $event)
                 <a class="nav-link" data-toggle="collapse" data-target="#demo6" href="#">Furniture<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo6">
-                    <a href="" class="nav-link">Furniture Index</a>
+                    <a href="{{route('admin.furnitureIndexEdit',[$event->id])}}" class="nav-link">Furniture Index</a>
                     <a href="" class="nav-link">Sofas Item</a>
                     <a href="" class="nav-link">Chairs Item</a>
                     <a href="" class="nav-link">Ottomans Item</a>
@@ -108,19 +124,25 @@
                     <a href="" class="nav-link">Entertainment Center Item</a>
                     <a href="" class="nav-link">Bed Rooms Item</a>
                 </div>
+                @empty
+                @endforelse
             </li>
             <li class="nav-item">
+                @forelse($events as $event)
                 <a class="nav-link" data-toggle="collapse" data-target="#demo7" href="#">Toys & Show Pieces<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo7">
-                    <a href="" class="nav-link">Toys & Show Pieces  Index</a>
+                    <a href="{{route('admin.toysIndexEdit',[$event->id])}}" class="nav-link">Toys & Show Pieces  Index</a>
                     <a href="" class="nav-link">Toys Item</a>
                     <a href="" class="nav-link">Show Pieces Item</a>
                 </div>
+                @empty
+                @endforelse
             </li>
             <li class="nav-item">
+                @forelse($events as $event)
                 <a class="nav-link" data-toggle="collapse" data-target="#demo8" href="#">Flowers & Bouquets<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo8">
-                    <a href="" class="nav-link">Flowers & Bouquets Index</a>
+                    <a href="{{route('admin.flowersIndexEdit',[$event->id])}}" class="nav-link">Flowers & Bouquets Index</a>
                     <a href="" class="nav-link">Romance Item</a>
                     <a href="" class="nav-link">Roses Item</a>
                     <a href="" class="nav-link">Birthday Item</a>
@@ -129,10 +151,13 @@
                     <a href="" class="nav-link">Sympathy Item</a>
                 </div>
             </li>
+            @empty
+            @endforelse
             <li class="nav-item">
+                @foreach($events as $event)
                 <a class="nav-link" data-toggle="collapse" data-target="#demo9" href="#">Books & Magazine<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo9">
-                    <a href="" class="nav-link">Books & Magazine Index</a>
+                    <a href="{{route('admin.booksIndexEdit',[$event->id])}}" class="nav-link">Books & Magazine Index</a>
                     <a href="" class="nav-link">Books Item</a>
                     <a href="" class="nav-link">Magazine Item</a>
                 </div>
@@ -140,7 +165,7 @@
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" data-target="#demo10" href="#">Food & Grocery<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo10">
-                    <a href="" class="nav-link">Food & Grocery Index</a>
+                    <a href="{{route('admin.foodIndexEdit',[$event->id])}}" class="nav-link">Food & Grocery Index</a>
                     <a href="" class="nav-link">Groceries Item</a>
                     <a href="" class="nav-link">Bread & Bakery Item</a>
                     <a href="" class="nav-link">Fruits & Vegitables Item</a>
@@ -149,7 +174,6 @@
                 </div>
             </li>
             <li class="nav-item">
-                @foreach($events as $event)
                 <a class="nav-link" data-toggle="collapse" data-target="#demo13" href="#">Event Management<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo13">
                     <a href="{{route('admin.eventIndexEdit',[$event->id])}}" class="nav-link">Event Management Index</a>
@@ -186,6 +210,17 @@
                 </div>
             </li>
             @endforeach
+            <li class="nav-item">
+                @forelse($events as $event)
+                <a class="nav-link" data-toggle="collapse" data-target="#demo16" href="#">Footer<i id="listicon" class="fa fa-caret-down"></i></a>
+                <div class="collapse" id="demo16">
+                    <a href="{{route('admin.aboutUsEdit',[$event->id])}}" class="nav-link">About Us</a>
+                    <a href="{{route('admin.policyEdit',[$event->id])}}" class="nav-link">Policy</a>
+                    <a href="{{route('admin.contactUsEdit',[$event->id])}}" class="nav-link">Contact Us</a>
+                </div>
+                @empty
+                @endforelse
+            </li>
         </ul>
         @endif
     </div>

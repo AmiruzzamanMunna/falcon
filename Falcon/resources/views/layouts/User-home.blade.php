@@ -104,23 +104,25 @@
 				<div class="col-md-4 col-sm-6">
 					<span class="footer_contain">Get to Know Us</span>
 					<div class="itemelement">
-						<p class="footeritem"><a href="">About Us</a></p>
-						<p class="footeritem"><a href="">Privacy Policy</a></p>
-						<p class="footeritem"><a href="">Warrenty Policy</a></p>
+						<p class="footeritem"><a href="{{route('user.aboutUs')}}">About Us</a></p>
+						<p class="footeritem"><a href="{{route('user.policy')}}">Privacy Policy</a></p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6">
 					<span class="footer_contain">Get in touch with</span>
 					<div class="itemelement">
-						<p class="footeritem"><a href="">Contact Us</a></p>
+						<p class="footeritem"><a href="{{route('user.contactus')}}">Contact Us</a></p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6">
-					<span class="footer_contain">Falcon.com</span>
+					<div class="col-md-8 m-auto">
+						<span class="footer_contain">Falcon.com</span>
+					</div>
 					<div class="itemelement">
-						<p class="footeritem">House 12, Road 12<br>
-						Block F, Niketan, Gulshan 1,<br>
-						Dhaka - 1212, Bangladesh</a></p>
+						@forelse($footers as $footer)
+						<p class="footeritemparagraph">{{$footer->contact}}</p>
+						@empty
+						@endforelse
 					</div>
 				</div>
 			</div>

@@ -14,26 +14,28 @@
 			<div class="card">
 			<div class="card-header"><h2>All Order</h2></div>
 			<div class="card-body col-sm-12">
-				<table class="table table-bordered table-hover table-striped col-md-12 col-sm-12">
-					<tr>
-						<th>Customer Name</th>
-						<th>Mobile</th>
-						<th>Address</th>
-						<th>Order Date</th>
-						<th>Status</th>
-						<th>Details</th>
-					</tr>
-					@foreach($orders as $order)
-					<tr>
-						<td>{{$order->Username}}</td>
-						<td>{{$order->mobile}}</td>
-						<td>{{$order->address}}</td>
-						<td>{{$order->Order_date}}</td>
-						<td>{{$order->name}}</td>
-						<td><a href="{{route('order.orderInfoShow',$order->id)}}" class="order">Show</a></td>
-					</tr>
-					@endforeach
-				</table>
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover table-striped">
+						<tr>
+							<th>Customer Name</th>
+							<th>Mobile</th>
+							<th>Address</th>
+							<th>Order Date</th>
+							<th>Status</th>
+							<th>Details</th>
+						</tr>
+						@foreach($orders as $order)
+						<tr>
+							<td>{{$order->Username}}</td>
+							<td>{{$order->mobile}}</td>
+							<td>{{$order->address}}</td>
+							<td>{{$order->Order_date}}</td>
+							<td>{{$order->name}}</td>
+							<td><a href="{{route('order.orderInfoShow',$order->id)}}" class="order btn btn-success">Show</a></td>
+						</tr>
+						@endforeach
+					</table>
+				</div>
 			</div>
 			<div class="card-footer">
 				<div class="row">

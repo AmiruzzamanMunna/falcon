@@ -16,9 +16,23 @@ use App\EventOthers;
 use App\EventIndex;
 use App\Cart;
 use App\Light;
+use App\FoodIndex;
+use App\BooksIndex;
 use App\FamousTraditional;
 use App\PartsAccessories;
 use App\MedicineEmergency;
+use App\FlowerIndex;
+use App\ToysIndex;
+use App\FurnitureIndex;
+use App\HouseholdIndex;
+use App\ElectricIndex;
+use App\LeatherIndex;
+use App\GentsIndex;
+use App\LadiesIndex;
+use App\AboutUS;
+use App\Policy;
+use App\ContactUs;
+
 
 class UserController extends Controller
 {
@@ -30,7 +44,9 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         return view('User.signup')
+            ->with('footers',$footers)
             ->with('quantity',$quantity);
     }
     public function signUPStore(SignupRequest $request)
@@ -55,7 +71,9 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         return view('User.login')
+        ->with('footers',$footers)
         ->with('quantity',$quantity)
         ->with('carts',$carts);
     }
@@ -90,6 +108,7 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $gents=DB::table('view_product')
         ->where('category_name','gents clothing')->get();
         $ladies=DB::table('view_product')
@@ -101,6 +120,7 @@ class UserController extends Controller
         ->with('carts',$carts)
         ->with('gents',$gents)
         ->with('ladies',$ladies)
+        ->with('footers',$footers)
         ->with('gadgets',$gadgets);
     }
     public function ladiesIndex(Request $request)
@@ -111,7 +131,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
+        $events=LadiesIndex::all();
         return view('User.ladies-index')
+        ->with('events',$events)
+        ->with('footers',$footers)
         ->with('quantity',$quantity);
     }
     public function ladiesClothing(Request $request,$name)
@@ -124,7 +148,9 @@ class UserController extends Controller
         }
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
+        $footers=ContactUs::all();
         return view('User.allproduct')
+        ->with('footers',$footers)
         ->with('quantity',$quantity)
         ->with('products',$products);
     }
@@ -136,10 +162,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function ladiesCosmatic(Request $request,$name)
@@ -150,10 +178,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function ladiesShoes(Request $request,$name)
@@ -164,10 +194,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function gentsIndex(Request $request)
@@ -178,7 +210,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
+        $events=GentsIndex::all();
         return view('User.gents-index')
+        ->with('events',$events)
+        ->with('footers',$footers)
         ->with('quantity',$quantity);
     }
     public function gentsClothing(Request $request,$name)
@@ -189,10 +225,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function gentsCosmatic(Request $request,$name)
@@ -203,10 +241,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function gentsShoes(Request $request,$name)
@@ -217,10 +257,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function leatherIndex(Request $request)
@@ -231,7 +273,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
+        $events=LeatherIndex::all();
         return view('User.leather-index')
+        ->with('events',$events)
+        ->with('footers',$footers)
         ->with('quantity',$quantity);
     }
     public function leatherBag(Request $request,$name)
@@ -242,10 +288,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function leatherBelt(Request $request,$name)
@@ -256,10 +304,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function leatherShoes(Request $request,$name)
@@ -270,10 +320,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function electricIndex(Request $request)
@@ -284,7 +336,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
+        $events=ElectricIndex::all();
         return view('User.electrical&electronics-index')
+        ->with('events',$events)
+        ->with('footers',$footers)
         ->with('quantity',$quantity);
     }
     public function computerAccessories(Request $request,$name)
@@ -295,10 +351,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function electronics(Request $request,$name)
@@ -309,10 +367,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function securityServillance(Request $request,$name)
@@ -323,10 +383,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function gadgetPage(Request $request,$name)
@@ -337,10 +399,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function houseHoldIndex(Request $request)
@@ -351,7 +415,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
+        $events=HouseholdIndex::all();
         return view('User.household-index')
+        ->with('events',$events)
+        ->with('footers',$footers)
         ->with('quantity',$quantity);
     }
     public function cushions(Request $request,$name)
@@ -362,10 +430,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function throwsBlankets(Request $request,$name)
@@ -376,10 +446,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function mirrors(Request $request,$name)
@@ -390,10 +462,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function curtains(Request $request,$name)
@@ -404,9 +478,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
+        ->with('footers',$footers)
         ->with('quantity',$quantity)
         ->with('products',$products);
     }
@@ -418,7 +494,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
+        $events=FurnitureIndex::all();
         return view('User.furniture-index')
+        ->with('events',$events)
+        ->with('footers',$footers)
         ->with('quantity',$quantity);
     }
     public function sofas(Request $request,$name)
@@ -429,10 +509,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function chairs(Request $request,$name)
@@ -443,10 +525,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function ottomans(Request $request,$name)
@@ -457,10 +541,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function tables(Request $request,$name)
@@ -471,10 +557,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function entertainmentCenter(Request $request,$name)
@@ -485,10 +573,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function bedRooms(Request $request,$name)
@@ -499,10 +589,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function toysShowIndex(Request $request)
@@ -513,7 +605,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
+        $events=ToysIndex::all();
         return view('User.toys&showpiece-index')
+        ->with('events',$events)
+        ->with('footers',$footers)
         ->with('quantity',$quantity);
     }
     public function toys(Request $request,$name)
@@ -524,10 +620,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function showPieces(Request $request,$name)
@@ -538,10 +636,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function giftIndex(Request $request,$name)
@@ -552,10 +652,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function flowersIndex(Request $request)
@@ -566,8 +668,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
+        $events=FlowerIndex::all();
         return view('User.flowers-index')
-        ->with('quantity',$quantity);
+        ->with('quantity',$quantity)
+        ->with('footers',$footers)
+        ->with('events',$events);
     }
     public function romance(Request $request,$name)
     {
@@ -577,10 +683,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function anniversary(Request $request,$name)
@@ -591,10 +699,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function roses(Request $request,$name)
@@ -605,10 +715,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function birthday(Request $request,$name)
@@ -619,10 +731,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function thankyou(Request $request,$name)
@@ -633,10 +747,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function sympathy(Request $request,$name)
@@ -647,10 +763,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function booksIndex(Request $request)
@@ -661,8 +779,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
+        $events=BooksIndex::all();
         return view('User.booksmagazine-index')
-        ->with('quantity',$quantity);
+        ->with('quantity',$quantity)
+        ->with('footers',$footers)
+        ->with('events',$events);
     }
     public function books(Request $request,$name)
     {
@@ -672,10 +794,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function magazine(Request $request,$name)
@@ -686,13 +810,15 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
-     public function foodIndex(Request $request)
+    public function foodIndex(Request $request)
     {
         $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
         $quantity=0;
@@ -700,8 +826,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
+        $events=FoodIndex::all();
         return view('User.food-index')
-        ->with('quantity',$quantity);
+        ->with('quantity',$quantity)
+        ->with('footers',$footers)
+        ->with('events',$events);
     }
     public function groceries(Request $request,$name)
     {
@@ -711,10 +841,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function breadBakery(Request $request,$name)
@@ -725,10 +857,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function fruitsVegitables(Request $request,$name)
@@ -739,10 +873,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function meatFish(Request $request,$name)
@@ -753,10 +889,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function freshMilk(Request $request,$name)
@@ -767,10 +905,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function eventIndex(Request $request)
@@ -781,9 +921,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
     	$events=EventIndex::all();
     	return view('User.eventmanagement-index')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
     	->with('events',$events);
     }
     public function weddingEventPage(Request $request)
@@ -794,9 +936,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
     	$events=EventWedding::all();
     	return view('User.event-page')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
     	->with('events',$events);
     }
     public function birthdayEventPage(Request $request)
@@ -807,9 +951,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
     	$events=EventBirthday::all();
     	return view('User.event-page')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
     	->with('events',$events);
     }
     public function HospitalityEventPage(Request $request)
@@ -820,9 +966,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
     	$events=EventHospitality::all();
     	return view('User.event-page')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
     	->with('events',$events);
     }
     public function othersEventPage(Request $request)
@@ -833,8 +981,10 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
     	$events=EventOthers::all();
     	return view('User.event-page')
+        ->with('footers',$footers)
         ->with('quantity',$quantity)
     	->with('events',$events);
     }
@@ -846,8 +996,10 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
     	$events=Light::all();
     	return view('User.event-page')
+        ->with('footers',$footers)
         ->with('quantity',$quantity)
     	->with('events',$events);
     }
@@ -859,9 +1011,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $events=FamousTraditional::all();
         return view('User.famous&traditional')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('events',$events);
     }
     public function nakshikatha(Request $request,$name)
@@ -872,10 +1026,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function potteryTerracotta(Request $request,$name)
@@ -886,10 +1042,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function shitalPati(Request $request,$name)
@@ -900,9 +1058,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
+        ->with('footers',$footers)
         ->with('quantity',$quantity)
         ->with('products',$products);
     }
@@ -914,9 +1074,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $events=PartsAccessories::all();
         return view('User.parts&accessories')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('events',$events);
     }
     public function bikes(Request $request,$name)
@@ -927,10 +1089,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function cars(Request $request,$name)
@@ -941,10 +1105,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function medicineEmergencyIndex(Request $request)
@@ -955,9 +1121,11 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $events=MedicineEmergency::all();
         return view('User.medicineemergency')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('events',$events);
     }
     public function medicine(Request $request,$name)
@@ -968,10 +1136,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function fastAidKit(Request $request,$name)
@@ -982,10 +1152,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('category_name',$name)->get();
         return view('User.allproduct')
         ->with('quantity',$quantity)
+        ->with('footers',$footers)
         ->with('products',$products);
     }
     public function searchItem(Request $request)
@@ -996,12 +1168,14 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $search=$request->search;
         $products=DB::table('view_product')
                         ->where('product_name','like','%'.$search.'%')
                         ->get();
         return view('User.allproduct')
             ->with('quantity',$quantity)
+            ->with('footers',$footers)
             ->with('products',$products)
             ->with('search',$search);
     }
@@ -1013,12 +1187,14 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $products=DB::table('view_product')
         ->where('id',$id)->first();
         $sizes = json_decode($products->size);
         return view('User.product-details')
         ->with('quantity',$quantity)
         ->with('products',$products)
+        ->with('footers',$footers)
         ->with('sizes',$sizes);
     }
     public function invoiceIndex(Request $request,$id)
@@ -1029,11 +1205,13 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $users=DB::table('view_order')
         ->where('user_id',$request->session()->get('loggedUser'))
         ->where('invoice_id',$id)->get();
         return view('User.invoice')
             ->with('users',$users)
+            ->with('footers',$footers)
             ->with('id',$id)
             ->with('quantity',$quantity);
     }
@@ -1046,10 +1224,12 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $orders=DB::table('view_order')
                     ->where('user_id',$request->session()->get('loggedUser'))->get();
         return view('User.account')
             ->with('quantity',$quantity)
+            ->with('footers',$footers)
             ->with('users',$users)
             ->with('orders',$orders);
     }
@@ -1062,11 +1242,59 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $orders = DB::table('view_order')
                     ->where('user_id',$id)->get();
         return view('User.orderdetails')
                 ->with('users',$users)
                 ->with('quantity',$quantity)
+                ->with('footers',$footers)
                 ->with('orders',$orders);
+    }
+    public function aboutUs(Request $request)
+    {
+       $users = User::where('id',$request->session()->get('loggedUser'))->get();
+         $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
+        $quantity=0;
+        foreach($carts as $cart){
+
+            $quantity+=$cart->quantity;
+        }
+        $footers=ContactUs::all();
+        $footersitem=AboutUS::all();
+        return view('User.footer')
+            ->with('quantity',$quantity) 
+            ->with('footersitem',$footersitem) 
+            ->with('footers',$footers); 
+    }
+    public function policy(Request $request)
+    {
+       $users = User::where('id',$request->session()->get('loggedUser'))->get();
+         $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
+        $quantity=0;
+        foreach($carts as $cart){
+
+            $quantity+=$cart->quantity;
+        }
+        $footers=ContactUs::all();
+        $footersitem=Policy::all();
+        return view('User.footer')
+            ->with('quantity',$quantity) 
+            ->with('footersitem',$footersitem)
+            ->with('footers',$footers); 
+    }
+    public function contactus(Request $request)
+    {
+       $users = User::where('id',$request->session()->get('loggedUser'))->get();
+         $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
+        $quantity=0;
+        foreach($carts as $cart){
+
+            $quantity+=$cart->quantity;
+        }
+        $footers=ContactUs::all();
+        return view('User.contact')
+            ->with('quantity',$quantity) 
+            ->with('footers',$footers); 
     }
 }

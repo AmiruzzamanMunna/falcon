@@ -11,6 +11,7 @@ use App\Order;
 use App\Invoice;
 use App\Product;
 use App\EventIndex;
+use App\ContactUs;
 
 class OrderController extends Controller
 {
@@ -22,7 +23,9 @@ class OrderController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
     	return view('User.order')
+        ->with('footers',$footers)
     			->with('quantity',$quantity);
     }
     public function checkOutStore(OrderRequest $request)

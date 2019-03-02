@@ -29,25 +29,25 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-2 m-auto">Image 1</label>
+                                            <label class="col-md-2 m-auto">Wedding Image 1</label>
                                             <div class="col-md-6 m-auto">
                                                 <input type="file" class="form-control" name="image1">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-2 m-auto">Image 2</label>
+                                            <label class="col-md-2 m-auto">Birthday Image 2</label>
                                             <div class="col-md-6 m-auto">
                                                 <input type="file" class="form-control" name="image2">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-2 m-auto">Image 3</label>
+                                            <label class="col-md-2 m-auto">Hospitality Image 3</label>
                                             <div class="col-md-6 m-auto">
                                                 <input type="file" class="form-control" name="image3">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-2 m-auto">Image 4</label>
+                                            <label class="col-md-2 m-auto">Others Image 4</label>
                                             <div class="col-md-6 m-auto">
                                                 <input type="file" class="form-control" name="image4">
                                             </div>

@@ -38,18 +38,20 @@
 								</ul>
 							@endif
 							<div class="row">
-								<div class="col-md-8">
-									<input type="reset" class="btn btn-danger" name="" value="Reset">
+								<div class="col-md-12">
+									<input type="submit" class="btn btn-success col-md-12" name="" value="Login">
 								</div>
-								<div class="col-md-3">
-									<input type="submit" class="btn btn-success" name="" value="Login">
+							</div>
+							<div class="row">
+								<div class="col-md-5 linkelement">
+									<a href="{{route('user.signUP')}}" class="loginroute">Register as a New User ?</a>
 								</div>
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
-			</div>
+
 		</div>
 	</div>
 </div>

@@ -73,6 +73,12 @@ a:hover{
 .adminlogin{
   margin-top: 190px;
 }
+.forgotlink{
+  color: black;
+}
+.resetemail{
+  margin-top: 150px;
+}
 /*viewproduct*/
 .productimage{
   width: 100px;
@@ -100,4 +106,8 @@ a:hover{
 .orderinfo{
   margin-top: 110px;
   margin-bottom: 30px;
+}
+/*updateadmin*/
+.updateadmin{
+  margin-top: 100px;
 }

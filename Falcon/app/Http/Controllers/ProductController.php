@@ -20,6 +20,7 @@ use App\FamousTraditional;
 use App\PartsAccessories;
 use App\MedicineEmergency;
 use App\Category;
+use App\Admin;
 use Image;
 
 class ProductController extends Controller
@@ -28,7 +29,9 @@ class ProductController extends Controller
     {
     	$events=EventIndex::all();
     	$catogories=Category::all();
+      $admins=Admin::all();
     	return view('Admin.productadd')
+      ->with('admins',$admins)
     	->with('catogories',$catogories)
     	->with('events',$events);
     }
@@ -84,7 +87,9 @@ class ProductController extends Controller
       $events=EventIndex::all();
       $products=DB::table('view_product')
       ->paginate(10);
+      $admins=Admin::all();
       return view('Admin.viewproduct')
+        ->with('admins',$admins)
         ->with('events',$events)
         ->with('products',$products);
     }

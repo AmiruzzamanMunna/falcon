@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\EventWeddingRequest;
 use App\Http\Requests\EventIndexRequest;
 use App\Http\Requests\PartsAccessoriesRequest;
@@ -36,15 +37,17 @@ class AdminController extends Controller
 {
     public function adminLogin(Request $request)
     {
+      $admins=Admin::all();
         $events=EventIndex::all();
         return view('Admin.adminlogin')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function adminLoginVerify(LoginRequest $request)
     {
         $admin=Admin::where('username',$request->username)
-                       ->where('password',$request->password)->first();
-        if ($admin) {
+                      ->first();
+        if ($admin && Hash::check($request->password,$admin->password)) {
             $request->session()->put('loggedAdmin',$admin->id);
             $request->session()->flash('message','Login Successfull');
             return redirect()->route('admin.index'); 
@@ -60,20 +63,43 @@ class AdminController extends Controller
         $request->session()->regenerate();
         return redirect()->route('admin.adminLogin');
     }
+    public function adminEdit(Request $request,$id)
+    {
+      $events=EventIndex::all();
+      $admins=Admin::where('id',$id)->get();
+      return view('Admin.updateadmin')
+        ->with('events',$events)
+        ->with('admins',$admins);
+    }
+    public function adminUpdate(Request $request,$id)
+    {
+      $admin=Admin::find($request->id);
+      $admin->name=$request->name;
+      $admin->username=$request->username;
+      $admin->password=Hash::make($request->password);
+      $admin->confirm_password=Hash::make($request->confirm_password);
+      $admin->save();
+      $request->session()->flash('message','Data Updated');
+      return back();
+    }
     public function index(Request $request)
     {
+      $admins=Admin::all();
         $events=EventIndex::all();
         $orders=DB::table('view_invoice')
                 ->orderby('id','desc')
                 ->paginate(10);
     	return view('Admin.index')
+        ->with('admins',$admins)
         ->with('orders',$orders)
         ->with('events',$events);
     }
     public function ladiesIndexEdit(Request $request,$id)
     {
         $events=LadiesIndex::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.ladiesindex')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function ladiesIndexUpdate(Request $request,$id)
@@ -121,7 +147,9 @@ class AdminController extends Controller
     public function gentsIndexEdit(Request $request,$id)
     {
         $events=GentsIndex::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.gentsindex')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function gentsIndexUpdate(Request $request,$id)
@@ -161,7 +189,9 @@ class AdminController extends Controller
     public function leatherIndexEdit(Request $request,$id)
     {
         $events=LeatherIndex::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.leatherindex')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function leatherIndexUpdate(Request $request,$id)
@@ -201,7 +231,9 @@ class AdminController extends Controller
     public function electricIndexEdit(Request $request,$id)
     {
         $events=ElectricIndex::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.electricindex')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function electricIndexUpdate(Request $request,$id)
@@ -241,7 +273,9 @@ class AdminController extends Controller
     public function houseIndexEdit(Request $request,$id)
     {
         $events=HouseholdIndex::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.householdindex')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function houseIndexUpdate(Request $request,$id)
@@ -289,7 +323,9 @@ class AdminController extends Controller
     public function furnitureIndexEdit(Request $request,$id)
     {
         $events=FurnitureIndex::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.furniture')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function furnitureIndexUpdate(Request $request,$id)
@@ -353,7 +389,9 @@ class AdminController extends Controller
     public function toysIndexEdit(Request $request,$id)
     {
         $events=ToysIndex::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.toysindex')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function toyIndexUpdate(Request $request,$id)
@@ -385,7 +423,9 @@ class AdminController extends Controller
     public function flowersIndexEdit(Request $request,$id)
     {
         $events=FlowerIndex::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.flowerindex')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function flowersIndexUpdate(Request $request,$id)
@@ -449,7 +489,9 @@ class AdminController extends Controller
     public function booksIndexEdit(Request $request,$id)
     {
         $events=BooksIndex::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.booksindex')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function booksIndexUpdate(Request $request,$id)
@@ -481,7 +523,9 @@ class AdminController extends Controller
     public function foodIndexEdit(Request $request,$id)
     {
         $events=FoodIndex::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.foodindex')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function foodIndexUpdate(EventIndexRequest $request,$id)
@@ -539,12 +583,15 @@ class AdminController extends Controller
     {
         $events=EventIndex::all();
         return view('Admin.event-index')
+        ->with('admins',$admins)
         ->with('events',$events);
     }
     public function eventIndexEdit(Request $request,$id)
     {
     	$events=EventIndex::where('id',$id)->get();
+      $admins=Admin::all();
         return view('Admin.event-index')
+        ->with('admins',$admins)
         ->with('id',$id)
         ->with('events',$events);
     }
@@ -593,13 +640,17 @@ class AdminController extends Controller
     public function eventWedding($value='')
     {
     	$events=EventWedding::all();
+      $admins=Admin::all();
     	return view('Admin.event')
+      ->with('admins',$admins)
     	->with('events',$events);
     }
     public function weddingEdit(Request $request,$id)
     {
     	$events=EventWedding::where('id',$id)->get();
+      $admins=Admin::all();
     	return view('Admin.event')
+      ->with('admins',$admins)
     	->with('events',$events);
     }
     public function weddingUpdate(EventWeddingRequest $request,$id)
@@ -647,13 +698,17 @@ class AdminController extends Controller
     public function eventBirthday(Request $request)
     {
     	$events=EventBirthday::all();
+      $admins=Admin::all();
     	return view('Admin.eventbirthday')
+      ->with('admins',$admins)
     	->with('events',$events);
     }
     public function eventBirthdayEdit(Request $request,$id)
     {
     	$events =EventBirthday::where('id',$id)->get();
+      $admins=Admin::all();
     	return view('Admin.eventbirthday')
+      ->with('admins',$admins)
     	->with('events',$events);
     }
     public function eventBirthdayUpdate(EventWeddingRequest $request,$id)
@@ -701,13 +756,16 @@ class AdminController extends Controller
     public function eventHospitality(Request $request)
     {
     	$events=EventHospitality::all();
+      $admins=Admin::all();
     	return view('Admin.eventhospitality')
+      ->with('admins',$admins)
     	->with('events',$events);
     }
     public function eventHospitalityEdit(Request $request,$id)
     {
     	$events =EventHospitality::where('id',$id)->get();
     	return view('Admin.eventhospitality')
+      ->with('admins',$admins)
     	->with('events',$events);
     }
     public function eventHospitalityUpdate(EventWeddingRequest $request,$id)
@@ -755,13 +813,17 @@ class AdminController extends Controller
     public function eventOthers(Request $request)
     {
     	$events=EventOthers::all();
+      $admins=Admin::all();
     	return view('Admin.eventothers')
+      ->with('admins',$admins)
     	->with('events',$events);
     }
     public function eventOthersEdit(Request $request,$id)
     {
     	$events =EventOthers::where('id',$id)->get();
+      $admins=Admin::all();
     	return view('Admin.eventhospitality')
+      ->with('admins',$admins)
     	->with('events',$events);
     }
     public function eventOthersUpdate(EventWeddingRequest $request,$id)
@@ -809,13 +871,17 @@ class AdminController extends Controller
     public function lighIndex(Request $request)
     {
         $events=Light::all();
+        $admins=Admin::all();
         return view('Admin.lighting')
+        ->with('admins',$admins)
         ->with('events',$events);
     }
     public function lightIndexEdit(Request $request,$id)
     {
         $events=Light::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.lighting')
+        ->with('admins',$admins)
         ->with('events',$events);
     }
     public function lightIndexUpdate(EventWeddingRequest $request,$id)
@@ -863,7 +929,9 @@ class AdminController extends Controller
     public function famousTraditionalEdit(Request $request,$id)
     {
         $events=FamousTraditional::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.famous&tradition-index')
+        ->with('admins',$admins)
         ->with('events',$events);
     }
     public function famousTraditionalUpdate(EventIndexRequest $request,$id)
@@ -903,7 +971,9 @@ class AdminController extends Controller
     public function partsAccessoriesEdit(Request $request,$id)
     {
         $events=PartsAccessories::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.parts&accessories-index')
+        ->with('admins',$admins)
         ->with('events',$events);
     }
     public function partsAccessoriesUpdate(PartsAccessoriesRequest $request,$id)
@@ -935,7 +1005,9 @@ class AdminController extends Controller
     public function medicineAccessoriesEdit(Request $request,$id)
     {
         $events=MedicineEmergency::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.medicineemergency-index')
+        ->with('admins',$admins)
         ->with('events',$events);
     }
     public function medicineAccessoriesUpdate(PartsAccessoriesRequest $request,$id)
@@ -967,7 +1039,9 @@ class AdminController extends Controller
     public function aboutUsEdit(Request $request,$id)
     {
         $events=AboutUS::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.aboutus')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function aboutUsUpdate(Request $request,$id)
@@ -983,7 +1057,9 @@ class AdminController extends Controller
     public function policyEdit(Request $request,$id)
     {
         $events=Policy::where('id',$id)->get();
+        $admin=Admin::all();
         return view('Admin.policy')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function policyUpdate(Request $request,$id)
@@ -999,7 +1075,9 @@ class AdminController extends Controller
     public function contactUsEdit(Request $request,$id)
     {
         $events=ContactUs::where('id',$id)->get();
+        $admins=Admin::all();
         return view('Admin.contactus')
+            ->with('admins',$admins)
             ->with('events',$events);
     }
     public function contactUsUpdate(Request $request,$id)

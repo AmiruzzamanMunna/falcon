@@ -36,4 +36,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    public function login(Request $request)
+    {
+        if (Auth::guard('admin')->attempt([$request->email, $request->password], $request->remember)) {
+            return redirect()->intended('/');
+        }
+    }
 }

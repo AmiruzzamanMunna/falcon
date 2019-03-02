@@ -29,13 +29,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-2 m-auto">Image 1</label>
+                                            <label class="col-md-2 m-auto">Bikes Image 1</label>
                                             <div class="col-md-6 m-auto">
                                                 <input type="file" class="form-control" name="image1">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-2 m-auto">Image 2</label>
+                                            <label class="col-md-2 m-auto">Cars Image 2</label>
                                             <div class="col-md-6 m-auto">
                                                 <input type="file" class="form-control" name="image2">
                                             </div>

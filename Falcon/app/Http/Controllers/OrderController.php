@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Cart;
 use App\Order;
+use App\Admin;
 use App\Invoice;
 use App\Product;
 use App\EventIndex;
@@ -73,18 +74,22 @@ class OrderController extends Controller
     }
     public function orderShow(Request $request)
     {
+        $admins=Admin::all();
         $events=EventIndex::all();
         $orders=DB::table('view_invoice')->paginate(10);
         return view('Admin.order')
+            ->with('admins',$admins)
             ->with('events',$events)
             ->with('orders',$orders);
     }
     public function orderInfoShow(Request $request,$id)
     {
+        $admins=Admin::all();
         $events=EventIndex::all();
         $orders=DB::table('view_order')
                 ->where('invoice_id',$id)->get();
         return view('Admin.orderinfo')
+            ->with('admins',$admins)
             ->with('events',$events)
             ->with('orders',$orders);
     }

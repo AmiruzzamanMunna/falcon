@@ -32,6 +32,20 @@ class ResetPasswordController extends Controller
      *
      * @return void
      */
+    public function resetPas(Request $request)
+    {
+        $email = $request->email;
+        $isExist = User::where('email', $request->email)->first();
+        if ($isExist) {
+            $token = random(); //sudo code
+            $role = 1;
+            $passRes->save();
+        }
+    }
+    public function setPassword(Request $request, $token)
+    {
+        email, created, token
+    }
     public function __construct()
     {
         $this->middleware('guest');

@@ -129,6 +129,7 @@ Route::group(['middleware'=>['userSess']],function(){
 
 	Route::get('/invoice/{id}','UserController@invoiceIndex')->name('user.invoice');
 	Route::get('/download/{id}','PdfController@pdfdownload')->name('pdf.pdfdownload');
+
 	Route::get('/orderDetails/{id}','UserController@customerOrder')->name('user.customerOrder');
 
 });
@@ -143,8 +144,19 @@ Route::group(['middleware'=>['userSess']],function(){
 Route::get('/admin/index','AdminController@adminLogin')->name('admin.adminLogin');
 Route::post('/admin/index','AdminController@adminLoginVerify')->name('admin.adminLoginVerify');
 
+// Password Reset Link
+
+Route::get('/password/reset/','PasswordResetController@showResetForm')->name('password.showResetForm');
+Route::post('/password/email','PasswordResetController@sendResetLinkEmail')->name('password.sendResetLinkEmail');
+Route::get('/password/reset/{token}','PasswordResetController@reset')->name('password.reset');
+Route::post('/password/reset/{token}','PasswordResetController@resetPass')->name('password.resetPass');
+
+
 Route::group(['middleware'=>['adminSess']],function(){
 	Route::get('/admin/logout','AdminController@logOut')->name('admin.logOut');
+
+	Route::get('/admin/edit/{id}','AdminController@adminEdit')->name('admin.edit');
+	Route::post('/admin/edit/{id}','AdminController@adminUpdate')->name('adminUpdate');
 
 	Route::get('/admin/home','AdminController@index')->name('admin.index');
 

@@ -13,10 +13,10 @@
     responsiveClass:true,
     responsive:{
         0:{
-            items:2
+            items:1
         },
         600:{
-            items:3
+            items:4
         },
         1000:{
             items:3
@@ -47,7 +47,7 @@
 		    	<div class="buyname col-md-12">
 		    		<a href="{{route('productDetails',[$gent->id])}}">{{$gent->product_name}}</a>
 		    	</div>
-		    	<div class="buyprice">
+		    	<div class="buyprice col-md-12 col-sm-6">
 		    		@if($gent->discount)
 		    		<?php
 		    			$result=0;
@@ -86,7 +86,7 @@
 		    	<div class="buyname col-md-12">
 		    		<a href="">{{$lady->product_name}}</a>
 		    	</div>
-		    	<div class="buyprice">
+		    	<div class="buyprice col-md-12 col-sm-6">
 		    		@if($lady->discount)
 		    		<?php
 		    			$result=0;
@@ -125,7 +125,7 @@
 		    	<div class="buyname col-md-12">
 		    		<a href="{{route('productDetails',[$gadget->id])}}">{{$gadget->product_name}}</a>
 		    	</div>
-		    	<div class="buyprice">
+		    	<div class="buyprice col-md-12 col-sm-8">
 		    		@if($gadget->discount)
 		    		<?php
 		    			$result=0;

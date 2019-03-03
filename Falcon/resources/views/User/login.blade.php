@@ -46,6 +46,9 @@
 								<div class="col-md-5 linkelement">
 									<a href="{{route('user.signUP')}}" class="loginroute">Register as a New User ?</a>
 								</div>
+								<div class="col-md-5 linkelement ml-auto">
+									<a href="{{route('password.userResetForm')}}" class="loginroute">Forgot Password ?</a>
+								</div>
 							</div>
 						</form>
 					</div>

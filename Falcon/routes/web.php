@@ -16,6 +16,14 @@ Route::get('/', 'UserController@index')->name('user.index');
 Route::get('/UserRegistration','UserController@signUP')->name('user.signUP');
 Route::post('/UserRegistration','UserController@signUPStore')->name('user.signUPStore');
 
+// Password Reset Link
+
+Route::get('/user/resetform','PasswordResetController@userResetForm')->name('password.userResetForm');
+Route::post('/user/resetform','PasswordResetController@userResetMail')->name('password.userResetMail');
+
+Route::get('/user/resetlink/{token}','PasswordResetController@userSendResetlink')->name('password.userSendResetlink');
+Route::post('/user/resetlink/{token}','PasswordResetController@userResetPass')->name('password.userResetPass');
+
 Route::get('/userlogin','UserController@login')->name('user.login');
 Route::post('/userlogin','UserController@loginCheck')->name('user.loginCheck');
 
@@ -111,6 +119,7 @@ Route::get('/productDetails/{id}','UserController@productDetails')->name('produc
 Route::get('/falcon/aboutus','UserController@aboutUs')->name('user.aboutUs');
 Route::get('/falcon/policy','UserController@policy')->name('user.policy');
 Route::get('/falcon/contact us','UserController@contactus')->name('user.contactus');
+Route::get('/cart','CartController@cartIndex')->name('cart.cartIndex');
 
 Route::group(['middleware'=>['userSess']],function(){
 
@@ -118,7 +127,7 @@ Route::group(['middleware'=>['userSess']],function(){
 
 	Route::get('/account','UserController@userAccount')->name('user.userAccount');
 
-	Route::get('/cart','CartController@cartIndex')->name('cart.cartIndex');
+	
 	Route::post('/cart/add','CartController@addCart')->name('cart.addCart');
 	Route::get('/cart/edit/{id}','CartController@cartEdit')->name('cart.cartEdit');
 	Route::post('/cart/edit/{id}','CartController@cartUpdate')->name('cart.cartUpdate');

@@ -7,15 +7,95 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Cart;
+use App\User;
 use App\ContactUs;
 use App\Mail\SendMail;
+use App\Mail\UserSendMail;
 use App\Admin;
 use App\EventIndex;
 use App\ResetPassword;
+use App\UserPasswordReset;
 use Session;
 
 class PasswordResetController extends Controller
 {
+    public function userResetForm(Request $request)
+    {
+        $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
+        $quantity=0;
+        foreach($carts as $cart){
+
+            $quantity+=$cart->quantity;
+        }
+        $footers=ContactUs::all();
+        return view('User.showemail')
+            ->with('quantity',$quantity)   
+            ->with('footers',$footers);   
+    }
+    public function userResetMail(Request $request)
+    {
+        $this->validate($request,[
+            'email'=>'required',
+        ]);
+        $useremail=$request->email;
+        $user=User::where('email',$useremail)->first();
+        if ($user) {
+            $pass=new UserPasswordReset();
+            $pass->email=$useremail;
+            $pass->token=sha1(time());
+            $pass->role=2;
+            $pass->save();
+            Mail::to($useremail)->send(new UserSendMail($pass));
+            $request->session()->flash('message','Email is send to your Account');
+            return back();
+        }
+        else{
+            $request->session()->flash('message','Email is not exist');
+            return back();
+        }
+    }
+    public function userSendResetlink(Request $request)
+    {
+        $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
+        $quantity=0;
+        foreach($carts as $cart){
+
+            $quantity+=$cart->quantity;
+        }
+        $footers=ContactUs::all();
+        $token=$request->token;
+        $user=UserPasswordReset::where('token',$token)->first();
+        if(! is_null($user)){
+
+            return view('User.userreset')
+                ->with('quantity',$quantity)
+                ->with('footers',$footers)
+                ->with('user',$user)
+                ->with('token',$token);
+        }
+        else{
+            echo("Error 404");
+        }
+        
+    }
+    public function userResetPass(Request $request)
+    {
+        $this->validate($request, [
+            'password' => 'required|min:6',
+            'confirm_password' => 'same:password'
+        ]);
+        $token=$request->token;
+        $users=UserPasswordReset::where('token',$token)->first();
+        if (! is_null($users)) {
+            UserPasswordReset::where('token', $request->token)
+                            ->where('email', $users->email)
+                            ->update(['token' => ""]);
+            if (User::where('email', $users->email)->update(['password' => Hash::make($request->password)]) > 0) {
+                $request->session()->flash('message', "password updated");
+                return redirect()->route('user.login');
+            }
+        }
+    }
     public function showResetForm(Request $request)
     {
         $admins=Admin::all();
@@ -43,7 +123,7 @@ class PasswordResetController extends Controller
         }
         else{
             $request->session()->flash('message','Email is not exist');
-        return back();
+            return back();
         }
     }
     public function reset(Request $request)

@@ -72,9 +72,11 @@ class CartController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
         $cart=Cart::where('id',$id)->get();
     	return view('User.updatecart')
     	->with('cart',$cart)
+        ->with('footers',$footers)
     	->with('quantity',$quantity);
     }
     public function cartUpdate(QuantityRequest $request,$id)

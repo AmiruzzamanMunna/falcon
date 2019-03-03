@@ -52,7 +52,7 @@
 							@forelse($users as $user)
 							<div class="form-group row">
 								<label class="col-md-6">Total Price</label>
-								<label class="col-md-6">{{$user->cart_totalprice}}</label>
+								<label class="col-md-6">{{$user->cart_totalprice}} TK</label>
 							</div>
 							@break
 							@empty

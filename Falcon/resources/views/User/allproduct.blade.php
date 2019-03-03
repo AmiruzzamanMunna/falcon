@@ -38,7 +38,7 @@
 		    		</div>
 		    	</div>
 		    	@endif
-		    	<a href="{{route('productDetails',[$product->id])}}" class="">{{$product->product_name}}
+		    	<a href="{{route('productDetails',[$product->id])}}" class=""><br>
 		    		<img src="{{asset('images/product')}}/{{$product->image1}}" class="allproductsize">
 		    	</a>
 		    	<div class="buyname col-md-12">

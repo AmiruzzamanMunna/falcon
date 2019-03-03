@@ -58,7 +58,7 @@ class PasswordResetController extends Controller
                         ->with('admins',$admins);
         }
         else{
-            echo "Error";
+            echo "Error 404";
         }
     }
     public function resetPass(Request $request)
@@ -73,7 +73,7 @@ class PasswordResetController extends Controller
                             ->where('email', $user->email)
                             ->update(['token' => ""]);
             if (Admin::where('email', $user->email)->update(['password' => Hash::make($request->password)]) > 0) {
-                $request->session()->flash('mesage', "password updated");
+                $request->session()->flash('message', "password updated");
                 return redirect()->route('admin.adminLogin');
             }
         }

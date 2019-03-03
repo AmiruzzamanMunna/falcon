@@ -41,7 +41,7 @@
 		    		</div>
 		    	</div>
 		    	@endif
-		    	<a href="{{route('productDetails',[$gent->id])}}" class="">{{$gent->product_name}}
+		    	<a href="{{route('productDetails',[$gent->id])}}" class=""><br>
 		    		<img src="{{asset('images/product')}}/{{$gent->image1}}" class="imagesize">
 		    	</a>
 		    	<div class="buyname col-md-12">
@@ -80,7 +80,7 @@
 		    		</div>
 		    	</div>
 		    	@endif
-		    	<a href="{{route('productDetails',[$lady->id])}}" class="">{{$gent->product_name}}
+		    	<a href="{{route('productDetails',[$lady->id])}}" class=""><br>
 		    		<img src="{{asset('images/product')}}/{{$lady->image1}}" class="imagesize">
 		    	</a>
 		    	<div class="buyname col-md-12">
@@ -119,7 +119,7 @@
 		    		</div>
 		    	</div>
 		    	@endif
-		    	<a href="{{route('productDetails',[$gadget->id])}}" class="">{{$gent->product_name}}
+		    	<a href="{{route('productDetails',[$gadget->id])}}" class=""><br>
 		    		<img src="{{asset('images/product')}}/{{$gadget->image1}}" class="imagesize">
 		    	</a>
 		    	<div class="buyname col-md-12">

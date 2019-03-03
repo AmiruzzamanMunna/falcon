@@ -8,7 +8,7 @@
 			<div class="col-md-12">
 				<div class="row">
 					<div class="col-md-8 m-auto">
-						<div class="card userregistration">
+						<div class="card resetpass">
 							<div class="card-header">Reset Link</div>
 							<div class="card-body">
 								<form method="POST" action="">

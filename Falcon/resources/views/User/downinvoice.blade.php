@@ -37,15 +37,18 @@
 					<label class="col-md-6">{{$user->product_name}}</label>
 				</div>
 				<div class="form-group row">
-					<label class="col-md-6">Total Price</label>
-					<label class="col-md-6">{{$user->cart_totalprice}}</label>
-				</div>
-				<div class="form-group row">
 					<label class="col-md-6">Order Date</label>
 					<label class="col-md-6">{{$user->orderdate}}</label>
 				</div>
 				@empty
 				@endforelse
+				@foreach($users as $user)
+				<div class="form-group row">
+					<label class="col-md-6">Total Price</label>
+					<label class="col-md-6">{{$user->cart_totalprice}} TK</label>
+				</div>
+				@break
+				@endforeach
 			</div>
 		<div class="card-footer">Thank You for your Order</div>
 	</div>

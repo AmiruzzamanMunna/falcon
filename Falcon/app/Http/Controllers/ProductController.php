@@ -100,9 +100,11 @@ class ProductController extends Controller
                         ->first();
       $sizes=json_decode($products->size);
       $events=EventIndex::all();
+      $admins=Admin::all();
       return view('Admin.updateproduct')
               ->with('catogories',$catogories)
               ->with('sizes',$sizes)
+              ->with('admins',$admins)
               ->with('products',$products)
               ->with('events',$events);
     }

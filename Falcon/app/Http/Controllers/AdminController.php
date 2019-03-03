@@ -764,6 +764,7 @@ class AdminController extends Controller
     public function eventHospitalityEdit(Request $request,$id)
     {
     	$events =EventHospitality::where('id',$id)->get();
+      $admins=Admin::all();
     	return view('Admin.eventhospitality')
       ->with('admins',$admins)
     	->with('events',$events);
@@ -1057,7 +1058,7 @@ class AdminController extends Controller
     public function policyEdit(Request $request,$id)
     {
         $events=Policy::where('id',$id)->get();
-        $admin=Admin::all();
+        $admins=Admin::all();
         return view('Admin.policy')
             ->with('admins',$admins)
             ->with('events',$events);

@@ -21,7 +21,7 @@
   <script src="{{asset('js')}}/owl.carousel.min.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
 		<a href="{{route('user.index')}}" class="navbar-brand m-auto">
 			<img src="{{asset('images')}}/falcon.jpg" class="navbarimage"> 	Falcon
 		</a>

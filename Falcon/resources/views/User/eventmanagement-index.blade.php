@@ -3,7 +3,7 @@
 	Event Management
 @endsection
 @section('container')
-<div class="container">
+<div class="container itemwrapper">
 	<div class="item-heading">
 		@foreach($events as $event)
 		<h1 class="headingelement">{{$event->heading1}}</h1>

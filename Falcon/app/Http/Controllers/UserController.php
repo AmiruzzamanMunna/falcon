@@ -61,7 +61,7 @@ class UserController extends Controller
         $user->confirm_password=Hash::make($request->confirm_password);
         $user->save();
         $request->session()->flash('message','Registered Successsfully');
-        return back();
+        return redirect()->route('user.login');
     }
     public function login(Request $request)
     {
@@ -1205,13 +1205,18 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $totalprice=0;
         $footers=ContactUs::all();
         $users=DB::table('view_order')
         ->where('user_id',$request->session()->get('loggedUser'))
         ->where('invoice_id',$id)->get();
+        foreach ($users as $cart) {
+                $totalprice=$cart->cart_totalprice;
+            }
         return view('User.invoice')
             ->with('users',$users)
             ->with('footers',$footers)
+            ->with('totalprice',$totalprice)
             ->with('id',$id)
             ->with('quantity',$quantity);
     }

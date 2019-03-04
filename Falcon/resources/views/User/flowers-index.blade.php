@@ -3,7 +3,7 @@
 	Flowers & Bouquets Index Page
 @endsection
 @section('container')
-<div class="container">
+<div class="container itemwrapper">
 	<div class="item-heading">
 		@forelse($events as $event)
 		<h1 class="headingelement">{{$event->heading1}}</h1>

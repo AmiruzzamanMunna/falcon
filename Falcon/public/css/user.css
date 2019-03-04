@@ -1,8 +1,11 @@
 /*signup*/
 .userregistration{
-	margin-top: 50px;
+	margin-top: 130px;
 }
 /*Home Page*/
+.wrapperelement{
+	margin-top: 70px;
+}
 .navbar{
 	font-family: Georgia;
 	font-size: 20px;
@@ -93,6 +96,9 @@ a{
 	color: red;
 }
 /*Ladies Page*/
+.itemwrapper{
+	margin-top: 125px;
+}
 .content{
 	margin-top: 1000px;
 }
@@ -128,6 +134,9 @@ a{
 #itemcontain-img{
 	width: 310px;
 	height: 250px;
+}
+.productwrapper{
+	margin-top: 90px;
 }
 /*Signup page*/
 .crd{
@@ -256,14 +265,14 @@ a:hover{
 }
 /*Cart Page*/
 .cartcard{
-	margin-top: 70px;
+	margin-top: 150px;
 }
 .cart_link{
 	color: black;
 }
 /*Checkout*/
 .checkout_form{
-	margin-top: 70px;
+	margin-top: 150px;
 }
 /*invoice*/
 .cardinvoice{
@@ -271,7 +280,7 @@ a:hover{
 }
 /*account*/
 .userorder{
-	margin-top: 50px;
+	margin-top: 120px;
 	margin-bottom: 40px;
 }
 #accountimage{

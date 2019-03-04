@@ -42,13 +42,10 @@
 				</div>
 				@empty
 				@endforelse
-				@foreach($users as $user)
 				<div class="form-group row">
 					<label class="col-md-6">Total Price</label>
-					<label class="col-md-6">{{$user->cart_totalprice}} TK</label>
+					<label class="col-md-6">{{$totalprice}} TK</label>
 				</div>
-				@break
-				@endforeach
 			</div>
 		<div class="card-footer">Thank You for your Order</div>
 	</div>

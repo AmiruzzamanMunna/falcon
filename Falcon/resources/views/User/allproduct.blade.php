@@ -26,7 +26,7 @@
 </script>
 @endsection
 @section('container')
-<div class="container">
+<div class="container productwrapper">
 	<div class="row">
 		<div class="owl-carousel owl-theme owlitem">
 		    @forelse($products as $product)

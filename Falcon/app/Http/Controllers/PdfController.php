@@ -15,10 +15,14 @@ class PdfController extends Controller
     public function pdfdownload(Request $request,$id)
     {
     	$user=$request->session()->get('loggedUser');
+        $totalprice=0;
     	if ($user) {
 		$users = DB::table('view_order')
            		 ->where('invoice_id',$id)->get();
-    	$pdf = PDF::loadview('User.downinvoice',compact('users','user'));
+        foreach ($users as $cart) {
+                $totalprice=$cart->cart_totalprice;
+            }
+    	$pdf = PDF::loadview('User.downinvoice',compact('users','user','totalprice'));
     	return $pdf->download('invoice.pdf');
         return view('User.invoice');
     	}

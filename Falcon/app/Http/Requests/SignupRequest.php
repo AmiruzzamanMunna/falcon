@@ -29,7 +29,7 @@ class SignupRequest extends FormRequest
             'email'=>'required',
             'mobile'=>'required',
             'address'=>'required',
-            'password'=>'required',
+            'password'=>'required|min:6',
             'confirm_password'=>'required|same:password',
         ];
     }

@@ -53,7 +53,7 @@
 				  	</div>
 				</li>
 			</ul>
-			<div class="col-md-4 col-sm-6">
+			<div class="col-md-4 col-sm-6 ml-auto">
 				<form action="{{route('user.searchItem')}}" >
 					{{csrf_field()}}
 					<div class="input-group row">
@@ -65,8 +65,35 @@
 					</span>
 					</div>
 				</form>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<ul class="navbar nav">
+								<li class="nav-item">
+									<a href="" class="nav-link droplink">New Arrival</a>
+								</li>
+								<li class="nav-item">
+									<a href="" class="nav-link droplink">Top Deals</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
- 			<ul class="navbar nav m-auto">
+ 			<ul class="navbar nav ml-auto">
+ 				<div class="col-md-7 m-auto">
+					<div class="row">
+						<div class="col">
+							<a href=""><img src=""><i class="fab fa-facebook"></i></a>
+						</div>
+						<div class="col">
+							<a href=""><img src=""><i class="fab fa-instagram"></i></a>
+						</div>
+						<div class="col">
+							<a href=""><img src=""><i class="fab fa-youtube"></i></a>
+						</div>
+					</div>
+ 				</div>
  				@if(Session::has('loggedUser'))
  				<li class="nav-item dropdown">
  					<a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
@@ -87,7 +114,7 @@
  			<ul class="navbar nav">
  				<li class="nav-item">
  					<div class="row">
-						<a href="{{route('cart.cartIndex')}}" class="nav-link">
+						<a href="{{route('cart.cartIndex')}}" class="nav-link"><br>
  							<span class="cartitem ">Cart({{$quantity}})
  								<i class="fas fa-cart-arrow-down cart"></i>
  							</span>

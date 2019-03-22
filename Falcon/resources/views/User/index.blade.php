@@ -41,7 +41,7 @@
 		    		</div>
 		    	</div>
 		    	@endif
-		    	<a href="{{route('productDetails',[$gent->id])}}" class=""><br>
+		    	<a href="{{route('productDetails',[$gent->id])}}" class=""><br><br>
 		    		<img src="{{asset('images/product')}}/{{$gent->image1}}" class="imagesize">
 		    	</a>
 		    	<div class="buyname col-md-12">

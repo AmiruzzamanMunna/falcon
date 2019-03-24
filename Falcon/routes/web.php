@@ -120,6 +120,8 @@ Route::get('/falcon/aboutus','UserController@aboutUs')->name('user.aboutUs');
 Route::get('/falcon/policy','UserController@policy')->name('user.policy');
 Route::get('/falcon/contact us','UserController@contactus')->name('user.contactus');
 Route::get('/cart','CartController@cartIndex')->name('cart.cartIndex');
+Route::get('/newarrival','UserController@newarrival')->name('user.newarrival');
+Route::get('/discount','UserController@discount')->name('user.discount');
 
 Route::group(['middleware'=>['userSess']],function(){
 
@@ -165,9 +167,12 @@ Route::group(['middleware'=>['adminSess']],function(){
 	Route::get('/admin/logout','AdminController@logOut')->name('admin.logOut');
 
 	Route::get('/admin/edit/{id}','AdminController@adminEdit')->name('admin.edit');
-	Route::post('/admin/edit/{id}','AdminController@adminUpdate')->name('adminUpdate');
+	Route::post('/admin/edit/{id}','AdminController@adminUpdate')->name('admin.Update');
 
 	Route::get('/admin/home','AdminController@index')->name('admin.index');
+	
+	Route::get('/admin/userhome/{id}','AdminController@homeIndexEdit')->name('admin.homeIndexEdit');
+	Route::post('/admin/userhome/{id}','AdminController@homeIndexUpdate')->name('admin.homeIndexUpdate');
 
 	Route::get('/admin/ladies-index/{id}','AdminController@ladiesIndexEdit')->name('admin.ladiesIndexEdit');
 	Route::post('/admin/ladies-index/{id}','AdminController@ladiesIndexUpdate')->name('admin.ladiesIndexUpdate');

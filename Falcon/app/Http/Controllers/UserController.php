@@ -32,6 +32,7 @@ use App\LadiesIndex;
 use App\AboutUS;
 use App\Policy;
 use App\ContactUs;
+use App\Index;
 
 
 class UserController extends Controller
@@ -100,7 +101,7 @@ class UserController extends Controller
         $request->session()->regenerate();
         return redirect()->guest(route('user.index'));
     }
-    public function index(Request $request)
+    public function newarrival(Request $request)
     {
         $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
         $quantity=0;
@@ -108,6 +109,39 @@ class UserController extends Controller
 
             $quantity+=$cart->quantity;
         }
+        $footers=ContactUs::all();
+        $products=DB::table("view_product")->where('newarrival',1)->get();
+        return view('User.allproduct')
+            ->with('products',$products)
+            ->with('footers',$footers)
+            ->with('quantity',$quantity);
+    }
+    public function discount(Request $request)
+    {
+        $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
+        $quantity=0;
+        foreach($carts as $cart){
+
+            $quantity+=$cart->quantity;
+        }
+        $footers=ContactUs::all();
+        $products=DB::table("view_product")->where('discount','>','0')->get();
+        return view('User.allproduct')
+            ->with('products',$products)
+            ->with('footers',$footers)
+            ->with('quantity',$quantity);
+    }
+    public function index(Request $request)
+    {
+        $events=Index::all();
+        $carts =Cart::where('user_id',$request->session()->get('loggedUser'))->get();
+        $quantity=0;
+        foreach($carts as $cart){
+
+            $quantity+=$cart->quantity;
+        }
+        $contains=LadiesIndex::all();
+        $containsgents=GentsIndex::all();
         $footers=ContactUs::all();
         $gents=DB::table('view_product')
         ->where('category_name','gents clothing')->get();
@@ -118,7 +152,10 @@ class UserController extends Controller
     	return view('User.index')
         ->with('quantity',$quantity)
         ->with('carts',$carts)
+        ->with('contains',$contains)
+        ->with('containsgents',$containsgents)
         ->with('gents',$gents)
+        ->with('events',$events)
         ->with('ladies',$ladies)
         ->with('footers',$footers)
         ->with('gadgets',$gadgets);

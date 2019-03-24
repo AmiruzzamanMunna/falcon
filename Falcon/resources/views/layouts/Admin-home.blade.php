@@ -46,6 +46,12 @@
         </div>
         <ul>
             <li class="nav-item"><a class="nav-link" href="{{route('order.orderShow')}}">Order</a></li>
+            @forelse($events as $event)
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.homeIndexEdit',[$event->id])}}">Home Page</a>
+            </li>
+            @empty
+            @endforelse
              <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" data-target="#demo15" href="#">Product<i id="listicon" class="fa fa-caret-down"></i></a>
                 <div class="collapse" id="demo15">

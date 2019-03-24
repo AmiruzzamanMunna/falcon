@@ -32,6 +32,7 @@ use App\LadiesIndex;
 use App\AboutUS;
 use App\Policy;
 use App\ContactUs;
+use App\Index;
 
 class AdminController extends Controller
 {
@@ -93,6 +94,38 @@ class AdminController extends Controller
         ->with('admins',$admins)
         ->with('orders',$orders)
         ->with('events',$events);
+    }
+    public function homeIndexEdit(Request $request,$id)
+    {
+        $events=Index::where('id',$id)->get();
+        $admins=Admin::all();
+        return view('Admin.userhome')
+            ->with('admins',$admins)
+            ->with('events',$events);
+    }
+     public function homeIndexUpdate(Request $request,$id)
+    {
+        $event=Index::find($request->id);
+        if ($request->hasFile('image1')) {
+          $image1 = $request->file('image1');
+          $filename1 = time() . 'home-1.' . $image1->getClientOriginalExtension();
+          $location1 = public_path('images/uploads');
+          $image1->move($location1, $filename1);
+          // Image::make($image)->resize(800, 400)->save($location);
+          $event->image1 = $filename1;
+        }
+        if ($request->hasFile('image2')) {
+          $image2 = $request->file('image2');
+          $filename2 = time() . 'home-2.' . $image2->getClientOriginalExtension();
+          $location2 = public_path('images/uploads');
+          $image2->move($location2, $filename2);
+          // Image::make($image)->resize(800, 400)->save($location);
+          $event->image2 = $filename2;
+        }
+        $event->save();
+
+        $request->session()->flash('message','Data Updated');
+        return back();
     }
     public function ladiesIndexEdit(Request $request,$id)
     {

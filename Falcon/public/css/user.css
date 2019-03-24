@@ -23,6 +23,9 @@ a{
 	width: 60px;
 	height: 50px;
 }
+.imageslide{
+	margin-top: 100px;
+}
 .srchicon{
 	color: white;
 }
@@ -46,6 +49,9 @@ a{
 }
 .itemelement{
 	margin-top: 15px;
+}
+.indexcontain{
+	margin-top: 80px;
 }
 .footeritem{
 	margin-left: 75px;
@@ -123,10 +129,10 @@ a{
 .itemcontain{
 	color: black;
 	width: 320px;
-	height: 270px;
+	height: 320px;
 	background-color: #fafafa;
 	margin-top:10px;
-	padding:10px;
+	padding:35px;
 	margin-bottom: 30px;
 }
 .itemcontain a{

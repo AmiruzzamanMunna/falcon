@@ -70,10 +70,10 @@
 						<div class="row">
 							<ul class="navbar nav">
 								<li class="nav-item">
-									<a href="" class="nav-link droplink">New Arrival</a>
+									<a href="{{route('user.newarrival')}}" class="nav-link droplink">New Arrival</a>
 								</li>
 								<li class="nav-item">
-									<a href="" class="nav-link droplink">Top Deals</a>
+									<a href="{{route('user.discount')}}" class="nav-link droplink">Top Deals</a>
 								</li>
 							</ul>
 						</div>

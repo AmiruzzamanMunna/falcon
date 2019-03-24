@@ -30,6 +30,7 @@
                         <a href="{{route('admin.edit',[$admin->id])}}" class="nav-link">Profile</a>
 						<a href="{{route('admin.logOut')}}" class="nav-link">Logout</a>
 					</div>
+                    @break
                     @empty
                     @endforelse
 				</li>

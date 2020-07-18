@@ -33,7 +33,6 @@ class ProfileController extends Controller
                             'signup_ttlinks'=>$request->twlink,
                         ]);
 
-        
 
         if(!empty($request->links)){
 

@@ -32,9 +32,36 @@ Route::get('/deleteUserLinks','User\ProfileController@deleteUserLinks')->name('u
 
 // Admin Panel Starts from here
 
-Route::group(['prefix' => 'admin'], function () {
+Route::get('/admin/login','Admin\LoginController@loginAdmin')->name('admin.loginAdmin');
+Route::get('/admin/loginAdminCheck','Admin\LoginController@loginAdminCheck')->name('admin.loginAdminCheck');
+
+
+Route::group(['middleware'=>['adminSess'],'prefix' => 'admin'], function () {
+
+    Route::get('/adminLogout','Admin\LoginController@adminLogout')->name('admin.adminLogout');
 
     Route::get('/','Admin\AdminController@index')->name('admin.index');
+
+
+
+    Route::get('/role','Admin\RoleController@roleIndex')->name('admin.roleIndex');
+    Route::get('/getRoleList','Admin\RoleController@getRoleList')->name('admin.getRoleList');
+    Route::get('/insertRole','Admin\RoleController@insertRole')->name('admin.insertRole');
+    Route::get('/editRole','Admin\RoleController@editRole')->name('admin.editRole');
+    Route::get('/editRoleUpdate','Admin\RoleController@editRoleUpdate')->name('admin.editRoleUpdate');
+    Route::get('/deleteRole','Admin\RoleController@deleteRole')->name('admin.deleteRole');
+    Route::get('/rolePermission','Admin\RoleController@rolePermission')->name('admin.rolePermission');
+    Route::get('/permissionStore','Admin\RoleController@permissionStore')->name('admin.permissionStore');
+
+
+
+
+    Route::get('/adminListIndex','Admin\AdminRegistrationController@adminListIndex')->name('admin.adminListIndex');
+    Route::get('/getAdminList','Admin\AdminRegistrationController@getAdminList')->name('admin.getAdminList');
+    Route::post('/insertAdminList','Admin\AdminRegistrationController@insertAdminList')->name('admin.insertAdminList');
+
+
+
     Route::get('/courseCategoryIndex','Admin\CourseCategoryController@courseCategoryIndex')->name('admin.courseCategoryIndex');
     Route::get('/getCategoryCourseList','Admin\CourseCategoryController@getCategoryCourseList')->name('admin.getCategoryCourseList');
     Route::get('/getSubCategory','Admin\CourseCategoryController@getSubCategory')->name('admin.getSubCategory');

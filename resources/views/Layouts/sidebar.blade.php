@@ -25,17 +25,32 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-leanpub"></i><span> Course <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-user"></i><span>Administration<span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                                 <ul class="submenu">
-                                    <li><a href="{{route('admin.courseCategoryIndex')}}">Page</a></li>
-                                    <li><a href="email-read">Email Read</a></li>
+                                    <li><a href="{{route('admin.roleIndex')}}">Role</a></li>
+                                    <li><a href="{{route('admin.adminListIndex')}}">Admin</a></li>
                                     <li><a href="email-compose">Email Compose</a></li>
                                 </ul>
                             </li>
                             <li>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-leanpub"></i><span> Course <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                                <ul class="submenu">
+                                    <li><a href="{{route('admin.courseCategoryIndex')}}">Course Category</a></li>
+                                    <li><a href="email-read">Email Read</a></li>
+                                    <li><a href="email-compose">Email Compose</a></li>
+                                </ul>
+                            </li>
+                        
+                            <li>
                                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-user"></i><span>User <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                                 <ul class="submenu">
-                                    <li><a href="{{route('admin.userList')}}">Registered User</a></li>
+                                    @if ($permission[0]->role_permission_per_id==2)
+
+                                        <li><a href="{{route('admin.userList')}}">Registered User</a></li>
+                                        
+                                    @endif
+                                    
+                                    
                                     <li><a href="email-read">Email Read</a></li>
                                     <li><a href="email-compose">Email Compose</a></li>
                                 </ul>

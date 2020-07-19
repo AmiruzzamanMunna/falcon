@@ -11,9 +11,13 @@
         @include('layouts.head')
     </head>
 <body>
+ 
+
     <div id="wrapper">
+        @if (Session::has('loggedAdmin'))
          @include('layouts.header')
          @include('layouts.sidebar')
+        @endif
          <div class="content-page">  
             <div class="content">
                 <div class="container-fluid">
@@ -21,8 +25,14 @@
                 </div> 
             </div> 
         </div> 
+        @if (Session::has('loggedAdmin'))
         @include('layouts.footer')  
-        @include('layouts.footer-script')  
-    </div> 
+        @include('layouts.footer-script') 
+        @endif 
+    </div>
+    
+    
+
+     
     </body>
 </html>

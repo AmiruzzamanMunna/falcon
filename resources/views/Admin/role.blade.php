@@ -11,7 +11,12 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-6">Role</div>
-                <div class="col-md-1 ml-auto"><i onclick="openModal()" class="fas fa-plus"></i></div>
+                <div class="col-md-1 ml-auto">
+                    @if (Session::has('roleadd'))
+                        <i onclick="openModal()" class="fas fa-plus"></i>
+                    @endif
+                    
+                </div>
             </div>
         </div>
         <div class="card-body">
@@ -140,7 +145,28 @@
                     html+='<tr>';
                     html+='<td>'+($i+1)+'</td>';
                     html+='<td>'+data.data[$i].adminrole_name+'</td>';
-                    html+='<td><i class="fa fa-eye" onclick="permissionModal('+data.data[$i].adminrole_id+')" aria-hidden="true">&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fas fa-edit" onclick="editRole('+data.data[$i].adminrole_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteRole('+data.data[$i].adminrole_id+')"></i></td>';
+                    if(data.roleedit==14 && data.roledelete==15 && data.roleper==16){
+
+                        html+='<td><i class="fa fa-eye" onclick="permissionModal('+data.data[$i].adminrole_id+')" aria-hidden="true">&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fas fa-edit" onclick="editRole('+data.data[$i].adminrole_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteRole('+data.data[$i].adminrole_id+')"></i></td>';
+
+                    }else if(data.roleper==16){
+
+                        html+='<td><i class="fa fa-eye" onclick="permissionModal('+data.data[$i].adminrole_id+')" aria-hidden="true">&nbsp;&nbsp;&nbsp;&nbsp;</i></td>';
+
+                    }else if(data.roleedit==14){
+
+                        html+='<td><i class="fas fa-edit" onclick="editRole('+data.data[$i].adminrole_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+
+                    }else if(data.roledelete==15){
+
+                        html+='<td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteRole('+data.data[$i].adminrole_id+')"></i></td>';
+
+                    }else{
+
+                        html+='<td></td>';
+
+                    }
+                    
                     html+='</tr>';
                     
                     
@@ -320,6 +346,8 @@
 
                 $("#rolename").html(data.data.adminrole_name);
 
+                // console.log(data.rolePer);
+
                 var html='';
 
                 for($i=0;$i<data.permission.length;$i++){
@@ -333,13 +361,35 @@
 
                     for($j=0;$j<data.subPermission.length;$j++){
 
+                        
+
                         if(data.permission[$i].permission_id==data.subPermission[$j].permission_parent_id){
 
-                            
-                            html+='<div id="collapseOne'+$i+'" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">'; 
-                            html+='<div class="card-body"><input type="checkbox" name="per[]" id="per[]" value="'+data.subPermission[$j].permission_id+'">'+data.subPermission[$j].permission_name; 
-                            html+='</div>'; 
-                            html+='</div>'; 
+
+                            for($k=0;$k<data.rolePer.length;$k++){
+
+                                if(data.rolePer[$k].role_permission_per_id==data.subPermission[$j].permission_id){
+
+                                    var id=data.rolePer[$k].role_permission_per_id;
+                                    
+                                    html+='<div id="collapseOne'+$i+'" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">'; 
+                                    html+='<div class="card-body"><input type="checkbox" name="updateper[]" id="updateper[]" value="'+data.subPermission[$j].permission_id+'" checked>'+data.subPermission[$j].permission_name; 
+                                    html+='</div>'; 
+                                    html+='</div>';
+                                    
+                                }
+                                
+                            }
+
+                            if(id!=data.subPermission[$j].permission_id){
+
+                                html+='<div id="collapseOne'+$i+'" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">'; 
+                                html+='<div class="card-body"><input type="checkbox" name="per[]" id="per[]" value="'+data.subPermission[$j].permission_id+'">'+data.subPermission[$j].permission_name; 
+                                html+='</div>'; 
+                                html+='</div>';
+
+                            }
+                        
                         }
                     }
                     
@@ -365,8 +415,11 @@
         var roleId=$("#roleId").val();
 
         var permissionID = $("input[name='per[]']:checked").map(function(){return $(this).val();}).get();
+        var updatePermissionUnCheck = $("input[name='updateper[]']:not(:checked)").map(function () {return $(this).val();}).get();
+        
+        
 
-        if(permissionID.length>0){
+        if(permissionID.length>0 || updatePermissionUnCheck.length>0){
 
             $.ajax({
 
@@ -374,12 +427,16 @@
                 url:"{{route('admin.permissionStore')}}",
                 data:{
                     roleId:roleId,
-                    permissionid:permissionID
+                    permissionid:permissionID,
+                    updatePermissionUnCheck:updatePermissionUnCheck,
                 },
                 success:function(data){
 
-                    console.log(data);
+                    if(data.status=='success'){
 
+                        $("#exampleModalCenter2").modal('hide');
+                        getRoleList();
+                    }
                 },
                 error:function(error){
 

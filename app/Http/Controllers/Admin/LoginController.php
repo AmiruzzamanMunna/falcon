@@ -29,6 +29,122 @@ class LoginController extends Controller
             $permission=RolePermission::where('role_permission_role_id',$data->admin_role_id)
                                         ->get();
 
+            
+
+            foreach($permission as $val){
+
+                if($val->role_permission_per_id==2){
+
+                    $request->session()->put('userlist',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==3){
+
+                    $request->session()->put('useradd',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==4){
+
+                    $request->session()->put('useredit',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==5){
+
+                    $request->session()->put('userdelete',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==7){
+
+                    $request->session()->put('coursecatlist',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==8){
+
+                    $request->session()->put('coursecatadd',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==9){
+
+                    $request->session()->put('coursecatedit',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==10){
+
+                    $request->session()->put('coursecatdelete',$val->role_permission_per_id);
+                    
+                }
+                
+                if($val->role_permission_per_id==12){
+
+                    $request->session()->put('rolelist',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==13){
+
+                    $request->session()->put('roleadd',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==14){
+
+                    $request->session()->put('roleedit',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==15){
+
+                    $request->session()->put('roledelete',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==16){
+
+                    $request->session()->put('roleper',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==18){
+
+                    $request->session()->put('couponlist',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==19){
+
+                    $request->session()->put('couponadd',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==20){
+
+                    $request->session()->put('couponedit',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==21){
+
+                    $request->session()->put('coupondelete',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==23){
+
+                    $request->session()->put('adminlist',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==24){
+
+                    $request->session()->put('adminadd',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==25){
+
+                    $request->session()->put('adminedit',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==26){
+
+                    $request->session()->put('admindelete',$val->role_permission_per_id);
+                    
+                }
+
+                
+            }
+
+            
+
             $request->session()->put('permission',$permission);
             
 

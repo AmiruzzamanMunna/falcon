@@ -13,12 +13,24 @@ class RoleController extends Controller
 {
     public function roleIndex(Request $request)
     {
-        return view('Admin.role');
+        $permission=$request->session()->get('permission');
+        $rolelist=$request->session()->get('rolelist');
+        if($rolelist){
+
+            return view('Admin.role')
+                    ->with('permission',$permission);
+        }
+        
     }
     public function getRoleList(Request $request)
     {
         $data=AdminRole::all();
-        return response()->json(array('status'=>'success','data'=>$data));
+
+        $roledelete=$request->session()->get('roledelete');
+        $roleedit=$request->session()->get('roleedit');
+        $roleper=$request->session()->get('roleper');
+        
+        return response()->json(array('status'=>'success','data'=>$data,'roleedit'=>$roleedit,'roledelete'=>$roledelete,'roleper'=>$roleper));
     }
     public function insertRole(Request $request)
     {
@@ -63,20 +75,40 @@ class RoleController extends Controller
                 WHERE
                     per.permission_parent_id != 0
         ");
-        return response()->json(array('status'=>'success','data'=>$role,'permission'=>$permission,'subPermission'=>$subPermission));
+        $rolePer=RolePermission::where('role_permission_role_id',$id)->get();
+        return response()->json(array('status'=>'success','data'=>$role,'permission'=>$permission,'subPermission'=>$subPermission,'rolePer'=>$rolePer));
     }
     public function permissionStore(Request $request)
     {
         $id=$request->roleId;
         $permissionid=$request->permissionid;
+        $updatePermissionUnCheck=$request->updatePermissionUnCheck;
+        $permissionid=$request->permissionid;
 
-        foreach($permissionid as $key=>$val){
+        if($permissionid){
 
-            $data=new RolePermission();
-            $data->role_permission_role_id=$id;
-            $data->role_permission_per_id=$permissionid[$key];
-            $data->save();
+            foreach($permissionid as $key=>$val){
+
+                $data=new RolePermission();
+                $data->role_permission_role_id=$id;
+                $data->role_permission_per_id=$permissionid[$key];
+                $data->save();
+            }
+
         }
+        if($updatePermissionUnCheck){
+
+            $updateData=RolePermission::where('role_permission_role_id',$id)->get();
+
+            foreach ($updatePermissionUnCheck as $key => $value) {
+
+                RolePermission::where('role_permission_role_id',$id)
+                                ->where('role_permission_per_id',$updatePermissionUnCheck[$key])
+                                ->delete();
+            }
+        }
+
+        
 
         return response()->json(array('status'=>'success'));
 

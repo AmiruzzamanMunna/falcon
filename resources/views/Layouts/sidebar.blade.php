@@ -27,7 +27,10 @@
                             <li>
                                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-user"></i><span>Administration<span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                                 <ul class="submenu">
-                                    <li><a href="{{route('admin.roleIndex')}}">Role</a></li>
+                                    @if (Session::has('rolelist'))
+                                        <li><a href="{{route('admin.roleIndex')}}">Role</a></li>
+                                    @endif
+                                    
                                     <li><a href="{{route('admin.adminListIndex')}}">Admin</a></li>
                                     <li><a href="email-compose">Email Compose</a></li>
                                 </ul>
@@ -35,7 +38,12 @@
                             <li>
                                 <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-leanpub"></i><span> Course <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                                 <ul class="submenu">
-                                    <li><a href="{{route('admin.courseCategoryIndex')}}">Course Category</a></li>
+                                    @if (Session::has('coursecatlist'))
+
+                                        <li><a href="{{route('admin.courseCategoryIndex')}}">Course Category</a></li>
+                                        
+                                    @endif
+                                    
                                     <li><a href="email-read">Email Read</a></li>
                                     <li><a href="email-compose">Email Compose</a></li>
                                 </ul>
@@ -44,7 +52,9 @@
                             <li>
                                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-user"></i><span>User <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                                 <ul class="submenu">
-                                    @if ($permission[0]->role_permission_per_id==2)
+
+                                    
+                                    @if (Session::has('userlist'))
 
                                         <li><a href="{{route('admin.userList')}}">Registered User</a></li>
                                         
@@ -58,7 +68,10 @@
                             <li>
                                 <a href="javascript:void(0);" class="waves-effect"><i class="ti-user"></i><span>Coupon <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                                 <ul class="submenu">
-                                    <li><a href="{{route('admin.couponIndex')}}">Coupon</a></li>
+                                    @if (Session::has('couponlist'))
+                                        <li><a href="{{route('admin.couponIndex')}}">Coupon</a></li>
+                                    @endif
+                                    
                                     <li><a href="email-read">Email Read</a></li>
                                     <li><a href="email-compose">Email Compose</a></li>
                                 </ul>

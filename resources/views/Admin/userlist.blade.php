@@ -11,7 +11,12 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-6">Registered User</div>
-                <div class="col-md-1 ml-auto"><i onclick="openModal()" class="fas fa-plus"></i></div>
+                <div class="col-md-1 ml-auto">
+                    @if (Session::has('useradd'))
+                        <i onclick="openModal()" class="fas fa-plus"></i>
+                    @endif
+                    
+                </div>
             </div>
         </div>
         <div class="card-body">
@@ -180,7 +185,10 @@
             url:"{{route('admin.getUserList')}}",
             success:function(data){
 
+                console.log(data);
+
                 var html='';
+                var exist='';
 
                 for($i=0;$i<data.data.length;$i++){
 
@@ -191,11 +199,32 @@
                     html+='<td>'+data.data[$i].signup_email+'</td>';
                     html+='<td>'+data.data[$i].signup_address+'</td>';
                     html+='<td>'+data.data[$i].signup_phonum+'</td>';
-                    html+='<td><i class="fas fa-edit" onclick="editUserList('+data.data[$i].signup_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteUserList('+data.data[$i].signup_id+')"></i></td>';
+                    
+                    
+                    if(data.userEdit==4 && data.userDelete==5){
+
+                        html+='<td><i class="fas fa-edit" onclick="editUserList('+data.data[$i].signup_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteUserList('+data.data[$i].signup_id+')"></i></td>';
+                        
+                    }else if(data.userEdit==4){
+
+                        html+='<td><i class="fas fa-edit" onclick="editUserList('+data.data[$i].signup_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+
+                    }else if(data.userDelete==5){
+
+                        html+='<td><i class="fas fa-trash" onclick="deleteUserList('+data.data[$i].signup_id+')"></i></td>';
+
+                    }else {
+
+                        html+='<td></td>';
+
+                    }
+                    
                     html+='</tr>';
 
                 }
+                
                 $("#showData").html(html);
+                $("#exist").html(exist);
 
             },
             error:function(error){

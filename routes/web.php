@@ -59,6 +59,9 @@ Route::group(['middleware'=>['adminSess'],'prefix' => 'admin'], function () {
     Route::get('/adminListIndex','Admin\AdminRegistrationController@adminListIndex')->name('admin.adminListIndex');
     Route::get('/getAdminList','Admin\AdminRegistrationController@getAdminList')->name('admin.getAdminList');
     Route::post('/insertAdminList','Admin\AdminRegistrationController@insertAdminList')->name('admin.insertAdminList');
+    Route::get('/editAdminList','Admin\AdminRegistrationController@editAdminList')->name('admin.editAdminList');
+    Route::post('/editAdminListUpdate','Admin\AdminRegistrationController@editAdminListUpdate')->name('admin.editAdminListUpdate');
+    Route::get('/deleteAdminList','Admin\AdminRegistrationController@deleteAdminList')->name('admin.deleteAdminList');
 
 
 

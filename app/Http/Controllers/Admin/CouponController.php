@@ -10,12 +10,20 @@ class CouponController extends Controller
 {
     public function couponIndex(Request $request)
     {
-        return view('Admin.coupon');
+        $couponlist=$request->session()->get('couponlist');
+
+        if($couponlist){
+
+            return view('Admin.coupon');
+        }
+        
     }
     public function getCouponList(Request $request)
     {
         $data=Coupon::all();
-        return response()->json(array('status'=>'success','data'=>$data));
+        $couponedit=$request->session()->get('couponedit');
+        $coupondelete=$request->session()->get('coupondelete');
+        return response()->json(array('status'=>'success','data'=>$data,'couponedit'=>$couponedit,'coupondelete'=>$coupondelete));
     }
     public function insertCoupon(Request $request)
     {

@@ -11,12 +11,26 @@ class RegisteredUserController extends Controller
 {
     public function userList(Request $request)
     {
-        return view('Admin.userlist');
+        $permission=$request->session()->get('permission');
+        $userList=$request->session()->get('userlist');
+        $courselist=$request->session()->get('courselist');
+    
+
+        if($userList){
+
+            return view('Admin.userlist')
+                    ->with('userList',$userList);
+
+        }
+        
     }
     public function getUserList(Request $request)
     {
+        $permission=$request->session()->get('permission');
+        $userEdit=$request->session()->get('useredit');
+        $userDelete=$request->session()->get('userdelete');
         $data=UserList::all();
-        return response()->json(array('status'=>'success','data'=>$data));
+        return response()->json(array('status'=>'success','data'=>$data,'userEdit'=>$userEdit,'userDelete'=>$userDelete));
     }
     public function editUserList(Request $request)
     {

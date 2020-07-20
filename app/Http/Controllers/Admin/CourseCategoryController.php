@@ -11,7 +11,16 @@ class CourseCategoryController extends Controller
 {
     public function courseCategoryIndex(Request $request)
     {
-        return view('Admin.course');
+        $permission=$request->session()->get('permission');
+        $courselist=$request->session()->get('coursecatlist');
+    
+
+        if($courselist){
+
+            return view('Admin.course');
+
+        }
+        
     }
     public function getSubCategory(Request $request)
     {
@@ -35,7 +44,10 @@ class CourseCategoryController extends Controller
         WHERE
             subCategory.course_category_parent_id != 0
         ");
-        return response()->json(array('status'=>'success','category'=>$category,'subCategory'=>$subCategory));
+
+        $courseedit=$request->session()->get('coursecatedit');
+        $coursedelete=$request->session()->get('coursecatdelete');
+        return response()->json(array('status'=>'success','category'=>$category,'subCategory'=>$subCategory,'courseedit'=>$courseedit,'coursedelete'=>$coursedelete));
     }
     public function insertCourseCategory(Request $request)
     {

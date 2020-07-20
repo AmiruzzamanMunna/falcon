@@ -11,7 +11,12 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-6">Course Category</div>
-                <div class="col-md-1 ml-auto"><i onclick="openModal()" class="fas fa-plus"></i></div>
+                <div class="col-md-1 ml-auto">
+                    @if (Session::has('coursecatadd'))
+                        <i onclick="openModal()" class="fas fa-plus"></i>
+                    @endif
+                    
+                </div>
             </div>
         </div>
         <div class="card-body">
@@ -121,7 +126,25 @@
                     html+='<tr>';
                     html+='<td>'+($i+1)+'</td>';
                     html+='<td>'+data.category[$i].course_category_name+'</td>';
-                    html+='<td><i class="fas fa-edit" onclick="editCourseCategory('+data.category[$i].course_category_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteCourseCategory('+data.category[$i].course_category_id+')"></i></td>';
+                    
+                    if(data.courseedit==9 && data.coursedelete==10){
+
+                        html+='<td><i class="fas fa-edit" onclick="editCourseCategory('+data.category[$i].course_category_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteCourseCategory('+data.category[$i].course_category_id+')"></i></td>';
+
+                    }else if(data.courseedit==9){
+
+                        html+='<td>< class="fas fa-edit" onclick="editCourseCategory('+data.category[$i].course_category_id+')"></td>';
+
+                    }else if(data.coursedelete==10){
+
+                        html+='<td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteCourseCategory('+data.category[$i].course_category_id+')"></i></td>';
+
+                    }else {
+
+                        html+='<td></td>'
+
+                    }
+                    
                     html+='</tr>';
                     for($j=($i);$j<data.subCategory.length;$j++){
 
@@ -130,7 +153,24 @@
                             html+='<tr>';
                             html+='<td>'+($j)+'</td>';
                             html+='<td>'+'</br>&nbsp;&nbsp;&nbsp;&nbsp;'+data.subCategory[$j].course_category_name+'</td>';
-                            html+='<td><i class="fas fa-edit" onclick="editCourseCategory('+data.subCategory[$j].course_category_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteCourseCategory('+data.subCategory[$j].course_category_id+')"></i></td>';
+                            if(data.courseedit==9 && data.coursedelete==10){
+
+                                html+='<td><i class="fas fa-edit" onclick="editCourseCategory('+data.subCategory[$j].course_category_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteCourseCategory('+data.subCategory[$j].course_category_id+')"></i></td>';
+
+                            }else if(data.courseedit==9){
+
+                                html+='<td><i class="fas fa-edit" onclick="editCourseCategory('+data.subCategory[$j].course_category_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+
+                            }else if(data.coursedelete==10){
+
+                                html+='<td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteCourseCategory('+data.subCategory[$j].course_category_id+')"></i></td>';
+
+                            }else {
+
+                                html+='<td></td>'
+
+                            }
+                            
                             html+='</tr>';
 
                         }

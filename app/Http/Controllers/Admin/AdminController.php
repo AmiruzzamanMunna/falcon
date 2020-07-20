@@ -10,8 +10,6 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $permission=$request->session()->get('permission');
-        
-        return view('Layouts.master')
-                ->with('permission',$permission);
+        return view('Layouts.master');
     }
 }

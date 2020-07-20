@@ -11,7 +11,12 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-6">Registered Admin</div>
-                <div class="col-md-1 ml-auto"><i onclick="openModal()" class="fas fa-plus"></i></div>
+                <div class="col-md-1 ml-auto">
+                    @if (Session::has('adminadd'))
+                        <i onclick="openModal()" class="fas fa-plus"></i>
+                    @endif
+                    
+                </div>
             </div>
         </div>
         <div class="card-body">
@@ -95,7 +100,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">User Update</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Admin Update</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -105,35 +110,43 @@
             <div class="form-group">
                 <label for="">Name</label>
                 <input type="text" name="catname" id="uname" class="form-control">   
-                <input type="hidden" id="id" class="form-control">                 
-                <input type="hidden" id="pass" class="form-control">                 
+                <input type="hidden" name="catname" id="uid" class="form-control">   
+                <input type="hidden" name="catname" id="pass" class="form-control">   
+                
             </div>
             <div class="form-group">
                 <label for="">Image</label>
                 <input type="file" name="" id="uimage" class="form-control"> 
-                <img height="200px" width="200px" alt="" id="src2">                  
+                <img height="200px" width="200px" alt="" id="usrc1">                  
             </div>
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="text" name="catname" id="uemail" class="form-control" readonly>                   
+                <input type="text" name="catname" id="uemail" onfocusout="checkedEmail()" class="form-control" disabled>                  
+            </div>
+            <div class="form-group">
+                <label for="">Role</label>
+                <select name="" id="uroleid" class="form-control">
+                </select>  
+                                
             </div>
             <div class="form-group">
                 <label for="">Address</label>
-                <input type="text" name="catname" id="uaddress" class="form-control">                   
+                <input type="text" name="catname" id="uaddress" class="form-control">  
+                       
             </div>
             <div class="form-group">
                 <label for="">Phone Number</label>
-                <input type="text" name="catname" id="uphnnum" class="form-control">                   
+                <input type="text" name="catname" id="uphnnum" class="form-control">                  
             </div>
             <div class="form-group">
-                <label for="">Update Password</label>
-                <input type="password" name="catname" id="upass" class="form-control">                   
+                <label for="">Password</label>
+                <input type="password" name="catname" id="unewpass" class="form-control">   
+               
             </div>
-            
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="editUserListUpdate()">Save changes</button>
+          <button type="button" class="btn btn-primary" onclick="editAdminListUpdate()">Save changes</button>
         </div>
       </div>
     </div>
@@ -169,7 +182,7 @@
 
     $('#uimage').change(function (event) {
 
-  	  var output = $("#src2")[0];
+  	  var output = $("#usrc1")[0];
     	output.src = URL.createObjectURL(event.target.files[0]);
 	});
     $('#image').change(function (event) {
@@ -206,7 +219,22 @@
                     html+='<td>'+data.data[$i].admin_email+'</td>';
                     html+='<td>'+data.data[$i].admin_address+'</td>';
                     html+='<td>'+data.data[$i].admin_contactno+'</td>';
-                    html+='<td><i class="fas fa-edit" onclick="editUserList('+data.data[$i].admin_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteUserList('+data.data[$i].admin_id+')"></i></td>';
+                    if(data.adminedit==25 && data.admindelete==26){
+
+                        html+='<td><i class="fas fa-edit" onclick="editAdminList('+data.data[$i].admin_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteAdminList('+data.data[$i].admin_id+')"></i></td>';
+                    }else if(data.adminedit==25){
+
+                        html+='<td><i class="fas fa-edit" onclick="editAdminList('+data.data[$i].admin_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+
+                    }else if(data.admindelete==26){
+
+                        html+='<td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteAdminList('+data.data[$i].admin_id+')"></i></td>';
+
+                    }else {
+
+                        html+='<td></td>';
+                    }
+                    
                     html+='</tr>';
 
                 }
@@ -417,7 +445,7 @@
 
         
     }
-    function editUserList(id){
+    function editAdminList(id){
 
 
         $("#exampleModalCenter1").modal('show');
@@ -427,7 +455,7 @@
         $.ajax({
 
             type:"get",
-            url:"{{route('admin.editUserList')}}",
+            url:"{{route('admin.editAdminList')}}",
             data:{
 
                 id:id
@@ -435,13 +463,31 @@
             success:function(data){
 
                 
-                $("#src2").attr('src',data.image);
-                $("#uname").val(data.data.signup_name);
-                $("#uemail").val(data.data.signup_email);
-                $("#uaddress").val(data.data.signup_address);
-                $("#uphnnum").val(data.data.signup_phonum);
-                $("#pass").val(data.data.signup_password);
-                $("#id").val(id);
+                $("#usrc1").attr('src',data.image);
+                $("#uname").val(data.data.admin_name);
+                $("#uemail").val(data.data.admin_email);
+                $("#uaddress").val(data.data.admin_address);
+                $("#uphnnum").val(data.data.admin_contactno);
+                $("#pass").val(data.data.admin_password);
+                $("#uid").val(id);
+                var html2='<option value="0">Select</option>';
+
+                for($i=0;$i<data.role.length;$i++){
+
+                    if(data.data.admin_role_id==data.role[$i].adminrole_id){
+
+                        html2+='<option value="'+data.role[$i].adminrole_id+'" selected>'+data.role[$i].adminrole_name+'</option>';
+
+                    }else{
+
+                        html2+='<option value="'+data.role[$i].adminrole_id+'">'+data.role[$i].adminrole_name+'</option>';
+                    }
+
+                    
+
+                }
+
+                $("#uroleid").html(html2);
 
 
             },
@@ -451,7 +497,7 @@
         });
 
     }
-    function editUserListUpdate(){
+    function editAdminListUpdate(){
 
         var image = $('#uimage')[0].files[0];
         var name=$("#uname").val();
@@ -459,8 +505,9 @@
         var address=$("#uaddress").val();
         var phnnum=$("#uphnnum").val();
         var pass=$("#pass").val();
-        var upass=$("#upass").val();
-        var id=$("#id").val();
+        var upass=$("#unewpass").val();
+        var id=$("#uid").val();
+        var roleid=$("#uroleid").val();
 
         var form_data=new FormData();
         form_data.append('image',image);
@@ -471,11 +518,12 @@
         form_data.append('pass',pass);
         form_data.append('upass',upass);
         form_data.append('id',id);
+        form_data.append('roleid',roleid);
 
         $.ajax({
 
             type:"POST",
-            url:"{{route('admin.editUserListUpdate')}}",
+            url:"{{route('admin.editAdminListUpdate')}}",
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             processData:false,
             contentType:false,
@@ -499,12 +547,12 @@
         });
 
     }
-    function deleteUserList(id){
+    function deleteAdminList(id){
 
         $.ajax({
 
             type:"get",
-            url:"{{route('admin.deleteUserList')}}",
+            url:"{{route('admin.deleteAdminList')}}",
             data:{
 
                 id:id

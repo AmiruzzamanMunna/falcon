@@ -11,7 +11,12 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-6">Course Category</div>
-                <div class="col-md-1 ml-auto"><i onclick="openModal()" class="fas fa-plus"></i></div>
+                <div class="col-md-1 ml-auto">
+                    @if (Session::has('couponadd'))
+                        <i onclick="openModal()" class="fas fa-plus"></i>
+                    @endif
+                    
+                </div>
             </div>
         </div>
         <div class="card-body">
@@ -251,7 +256,20 @@
                     html+='<td>'+data.data[$i].coupon_amount+'</td>';
                     html+='<td>'+data.data[$i].coupon_start_date+'</td>';
                     html+='<td>'+data.data[$i].coupon_end_date+'</td>';
-                    html+='<td><i class="fas fa-edit" onclick="editCoupon('+data.data[$i].coupon_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteCoupon('+data.data[$i].coupon_id+')"></i></td>';
+                    if(data.couponedit==20 && data.coupondelete==21){
+                        html+='<td><i class="fas fa-edit" onclick="editCoupon('+data.data[$i].coupon_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteCoupon('+data.data[$i].coupon_id+')"></i></td>';
+                    }else if(data.couponedit==20){
+
+                        html+='<td><i class="fas fa-edit" onclick="editCoupon('+data.data[$i].coupon_id+')"></i>&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+
+                    }else if(data.coupondelete==21){
+
+                        html+='<td>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-trash" onclick="deleteCoupon('+data.data[$i].coupon_id+')"></i></td>';
+
+                    }else {
+                        html+='<td></td>';
+                    }
+                    
                     html+='</tr>';
                     
                 }

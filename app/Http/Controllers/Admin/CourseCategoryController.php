@@ -17,7 +17,7 @@ class CourseCategoryController extends Controller
 
         if($courselist){
 
-            return view('Admin.course');
+            return view('Admin.coursecategory');
 
         }
         

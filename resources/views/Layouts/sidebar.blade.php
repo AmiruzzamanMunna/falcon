@@ -43,6 +43,11 @@
                                         <li><a href="{{route('admin.courseCategoryIndex')}}">Course Category</a></li>
                                         
                                     @endif
+                                    @if (Session::has('courselist'))
+
+                                        <li><a href="{{route('admin.courseListIndex')}}">Course</a></li>
+                                        
+                                    @endif
                                     
                                     <li><a href="email-read">Email Read</a></li>
                                     <li><a href="email-compose">Email Compose</a></li>

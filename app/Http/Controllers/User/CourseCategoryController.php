@@ -5,11 +5,12 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\CourseCategory;
+use App\Course;
 use DB;
 
-class UserController extends Controller
+class CourseCategoryController extends Controller
 {
-    public function index(Request $request)
+    public function courseCategory(Request $request,$id)
     {
         $category=CourseCategory::where('course_category_parent_id',0)->get();
         $subCategory=DB::select("
@@ -26,7 +27,12 @@ class UserController extends Controller
         WHERE
             subCategory.course_category_parent_id != 0
         ");
-        return view('User.index')
+
+        $data=Course::where('course_category_id',$id)->get();
+        
+
+        return view('User.allcourse')
+                ->with('data',$data)
                 ->with('category',$category)
                 ->with('subCategory',$subCategory);
     }

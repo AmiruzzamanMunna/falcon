@@ -29,6 +29,8 @@ Route::get('/userProfile','User\ProfileController@userProfile')->name('user.user
 Route::get('/userProfileUpdate','User\ProfileController@userProfileUpdate')->name('user.userProfileUpdate');
 Route::get('/deleteUserLinks','User\ProfileController@deleteUserLinks')->name('user.deleteUserLinks');
 
+Route::get('/courseCategory/{id}','User\CourseCategoryController@courseCategory')->name('user.courseCategory');
+
 
 // Admin Panel Starts from here
 
@@ -72,6 +74,15 @@ Route::group(['middleware'=>['adminSess'],'prefix' => 'admin'], function () {
     Route::get('/editCourseCategory','Admin\CourseCategoryController@editCourseCategory')->name('admin.editCourseCategory');
     Route::get('/editCourseCategoryUpdate','Admin\CourseCategoryController@editCourseCategoryUpdate')->name('admin.editCourseCategoryUpdate');
     Route::get('/deleteCourseCategory','Admin\CourseCategoryController@deleteCourseCategory')->name('admin.deleteCourseCategory');
+
+
+    Route::get('/courseListIndex','Admin\CourseController@courseListIndex')->name('admin.courseListIndex');
+    Route::get('/getCourseList','Admin\CourseController@getCourseList')->name('admin.getCourseList');
+    Route::get('/getCategoryList','Admin\CourseController@getCategoryList')->name('admin.getCategoryList');
+    Route::post('/insertCourse','Admin\CourseController@insertCourse')->name('admin.insertCourse');
+    Route::get('/editCourse','Admin\CourseController@editCourse')->name('admin.editCourse');
+    Route::post('/editCourseUpdate','Admin\CourseController@editCourseUpdate')->name('admin.editCourseUpdate');
+    Route::get('/deleteCourse','Admin\CourseController@deleteCourse')->name('admin.deleteCourse');
 
 
     Route::get('/userList','Admin\RegisteredUserController@userList')->name('admin.userList');

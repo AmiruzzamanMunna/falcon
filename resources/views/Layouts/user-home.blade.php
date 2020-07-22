@@ -7,24 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('title')</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('/')}}assets/css/bootstrap.min.css">
     <!--Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <!--Nice Select-->
-    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="{{asset('/')}}assets/css/nice-select.css">
     <!--Flat Icon-->
-    <link rel="stylesheet" href="assets/fonts/flaticon/flaticon.css">
+    <link rel="stylesheet" href="{{asset('/')}}assets/fonts/flaticon/flaticon.css">
     <!--Ico Font-->
-    <link rel="stylesheet" href="assets/css/icofont.min.css">
+    <link rel="stylesheet" href="{{asset('/')}}assets/css/icofont.min.css">
     <!--Animated Css-->
-    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="{{asset('/')}}assets/css/animate.css">
     <!--Owl Carosuel CSS-->
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{asset('/')}}assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{asset('/')}}assets/css/owl.theme.default.min.css">
     <!--Main CSS-->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{asset('/')}}assets/css/style.css">
     <!--Responsive CSS-->
-    <link rel="stylesheet" href="assets/css/media.css">
+    <link rel="stylesheet" href="{{asset('/')}}assets/css/media.css">
     @yield('css')
     
 
@@ -54,38 +54,45 @@
                                 Categories
                             </a>
                             <ul class="dropdown-menu ic-dropdown ic-dropdown1" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="course.html">Web Design</a></li>
-                                <li><a class="dropdown-item" href="course.html">Graphic Design</a></li>
-                                <li><a class="dropdown-item" href="course.html">Ui/UX Design</a></li>
-                                <li class="nav-item dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Development
-                                    </a>
-                                    <ul class="dropdown-menu ic-sub-dropdown" aria-labelledby="navbarDropdown1">
-                                        <li><a class="dropdown-item" href="course.html">All Development</a></li>
-                                        <li><a class="dropdown-item" href="course.html">Web Development</a></li>
-                                        <li><a class="dropdown-item" href="course.html">Data Science</a></li>
-                                        <li><a class="dropdown-item" href="course.html">Mobile Apps</a></li>
-                                        <li><a class="dropdown-item" href="course.html">Game Development</a></li>
-                                        <li><a class="dropdown-item" href="course.html">Programming Language</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="course.html" class="dropdown-item">It & Software</a></li>
-                                <li class="nav-item dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Marketing</a>
-                                    <ul class="dropdown-menu ic-sub-dropdown" aria-labelledby="navbarDropdown1">
-                                        <li><a class="dropdown-item" href="course.html">All Marketing</a></li>
-                                        <li><a class="dropdown-item" href="course.html">Digital Marketing</a></li>
-                                        <li><a class="dropdown-item" href="course.html">Search Engine Optimization</a></li>
-                                        <li><a class="dropdown-item" href="course.html">Branding</a></li>
+                                @foreach($category as $key=>$cat)
 
-                                    </ul>
-                                </li>
-                                <li><a href="course.html" class="dropdown-item">Photograpy</a></li>
-                                <li><a href="course.html" class="dropdown-item">Music</a></li>
-                                <li><a href="course.html" class="dropdown-item">Personal Development</a></li>
-                                <li><a href="course.html" class="dropdown-item">Business</a></li>
+                                    
+                                    <li class="nav-item dropdown">
+                                        {{-- <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{$cat->course_category_name}}
+                                        </a> --}}
+                                        <ul class="dropdown-menu ic-sub-dropdown" aria-labelledby="navbarDropdown1">
+                                            
+                                            @foreach ($subCategory as $id=>$val)
+
+                                                @if ($cat->course_category_id==$val->course_category_parent_id)
+
+                                                    @php
+                                                        $id=$cat->course_category_id
+                                                    @endphp
+
+                                                    <li><a class="dropdown-item" href="{{route('user.courseCategory',$val->course_category_id)}}">{{ $val->course_category_name }}</a></li>
+
+                                                @endif
+                                                
+                                            @endforeach
+                                        </ul>
+                                        @if ($id==$cat->course_category_id)
+
+                                        <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{$cat->course_category_name}}
+                                        </a>
+
+                                        @else 
+                                        <li><a class="dropdown-item" href="{{route('user.courseCategory',$cat->course_category_id)}}">{{ $cat->course_category_name }}</a></li>
+                                            
+                                        @endif
+                                        
+                                    </li>
+                                    
+                                @endforeach
                             </ul>
+                            
                         </li>
                         <li class="nav-item ic-left-item">
                             <a class="nav-link" href="blog.html">Blog</a>
@@ -217,25 +224,25 @@
 
 
     <!--Jquery-->
-    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <script src="{{asset('/')}}assets/js/jquery-3.4.1.min.js"></script>
     <!--Bootstrap Js-->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{asset('/')}}assets/js/bootstrap.min.js"></script>
     <!--Nice Select-->
-    <script src="assets/js/jquery.nice-select.js"></script>
+    <script src="{{asset('/')}}assets/js/jquery.nice-select.js"></script>
 
     <!--Owl Carosuel Js-->
-    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="{{asset('/')}}assets/js/owl.carousel.min.js"></script>
 
     <!--Main Js-->
-    <script src="assets/js/custom.js"></script>
+    <script src="{{asset('/')}}assets/js/custom.js"></script>
     <!--Wow JS-->
-    <script src="assets/js/wow.js"></script>
+    <script src="{{asset('/')}}assets/js/wow.js"></script>
     <script src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js"></script>
     <script>
         new WOW().init();
 
     </script>
-    <script src="assets/js/navbar.js"></script>
+    <script src="{{asset('/')}}assets/js/navbar.js"></script>
     <script>
         $(function() {
             $('#main_navbar').bootnavbar();

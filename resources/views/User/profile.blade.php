@@ -61,8 +61,8 @@
                             <img src="assets/images/peofile.jpg" class="img-fluid" alt="">
                         @endif
                         
-                        <h4>Pamela Stone</h4>
-                        <p>Be Positive,Be Happy</p>
+                        <h4>{{$user->signup_name}}</h4>
+                        <p>{{$user->signup_professional_tag}}</p>
                     </div>
                     <div class="ic-profile-tabs">
                         <p>View Public Profile</p>

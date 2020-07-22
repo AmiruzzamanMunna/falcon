@@ -139,6 +139,26 @@ class LoginController extends Controller
                     $request->session()->put('admindelete',$val->role_permission_per_id);
                     
                 }
+                if($val->role_permission_per_id==28){
+
+                    $request->session()->put('courselist',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==29){
+
+                    $request->session()->put('courseadd',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==30){
+
+                    $request->session()->put('courseedit',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==31){
+
+                    $request->session()->put('coursedelete',$val->role_permission_per_id);
+                    
+                }
 
                 
             }

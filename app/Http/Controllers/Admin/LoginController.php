@@ -159,6 +159,46 @@ class LoginController extends Controller
                     $request->session()->put('coursedelete',$val->role_permission_per_id);
                     
                 }
+                if($val->role_permission_per_id==33){
+
+                    $request->session()->put('coursecontentlist',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==34){
+
+                    $request->session()->put('coursecontentadd',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==35){
+
+                    $request->session()->put('coursecontentedit',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==36){
+
+                    $request->session()->put('coursecontentdelete',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==38){
+
+                    $request->session()->put('lecturefilelist',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==39){
+
+                    $request->session()->put('lecturefileadd',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==40){
+
+                    $request->session()->put('lecturefileedit',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==41){
+
+                    $request->session()->put('lecturefiledelete',$val->role_permission_per_id);
+                    
+                }
 
                 
             }

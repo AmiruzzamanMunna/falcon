@@ -45,6 +45,7 @@ Route::group(['middleware'=>['adminSess'],'prefix' => 'admin'], function () {
     Route::get('/','Admin\AdminController@index')->name('admin.index');
 
 
+    // Permission
 
     Route::get('/role','Admin\RoleController@roleIndex')->name('admin.roleIndex');
     Route::get('/getRoleList','Admin\RoleController@getRoleList')->name('admin.getRoleList');
@@ -57,6 +58,7 @@ Route::group(['middleware'=>['adminSess'],'prefix' => 'admin'], function () {
 
 
 
+    // Admin Module
 
     Route::get('/adminListIndex','Admin\AdminRegistrationController@adminListIndex')->name('admin.adminListIndex');
     Route::get('/getAdminList','Admin\AdminRegistrationController@getAdminList')->name('admin.getAdminList');
@@ -66,6 +68,7 @@ Route::group(['middleware'=>['adminSess'],'prefix' => 'admin'], function () {
     Route::get('/deleteAdminList','Admin\AdminRegistrationController@deleteAdminList')->name('admin.deleteAdminList');
 
 
+    // Course Category
 
     Route::get('/courseCategoryIndex','Admin\CourseCategoryController@courseCategoryIndex')->name('admin.courseCategoryIndex');
     Route::get('/getCategoryCourseList','Admin\CourseCategoryController@getCategoryCourseList')->name('admin.getCategoryCourseList');
@@ -75,6 +78,7 @@ Route::group(['middleware'=>['adminSess'],'prefix' => 'admin'], function () {
     Route::get('/editCourseCategoryUpdate','Admin\CourseCategoryController@editCourseCategoryUpdate')->name('admin.editCourseCategoryUpdate');
     Route::get('/deleteCourseCategory','Admin\CourseCategoryController@deleteCourseCategory')->name('admin.deleteCourseCategory');
 
+    // Course
 
     Route::get('/courseListIndex','Admin\CourseController@courseListIndex')->name('admin.courseListIndex');
     Route::get('/getCourseList','Admin\CourseController@getCourseList')->name('admin.getCourseList');
@@ -85,6 +89,22 @@ Route::group(['middleware'=>['adminSess'],'prefix' => 'admin'], function () {
     Route::get('/deleteCourse','Admin\CourseController@deleteCourse')->name('admin.deleteCourse');
 
 
+    // Course Content
+
+    Route::get('/courseContentIndex','Admin\CourseController@courseContentIndex')->name('admin.courseContentIndex');
+    Route::get('/getCourseContentList','Admin\CourseController@getCourseContentList')->name('admin.getCourseContentList');
+    Route::get('/insertCourseContent','Admin\CourseController@insertCourseContent')->name('admin.insertCourseContent');
+    Route::get('/editCourseContent','Admin\CourseController@editCourseContent')->name('admin.editCourseContent');
+    Route::get('/editCourseContentUpdate','Admin\CourseController@editCourseContentUpdate')->name('admin.editCourseContentUpdate');
+    Route::get('/deleteCourseContent','Admin\CourseController@deleteCourseContent')->name('admin.deleteCourseContent');
+
+    // Course Files
+    Route::get('/lectureWiseFiles','Admin\CourseController@lectureWiseFiles')->name('admin.lectureWiseFiles');
+    Route::get('/fileDelete','Admin\CourseController@fileDelete')->name('admin.fileDelete');
+    Route::post('/insertLectureFiles','Admin\CourseController@insertLectureFiles')->name('admin.insertLectureFiles');
+
+    //user Module 
+
     Route::get('/userList','Admin\RegisteredUserController@userList')->name('admin.userList');
     Route::get('/getUserList','Admin\RegisteredUserController@getUserList')->name('admin.getUserList');
     Route::get('/editUserList','Admin\RegisteredUserController@editUserList')->name('admin.editUserList');
@@ -92,6 +112,7 @@ Route::group(['middleware'=>['adminSess'],'prefix' => 'admin'], function () {
     Route::post('/editUserListUpdate','Admin\RegisteredUserController@editUserListUpdate')->name('admin.editUserListUpdate');
     Route::get('/deleteUserList','Admin\RegisteredUserController@deleteUserList')->name('admin.deleteUserList');
 
+    // Coupon Module
 
     Route::get('/couponIndex','Admin\CouponController@couponIndex')->name('admin.couponIndex');
     Route::get('/getCouponList','Admin\CouponController@getCouponList')->name('admin.getCouponList');

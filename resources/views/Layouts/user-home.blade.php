@@ -143,7 +143,7 @@
 
     <!--Footer Area Start-->
 
-    <footer class="ic-footer-area" style="background-image: url(assets/images/fotter-bg.jpg)">
+    <footer class="ic-footer-area" style="background-image: url({{asset('/')}}/assets/images/fotter-bg.jpg)">
         <div class="container">
             <div class="row">
                 <div class=" col-md-4 ">

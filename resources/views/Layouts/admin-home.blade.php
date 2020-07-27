@@ -8,15 +8,15 @@
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        @include('layouts.head')
+        @include('Layouts.head')
     </head>
 <body>
  
 
     <div id="wrapper">
         @if (Session::has('loggedAdmin'))
-         @include('layouts.header')
-         @include('layouts.sidebar')
+         @include('Layouts.header')
+         @include('Layouts.sidebar')
         @endif
          <div class="content-page">  
             <div class="content">
@@ -26,8 +26,8 @@
             </div> 
         </div> 
         @if (Session::has('loggedAdmin'))
-        @include('layouts.footer')  
-        @include('layouts.footer-script') 
+        @include('Layouts.footer')  
+        @include('Layouts.footer-script') 
         @endif 
     </div>
     

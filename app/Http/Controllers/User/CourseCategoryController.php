@@ -29,10 +29,14 @@ class CourseCategoryController extends Controller
         ");
 
         $data=Course::where('course_category_id',$id)->get();
+        $freeCourse=Course::where('course_category_id',$id)
+                            ->where('course_free_course',1)
+                            ->get();
         
 
         return view('User.allcourse')
                 ->with('data',$data)
+                ->with('freeCourse',$freeCourse)
                 ->with('category',$category)
                 ->with('subCategory',$subCategory);
     }

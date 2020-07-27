@@ -199,6 +199,26 @@ class LoginController extends Controller
                     $request->session()->put('lecturefiledelete',$val->role_permission_per_id);
                     
                 }
+                if($val->role_permission_per_id==43){
+
+                    $request->session()->put('modulelist',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==44){
+
+                    $request->session()->put('moduleadd',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==45){
+
+                    $request->session()->put('moduleedit',$val->role_permission_per_id);
+                    
+                }
+                if($val->role_permission_per_id==46){
+
+                    $request->session()->put('moduledelete',$val->role_permission_per_id);
+                    
+                }
 
                 
             }

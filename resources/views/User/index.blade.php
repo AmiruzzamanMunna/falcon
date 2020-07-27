@@ -44,79 +44,45 @@
         
 
         <div id="ic-owl-category" class="owl-carousel owl-theme">
+           
 
-            <div class="item">
-                <a href="#">
-                    <div class="ic-course-category-content">
-                        <div class="content">
-                            <img src="assets/images/category1.jpg" class="img-fluid" alt="">
-                            <h6>Web development</h6>
-                        </div>
-                        <div class="hover-content-warper">
-                            <div class="hover-content">
-                                <h6>Web development 222+ courses</h6>
+            @foreach ($data as $cat)
+
+                @foreach ($subCategory as $id=>$sub)
+
+                    @if ($sub->course_category_parent_id==$cat->course_category_id)
+
+                        @php
+                            $id=$cat->course_category_id 
+                        @endphp                      
+                        
+                    @endif
+                    
+                    
+                @endforeach
+                
+                @if ($id!=$cat->course_category_id)
+                    <div class="item">
+                        <a href="#">
+                            <div class="ic-course-category-content">
+                                <div class="content">
+                                    <img src="assets/images/category1.jpg" class="img-fluid" alt="">
+                                    <h6>{{$cat->course_category_name}}</h6>
+                                </div>
+                                <div class="hover-content-warper">
+                                    <div class="hover-content">
+                                        <h6>Total {{$cat->totalcourse}}+ courses</h6>
+                                    </div>
+                                </div>
+        
                             </div>
-                        </div>
-
+                        </a>
                     </div>
-                </a>
-            </div>
-
-
-
-            <div class="item">
-                <a href="#">
-                    <div class="ic-course-category-content">
-                        <div class="content">
-                            <img src="assets/images/category2.jpg" class="img-fluid" alt="">
-                            <h6>Software development</h6>
-                        </div>
-                        <div class="hover-content">
-                            <h6>Software development 222+ courses</h6>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="#">
-                    <div class="ic-course-category-content">
-                        <div class="content">
-                            <img src="assets/images/category3.jpg" class="img-fluid" alt="">
-                            <h6>Web design</h6>
-                        </div>
-                        <div class="hover-content">
-                            <h6>Web design 222+ courses</h6>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="#">
-                    <div class="ic-course-category-content">
-                        <div class="content">
-                            <img src="assets/images/category4.jpg" class="img-fluid" alt="">
-                            <h6>UX/UI Design</h6>
-                        </div>
-                        <div class="hover-content">
-                            <h6>UX/UI Design 222+ courses</h6>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="#">
-                    <div class="ic-course-category-content">
-                        <div class="content">
-                            <img src="assets/images/category3.jpg" class="img-fluid" alt="">
-                            <h6>Web design</h6>
-                        </div>
-                        <div class="hover-content">
-                            <h6>Web design 222+ courses</h6>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
+                    
+                @endif
+            
+            @endforeach
+            
         </div>
     </div>
 </section>
@@ -160,12 +126,13 @@
 
         <div class="row">
             <!--item 1-->
+            @foreach ($allCourses as $item)
             <div class="col-md-3 col-sm-6  all  best ic-col-mb">
                 <div class="ic-course-content">
-                    <img src="assets/images/course.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('assets/images/Course')}}/{{$item->course_image}}" style="max-height: 205px" class="img-fluid" alt="">
                     <div class="title">
-                        <h6><a href="course-details.html">Advanced CSS and Sass: Flexbox, Grid Animations and More! Jonas Schmedtmann</a></h6>
-                        <p>Jonas Schmedtmann</p>
+                        <h6><a href="{{route('user.courseDetails',$item->course_id)}}">{{$item->course_name}}</a></h6>
+                        <p>{{$item->course_authorname}}</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <div class="ratng">
@@ -181,106 +148,21 @@
                         </div>
                     </div>
                     <div class="price">
-                        <p>$55.00</p>
+                        <p>${{$item->course_price}}<p>
                     </div>
                 </div>
                 <div class="ic-course-top-title">
                     <p>Bestseller</p>
                 </div>
             </div>
-            <!--item 2-->
-            <div class="col-md-3 col-sm-6  all  best ic-col-mb">
-                <div class="ic-course-content">
-                    <img src="assets/images/course.jpg" class="img-fluid" alt="">
-                    <div class="title">
-                        <h6><a href="course-details.html">Advanced CSS and Sass: Flexbox, Grid Animations and More! Jonas Schmedtmann</a></h6>
-                        <p>Jonas Schmedtmann</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="ratng">
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <span><span class="color">4.8</span> (22,225)</span>
-                        </div>
-                        <div class="time">
-                            <p>8Hrs</p>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>$55.00</p>
-                    </div>
-                </div>
-                <div class="ic-course-top-title">
-                    <p>Bestseller</p>
-                </div>
-            </div>
-            <!--item 3-->
-            <div class="col-md-3 col-sm-6  all ic-col-mb">
-                <div class="ic-course-content">
-                    <img src="assets/images/course.jpg" class="img-fluid" alt="">
-                    <div class="title">
-                        <h6><a href="course-details.html">Advanced CSS and Sass: Flexbox, Grid Animations and More! Jonas Schmedtmann</a></h6>
-                        <p>Jonas Schmedtmann</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="ratng">
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <span><span class="color">4.8</span> (22,225)</span>
-                        </div>
-                        <div class="time">
-                            <p>8Hrs</p>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>$55.00<p>
-                    </div>
-                </div>
-            </div>
-            <!--item 4-->
-            <div class="col-md-3 col-sm-6  all top featured ic-col-mb">
-                <div class="ic-course-content">
-                    <img src="assets/images/course.jpg" class="img-fluid" alt="">
-                    <div class="title">
-                        <h6><a href="course-details.html">Advanced CSS and Sass: Flexbox, Grid Animations and More! Jonas Schmedtmann</a></h6>
-                        <p>Jonas Schmedtmann</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="ratng">
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <span><span class="color">4.8</span> (22,225)</span>
-                        </div>
-                        <div class="time">
-                            <p>8Hrs</p>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>$55.00</p>
-                    </div>
-                </div>
-                <div class="ic-course-top-title ic-featured-top">
-                    <p>Featured</p>
-                </div>
-            </div>
-
-
-            <!--item 5-->
+            @endforeach
+            @foreach ($allCourses as $item)
             <div class="col-md-3 col-sm-6  all top featured">
                 <div class="ic-course-content">
-                    <img src="assets/images/course.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('assets/images/Course')}}/{{$item->course_image}}" style="max-height: 205px" class="img-fluid" alt="">
                     <div class="title">
-                        <h6><a href="course-details.html">Advanced CSS and Sass: Flexbox, Grid Animations and More! Jonas Schmedtmann</a></h6>
-                        <p>Jonas Schmedtmann</p>
+                        <h6><a href="{{route('user.courseDetails',$item->course_id)}}">{{$item->course_name}}</a></h6>
+                        <p>{{$item->course_authorname}}</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <div class="ratng">
@@ -296,69 +178,22 @@
                         </div>
                     </div>
                     <div class="price">
-                        <p>$55.00</p>
+                        <p>${{$item->course_price}}<p>
                     </div>
                 </div>
-            </div>
-            <!--item 6-->
-            <div class="col-md-3 col-sm-6  all featured">
-                <div class="ic-course-content">
-                    <img src="assets/images/course.jpg" class="img-fluid" alt="">
-                    <div class="title">
-                        <h6><a href="course-details.html">Advanced CSS and Sass: Flexbox, Grid Animations and More! Jonas Schmedtmann</a></h6>
-                        <p>Jonas Schmedtmann</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="ratng">
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <span><span class="color">4.8</span> (22,225)</span>
-                        </div>
-                        <div class="time">
-                            <p>8Hrs</p>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>$55.00<p>
-                    </div>
+                <div class="ic-course-top-title">
+                    <p>Bestseller</p>
                 </div>
             </div>
-            <!--item 7-->
-            <div class="col-md-3 col-sm-6   all ">
-                <div class="ic-course-content">
-                    <img src="assets/images/course.jpg" class="img-fluid" alt="">
-                    <div class="title">
-                        <h6><a href="course-details.html">Advanced CSS and Sass: Flexbox, Grid Animations and More! Jonas Schmedtmann</a></h6>
-                        <p>Jonas Schmedtmann</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="ratng">
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <span><span class="color">4.8</span> (22,225)</span>
-                        </div>
-                        <div class="time">
-                            <p>8Hrs</p>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>$55.00</p>
-                    </div>
-                </div>
-            </div>
-            <!--item 8-->
+            @endforeach
+            
+            @foreach ($freeCourses as $item)
             <div class="col-md-3 col-sm-6  all free">
                 <div class="ic-course-content">
-                    <img src="assets/images/course.jpg" class="img-fluid" alt="">
+                    <img src="{{asset('assets/images/Course')}}/{{$item->course_image}}" style="max-height: 205px" class="img-fluid" alt="">
                     <div class="title">
-                        <h6><a href="course-details.html">Advanced CSS and Sass: Flexbox, Grid Animations and More! Jonas Schmedtmann</a></h6>
-                        <p>Jonas Schmedtmann</p>
+                        <h6><a href="{{route('user.courseDetails',$item->course_id)}}">{{$item->course_name}}</a></h6>
+                        <p>{{$item->course_authorname}}</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <div class="ratng">
@@ -374,10 +209,14 @@
                         </div>
                     </div>
                     <div class="price">
-                        <p>$55.00</p>
+                        <p>${{$item->course_price}}<p>
                     </div>
                 </div>
+                <div class="ic-course-top-title">
+                    <p>Bestseller</p>
+                </div>
             </div>
+            @endforeach
         </div>
 
         <div class="row">

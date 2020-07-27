@@ -7,22 +7,22 @@
         <title>@yield('title')</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
-        @include('layouts.head')
+        @include('Layouts.head')
     </head>
 <body>
     <div id="wrapper">
-         @include('layouts.header')
-         @include('layouts.sidebar')
+         @include('Layouts.header')
+         @include('Layouts.sidebar')
          <div class="content-page">  
             <div class="content">
                 <div class="container-fluid">
-                   @include('layouts.settings')
+                   @include('Layouts.settings')
                    @yield('content')
                 </div> 
             </div> 
         </div> 
-        @include('layouts.footer')  
-        @include('layouts.footer-script')  
+        @include('Layouts.footer')  
+        @include('Layouts.footer-script')  
     </div> 
     </body>
 </html>

@@ -31,6 +31,11 @@ Route::get('/deleteUserLinks','User\ProfileController@deleteUserLinks')->name('u
 
 Route::get('/courseCategory/{id}','User\CourseCategoryController@courseCategory')->name('user.courseCategory');
 
+// Course Details
+
+Route::get('/courseDetails/{id}','User\CourseController@courseDetails')->name('user.courseDetails');
+Route::get('/courseDemo/{id}','User\CourseController@courseDemo')->name('user.courseDemo');
+
 
 // Admin Panel Starts from here
 
@@ -82,21 +87,42 @@ Route::group(['middleware'=>['adminSess'],'prefix' => 'admin'], function () {
 
     Route::get('/courseListIndex','Admin\CourseController@courseListIndex')->name('admin.courseListIndex');
     Route::get('/getCourseList','Admin\CourseController@getCourseList')->name('admin.getCourseList');
+
+    Route::get('/courseAdd','Admin\CourseController@courseAdd')->name('admin.courseAdd');
+    Route::get('/courseEdit/{id}','Admin\CourseController@courseEdit')->name('admin.courseEdit');
+
     Route::get('/getCategoryList','Admin\CourseController@getCategoryList')->name('admin.getCategoryList');
     Route::post('/insertCourse','Admin\CourseController@insertCourse')->name('admin.insertCourse');
     Route::get('/editCourse','Admin\CourseController@editCourse')->name('admin.editCourse');
     Route::post('/editCourseUpdate','Admin\CourseController@editCourseUpdate')->name('admin.editCourseUpdate');
     Route::get('/deleteCourse','Admin\CourseController@deleteCourse')->name('admin.deleteCourse');
 
+    // Course Structure
 
-    // Course Content
+    Route::get('/courseStructure/{id}','Admin\CourseController@courseStructure')->name('admin.courseStructure');
 
-    Route::get('/courseContentIndex','Admin\CourseController@courseContentIndex')->name('admin.courseContentIndex');
+
+    // Course Module
+
+    Route::get('/moduleList/{id}','Admin\CourseModuleController@moduleList')->name('admin.moduleList');
+    Route::get('/moduleAdd/{id}','Admin\CourseModuleController@moduleAdd')->name('admin.moduleAdd');
+    Route::post('/moduleAdd/{id}','Admin\CourseModuleController@moduleInsert')->name('admin.moduleInsert');
+    Route::get('/editModule/{id}','Admin\CourseModuleController@editModule')->name('admin.editModule');
+    Route::post('/editModule/{id}','Admin\CourseModuleController@editModuleUpdate')->name('admin.editModuleUpdate');
+    Route::get('/courseModuleDelete/{id}','Admin\CourseModuleController@courseModuleDelete')->name('admin.courseModuleDelete');
+
+
+    // Course Lecture
+
+    Route::get('/courseContentIndex/{id}','Admin\CourseController@courseContentIndex')->name('admin.courseContentIndex');
+    Route::get('/lectureAdd/{id}','Admin\CourseController@lectureAdd')->name('admin.lectureAdd');
+    Route::post('/lectureAdd/{id}','Admin\CourseController@lectureAddInsert')->name('admin.lectureAddInsert');
+    Route::get('/lectureEdit/{id}','Admin\CourseController@lectureEdit')->name('admin.lectureEdit');
+    Route::post('/lectureEdit/{id}','Admin\CourseController@lectureUpdate')->name('admin.lectureUpdate');
+    Route::get('/lectureDelete/{id}','Admin\CourseController@lectureDelete')->name('admin.lectureDelete');
     Route::get('/getCourseContentList','Admin\CourseController@getCourseContentList')->name('admin.getCourseContentList');
-    Route::get('/insertCourseContent','Admin\CourseController@insertCourseContent')->name('admin.insertCourseContent');
     Route::get('/editCourseContent','Admin\CourseController@editCourseContent')->name('admin.editCourseContent');
-    Route::get('/editCourseContentUpdate','Admin\CourseController@editCourseContentUpdate')->name('admin.editCourseContentUpdate');
-    Route::get('/deleteCourseContent','Admin\CourseController@deleteCourseContent')->name('admin.deleteCourseContent');
+    
 
     // Course Files
     Route::get('/lectureWiseFiles','Admin\CourseController@lectureWiseFiles')->name('admin.lectureWiseFiles');

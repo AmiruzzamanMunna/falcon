@@ -11,6 +11,7 @@
     <!--Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <!--Nice Select-->
+    <link rel="stylesheet" href="{{asset('/')}}assets/css/audio.css">
     <link rel="stylesheet" href="{{asset('/')}}assets/css/nice-select.css">
     <!--Flat Icon-->
     <link rel="stylesheet" href="{{asset('/')}}assets/fonts/flaticon/flaticon.css">
@@ -25,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('/')}}assets/css/style.css">
     <!--Responsive CSS-->
     <link rel="stylesheet" href="{{asset('/')}}assets/css/media.css">
+    <script src="{{asset('assets/js/jquery.min.js') }}" type="text/javascript"></script>
     @yield('css')
     
 
@@ -225,6 +227,7 @@
 
     <!--Jquery-->
     <script src="{{asset('/')}}assets/js/jquery-3.4.1.min.js"></script>
+    
     <!--Bootstrap Js-->
     <script src="{{asset('/')}}assets/js/bootstrap.min.js"></script>
     <!--Nice Select-->
@@ -232,6 +235,8 @@
 
     <!--Owl Carosuel Js-->
     <script src="{{asset('/')}}assets/js/owl.carousel.min.js"></script>
+
+    <script src="{{asset('/')}}assets/js/audio.js"></script>
 
     <!--Main Js-->
     <script src="{{asset('/')}}assets/js/custom.js"></script>

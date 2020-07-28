@@ -270,8 +270,51 @@ class CourseController extends Controller
         
         $data= new CourseContent();
         $data->course_content_title=$request->contentname;
+        $data->course_content_description=$request->udescription;
         $data->course_content_course_id=$id;
-        $data->course_content_description=$request->description;
+        $data->course_content_video_title=$request->lecturevideotitle;
+        
+        if ($request->hasFile('lectureVideo')) {
+            
+            $image = $request->file('lectureVideo');
+            $user_image = time().'lecture-video-1.'.$image->getClientOriginalExtension();
+            $location = public_path('assets/lecture');
+            $image->move($location, $user_image);
+            $data->course_content_course_video = $user_image;
+        }
+        if ($request->hasFile('lectureVideoposter')) {
+
+            $image = $request->file('lectureVideoposter');
+            $user_image = time().'course-video-poster-1.'.$image->getClientOriginalExtension();
+            $location = public_path('assets/lecture');
+            $image->move($location, $user_image);
+            $data->course_content_video_poster = $user_image;
+        }
+        $data->course_content_video_summary=$request->videosummary;
+        $data->course_content_video_excercise=$request->videoexcercise;
+        $data->course_content_pdf_title=$request->lecturepdftitle;
+        if ($request->hasFile('lecturepdf')) {
+
+            $image = $request->file('lecturepdf');
+            $user_image = time().'pdf-file-1.'.$image->getClientOriginalExtension();
+            $location = public_path('assets/lecture');
+            $image->move($location, $user_image);
+            $data->course_content_pdf = $user_image;
+        }
+        $data->course_content_pdfdescription=$request->pdfdescription;
+        $data->course_content_audio_title=$request->lectureaudiotitle;
+        if ($request->hasFile('lectureaudio')) {
+
+            $image = $request->file('lectureaudio');
+            $user_image = time().'course-video-1.'.$image->getClientOriginalExtension();
+            $location = public_path('assets/lecture');
+            $image->move($location, $user_image);
+            $data->course_content_audio = $user_image;
+        }
+        $data->course_content_audio_description=$request->audiodescription;
+        $data->course_content_online_test=$request->exam;
+        $data->course_content_result=$request->result;
+        $data->course_content_contactform=$request->contactform;
         $data->save();
         $request->session()->flash('message','Data Inserted');
         return redirect()->route('admin.courseContentIndex',$id);
@@ -294,9 +337,53 @@ class CourseController extends Controller
     }
     public function lectureUpdate(Request $request,$id)
     {
+        
         $data= CourseContent::where('course_content_id',$request->id)->first();
         $data->course_content_title=$request->contentname;
         $data->course_content_description=$request->udescription;
+        $data->course_content_video_title=$request->lecturevideotitle;
+        
+        if ($request->hasFile('lectureVideo')) {
+            
+            $image = $request->file('lectureVideo');
+            $user_image = time().'lecture-video-1.'.$image->getClientOriginalExtension();
+            $location = public_path('assets/lecture');
+            $image->move($location, $user_image);
+            $data->course_content_course_video = $user_image;
+        }
+        if ($request->hasFile('lectureVideoposter')) {
+
+            $image = $request->file('lectureVideoposter');
+            $user_image = time().'course-video-poster-1.'.$image->getClientOriginalExtension();
+            $location = public_path('assets/lecture');
+            $image->move($location, $user_image);
+            $data->course_content_video_poster = $user_image;
+        }
+        $data->course_content_video_summary=$request->videosummary;
+        $data->course_content_video_excercise=$request->videoexcercise;
+        $data->course_content_pdf_title=$request->lecturepdftitle;
+        if ($request->hasFile('lecturepdf')) {
+
+            $image = $request->file('lecturepdf');
+            $user_image = time().'pdf-file-1.'.$image->getClientOriginalExtension();
+            $location = public_path('assets/lecture');
+            $image->move($location, $user_image);
+            $data->course_content_pdf = $user_image;
+        }
+        $data->course_content_pdfdescription=$request->pdfdescription;
+        $data->course_content_audio_title=$request->lectureaudiotitle;
+        if ($request->hasFile('lectureaudio')) {
+
+            $image = $request->file('lectureaudio');
+            $user_image = time().'course-video-1.'.$image->getClientOriginalExtension();
+            $location = public_path('assets/lecture');
+            $image->move($location, $user_image);
+            $data->course_content_audio = $user_image;
+        }
+        $data->course_content_audio_description=$request->audiodescription;
+        $data->course_content_online_test=$request->exam;
+        $data->course_content_result=$request->result;
+        $data->course_content_contactform=$request->contactform;
         $data->save();
         $request->session()->flash('message','Data Updated');
         return redirect()->route('admin.courseContentIndex',$data->course_content_course_id);

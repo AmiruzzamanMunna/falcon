@@ -222,7 +222,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="ic-all-course-bottom-btn text-center">
-                    <button type="button"><a href="course.html">all new courses</a></button>
+                    <button type="button"><a href="{{route('user.allCourse')}}">all new courses</a></button>
                 </div>
             </div>
         </div>

@@ -33,8 +33,13 @@ Route::get('/courseCategory/{id}','User\CourseCategoryController@courseCategory'
 
 // Course Details
 
+Route::get('/allCourse','User\CourseController@allCourse')->name('user.allCourse');
 Route::get('/courseDetails/{id}','User\CourseController@courseDetails')->name('user.courseDetails');
 Route::get('/courseDemo/{id}','User\CourseController@courseDemo')->name('user.courseDemo');
+
+// Course Demo Files
+
+Route::get('/courseDemoFile/{course_id}/{id}/{checkid}','User\CourseController@courseDemoFile')->name('user.courseDemoFile');
 
 
 // Admin Panel Starts from here

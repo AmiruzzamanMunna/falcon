@@ -82,27 +82,43 @@
                 <div class="col-md-8 col-lg-9">
                     <div class="ic-course-details-main-left ic-course-details-main-left2">
                         <ul class="nav nav-tabs ic-course-details-nav-tab ic-navtabs2" id="myTab" role="tablist">
-                            @foreach ($courseModule as $item)
+                            @foreach ($courseModule as $key=>$item)
+
+                                @if ($key==0)
+
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="content-tab" data-toggle="tab" href="#{{$item->course_module_name}}" role="tab" aria-controls="content" aria-selected="true">{{$item->course_module_name}}</a>
+                                </li>
+                                    
+                                @else
                                 <li class="nav-item">
                                     <a class="nav-link" id="content-tab" data-toggle="tab" href="#{{$item->course_module_name}}" role="tab" aria-controls="content" aria-selected="true">{{$item->course_module_name}}</a>
                                 </li>
+                                @endif
+                                
                             @endforeach
                             
 
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
-                                
-                            </div>
                             @foreach ($courseModule as $item)
 
-                                <div class="tab-pane fade" id="{{$item->course_module_name}}" role="tabpanel" aria-labelledby="resposiable-tab">
+                                <div class="tab-pane fade show active" id="{{$item->course_module_name}}" role="tabpanel" aria-labelledby="resposiable-tab">
                                     {{$item->course_module_description}}
                                 </div>
                             @endforeach
-                            
-                        
+                            <div class="ic-course-details-content2">
+                                
+                                <div class="ic-bottom">
+                                    <p>Difficulty level: <span>{{$data->difficulty_level_name}}</span> </p>
+                                    
+        
+                                    <a href="{{route('user.courseDemo',$id)}}" class="btn">Course Demo</a>
+                                </div>
+                            </div>
+                                    
                         </div>
+                        
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-3">

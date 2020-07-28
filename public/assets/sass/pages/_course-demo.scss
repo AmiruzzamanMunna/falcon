@@ -59,6 +59,7 @@
     i{
         font-size: 18px;
         color: #fff;
+        margin-right: 10px;
     }
     
     .ic-demo-title{
@@ -74,4 +75,15 @@
         text-align: right;
     }
     
+}
+
+.lock-icon::before{
+    content: "\ec61";
+    font-family: IcoFont !important;
+    font-weight: 700;
+    margin-left: 3px;
+    display: unset;
+    vertical-align: 0;
+    border-top: none;
+    border: none;
 }

@@ -28,7 +28,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="ic-course-demo-title">
-                        <h2>User Experience Design Essentials Adobe XD UI UX Design</h2>
+       
+                        <h2>{{$course->course_name}}</h2>
                     </div>
                 </div>
             </div>
@@ -53,7 +54,7 @@
                                 </div>
                             </div>
                             @forelse ($data as $item)
-                                <a href="">
+                                <a href="{{route('user.courseDemoFile',[$id,$item->course_content_id,1])}}">
                                     <div class="ic-demo-content-body-warper demo-content-active">
                                         <div class="row">
                                             <div class="col-lg-3 col-md-5">
@@ -69,7 +70,7 @@
                                             </div>
                                             <div class="col-lg-2 offset-lg-1 col-md-2">
                                                 <div class="ic-demo-item">
-                                                    <p> Files {{$item->files}}</p>
+                                                    <p> Files {{$item->total}}</p>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 offset-lg-3 col-md-5">
@@ -89,7 +90,7 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab">
-                        information
+                        {{$course->course_description}}
                     </div>
 
                 </div>

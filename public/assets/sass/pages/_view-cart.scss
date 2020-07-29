@@ -19,6 +19,18 @@
     border: 1px solid #E5E5E5;
     padding: 10px 30px 10px 10px;
     margin-bottom: 15px;
+    
+    .cart-icon{
+    i{
+        font-size: 20px;
+    background: #ff6b1b;
+    display: inline;
+    /* padding: 5px; */
+    padding: 5px 16px 5px 15px;
+    border-radius: 5px;
+    color: #fff;
+    }
+}
 }
 
 .ic-cart-image-title {
@@ -73,6 +85,7 @@
         }
     }
 }
+
 
 .ic-col-pl0 {
     padding-left: 0px;
@@ -235,7 +248,9 @@
 
 
 
-
+.ic-wishlist-area{
+    padding: 10px 0px 40px 0px;
+}
 
 
 

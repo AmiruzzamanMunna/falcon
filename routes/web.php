@@ -41,6 +41,27 @@ Route::get('/courseDemo/{id}','User\CourseController@courseDemo')->name('user.co
 
 Route::get('/courseDemoFile/{course_id}/{id}/{checkid}','User\CourseController@courseDemoFile')->name('user.courseDemoFile');
 
+Route::group(['middleware' => 'userSess'], function () {
+    
+
+    // Cart
+
+    Route::get('/cart','User\CartController@cartIndex')->name('user.cartIndex');
+    Route::get('/getCartItem','User\CartController@getCartItem')->name('user.getCartItem');
+    Route::get('/cartAdd','User\CartController@cartAdd')->name('user.cartAdd');
+    Route::get('/cartRemove','User\CartController@cartRemove')->name('user.cartRemove');
+    Route::get('/cartToWishList','User\CartController@cartToWishList')->name('user.cartToWishList');
+
+    // Wish List
+
+    Route::get('/wishListIndex','User\WishListController@wishListIndex')->name('user.wishListIndex');
+    Route::get('/wishListItem','User\WishListController@wishListItem')->name('user.wishListItem');
+    Route::get('/wishListAdd','User\WishListController@wishListAdd')->name('user.wishListAdd');
+    Route::get('/wishToCart','User\WishListController@wishToCart')->name('user.wishToCart');
+    Route::get('/wishListRemove','User\WishListController@wishListRemove')->name('user.wishListRemove');
+});
+
+
 
 // Admin Panel Starts from here
 

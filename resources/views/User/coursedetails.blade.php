@@ -30,7 +30,8 @@
                     <div class="ic-course-details-banner-left">
                         <div class="title">
                             <h2>{{$data->course_name}}</h2>
-                            {{-- <p>Use XD to get a job in UI Design, User Interface, User Experience design, UX design & Web Design</p> --}}
+                            <input type="hidden" name="" id="course_id" value="{{$data->course_id}}">
+                            <p>Use XD to get a job in UI Design, User Interface, User Experience design, UX design & Web Design</p>
                         </div>
                         <div class="author-duration-rating">
                             <p>{{$data->course_authorname}}</p>
@@ -60,11 +61,12 @@
                         <video src="{{asset('assets/images/Course')}}/{{$data->course_video}}" poster="{{asset('/')}}assets/images/course-details.jpg"></video>
                     </div>
                     <div class="ic-course-details-banner-right">
-                        <button type="button" class="add-cart-btn"><a href="view-cart.html">Add To Cart</a></button>
+                        <button type="button" class="add-cart-btn"><a onclick="cartAdd()">Add To Cart</a></button>
                         <button type="button" class="buy-now-btn">Buy Now</button>
                         <div class="icon">
-                            <a href="#"><i class="icofont-ui-love"></i></a>
-                        </div>
+                            <a onclick="wishListAdd()"><i class="icofont-ui-love"></i></a>
+                        </div><br><br>
+                        <div id="msgshow"></div>
                     </div><br><br><br>
                 </div>
             </div>
@@ -156,5 +158,77 @@
     </section>
 
     <!--Course details main content-->
+
+<script>
+
+    function cartAdd(){
+
+        var course_id=$("#course_id").val();
+
+        $.ajax({
+
+            type:"get",
+            url:"{{route('user.cartAdd')}}",
+            data:{
+
+                course_id:course_id
+            },
+            success:function(data){
+
+                if(data.status=='success'){
+
+                    let html='';
+
+                    html+='<div class="alert alert-success alert-dismissible fade show" role="alert">';
+                    html+='<strong>Success!</strong> Course Added to the Cart.';
+                    html+='<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                    html+='<span aria-hidden="true">&times;</span>';
+                    html+='</button>';
+                    html+='</div>';
+
+                    $("#msgshow").html(html);
+                    
+                }
+            },
+            error:function(error){
+                console.log(error);
+            }
+        })
+    }
+    function wishListAdd(){
+
+        var course_id=$("#course_id").val();
+
+        $.ajax({
+
+            type:"get",
+            url:"{{route('user.wishListAdd')}}",
+            data:{
+
+                course_id:course_id
+            },
+            success:function(data){
+
+                if(data.status=='success'){
+
+                    let html='';
+
+                    html+='<div class="alert alert-success alert-dismissible fade show" role="alert">';
+                    html+='<strong>Success!</strong> Course Added to the Wish List.';
+                    html+='<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+                    html+='<span aria-hidden="true">&times;</span>';
+                    html+='</button>';
+                    html+='</div>';
+
+                    $("#msgshow").html(html);
+
+                }
+            },
+            error:function(error){
+                console.log(error);
+            }
+        })
+    }
+</script>
     
 @endsection

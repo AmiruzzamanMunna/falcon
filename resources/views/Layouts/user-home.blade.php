@@ -104,31 +104,46 @@
                         </li>
 
                         <li class="nav-item ic-cart-icon">
-                            <a class="nav-link" href="#"><i class="flaticon-bag"></i></a>
+                            <a class="nav-link" href="{{route('user.cartIndex')}}"><i class="flaticon-bag"></i></a>
                         </li>
                         <li class="nav-item sign-nav-item">
 
                             @if (Session::has('loggedUser'))
 
+                                <li class="nav-item ic-menu-right ic-menu-favorite">
+                                    <a class="nav-link" href="{{route('user.wishListIndex')}}"><i class="far fa-heart"></i></a>
+                                </li>
+                                <li class="nav-item ic-menu-right notification ic-menu-nofica">
+                                    <a class="nav-link"><i class="far fa-bell"></i></a>
+                                </li>
+                                <li class="nav-item ic-start-learning user-nav-item">
+                                    
+                                    <a href="" class="ic-notifi-favo"><i class="far fa-bell"></i></a>
+                                </li>
+
                             {{-- <li><a class="dropdown-item">Account</a></li> --}}
                                 <li class="nav-item dropdown">
-                                    <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                                    <a href="#"><img src="assets/images/menu-profile.png" data-toggle="dropdown" id="navbarDropdown1" class="img-fluid" alt="">
+                                        <span>Pamela Stone</span>
+                                    </a>
                                     <ul class="dropdown-menu ic-sub-dropdown" aria-labelledby="navbarDropdown1">
-                                        <li><a class="dropdown-item" href="{{route('user.userProfile')}}">Profile</a></li>
+                                        
                                         <li><a class="dropdown-item" href="{{route('user.logOut')}}">Log Out</a></li>
                                     </ul>
+                                    
                                 </li>
 
                             @else
 
                             <a class="nav-link ic-nav-link signin-btn animation-btn" href="{{route('user.login')}}">Sign in</a>
+                            <li class="nav-item ic-start-learning">
+                                <a class="nav-link ic-nav-link learning-btn rectangle-in" href="create-account.html">Start Learning now</a>
+                            </li>
                                 
                             @endif
                             
                         </li>
-                        <li class="nav-item ic-start-learning">
-                            <a class="nav-link ic-nav-link learning-btn rectangle-in" href="create-account.html">Start Learning now</a>
-                        </li>
+                        
                     </ul>
                 </div>
             </nav>

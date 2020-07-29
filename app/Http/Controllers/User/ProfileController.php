@@ -6,17 +6,37 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\UserList;
 use App\UserProfileLinks;
+use App\CourseCategory;
+Use DB;
 
 class ProfileController extends Controller
 {
     public function userProfile(Request $request)
     {
+        $category=CourseCategory::where('course_category_parent_id',0)->get();
+        $subCategory=DB::select("
+
+        SELECT 
+            subCategory.course_category_id,
+            tbl_course_category.course_category_name as parentCategory,
+            subCategory.course_category_name,
+            subCategory.course_category_parent_id
+        FROM
+            tbl_course_category
+                LEFT JOIN
+            tbl_course_category AS subCategory ON subCategory.course_category_parent_id = tbl_course_category.course_category_id
+        WHERE
+            subCategory.course_category_parent_id != 0
+        ");
         $user=UserList::where('signup_id',$request->session()->get('loggedUser'))
                         ->first();
 
+                        
         $links=UserProfileLinks::where('user_profilelinks_user_id',$request->session()->get('loggedUser'))
                                 ->get();
         return view('User.profile')
+                ->with('category',$category)
+                ->with('subCategory',$subCategory)
                 ->with('links',$links)
                 ->with('user',$user);
     }

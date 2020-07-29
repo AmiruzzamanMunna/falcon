@@ -1284,6 +1284,14 @@ header {
   border: 1px solid #E5E5E5;
   padding: 10px 30px 10px 10px;
   margin-bottom: 15px; }
+  .ic-cart-item .cart-icon i {
+    font-size: 20px;
+    background: #ff6b1b;
+    display: inline;
+    /* padding: 5px; */
+    padding: 5px 16px 5px 15px;
+    border-radius: 5px;
+    color: #fff; }
 
 .ic-cart-image-title .image {
   display: inline-block; }
@@ -1436,6 +1444,9 @@ header {
       background: #FF6B1B; }
     .ic-cart-coupon button:focus {
       outline: none; }
+
+.ic-wishlist-area {
+  padding: 10px 0px 40px 0px; }
 
 .ic-course-owl .owl-prev {
   background: #333 !important;
@@ -3812,6 +3823,52 @@ header {
     top: 14%;
     left: 18%;
     position: absolute; }
+  .ic-demo-audio-content .track-seekbar-handler input[type=range], .ic-demo-audio-content .track-seekbar-handler .ic-prifile-content-tab textarea[type=range], .ic-prifile-content-tab .ic-demo-audio-content .track-seekbar-handler textarea[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent; }
+  .ic-demo-audio-content .track-seekbar-handler input[type=range]::-webkit-slider-runnable-track, .ic-demo-audio-content .track-seekbar-handler .ic-prifile-content-tab textarea[type=range]::-webkit-slider-runnable-track, .ic-prifile-content-tab .ic-demo-audio-content .track-seekbar-handler textarea[type=range]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 8px;
+    background: #E9E9E9; }
+  .ic-demo-audio-content .track-seekbar-handler input[type=range]::-moz-range-track, .ic-demo-audio-content .track-seekbar-handler .ic-prifile-content-tab textarea[type=range]::-moz-range-track, .ic-prifile-content-tab .ic-demo-audio-content .track-seekbar-handler textarea[type=range]::-moz-range-track {
+    -webkit-appearance: none;
+    height: 8px;
+    background: #E9E9E9; }
+  .ic-demo-audio-content .track-seekbar-handler input[type=range]::-moz-range-progress, .ic-demo-audio-content .track-seekbar-handler .ic-prifile-content-tab textarea[type=range]::-moz-range-progress, .ic-prifile-content-tab .ic-demo-audio-content .track-seekbar-handler textarea[type=range]::-moz-range-progress {
+    background: #E9E9E9; }
+  .ic-demo-audio-content .track-seekbar-handler input[type=range]::-ms-track, .ic-demo-audio-content .track-seekbar-handler .ic-prifile-content-tab textarea[type=range]::-ms-track, .ic-prifile-content-tab .ic-demo-audio-content .track-seekbar-handler textarea[type=range]::-ms-track {
+    -webkit-appearance: none;
+    height: 8px;
+    background: #E9E9E9;
+    color: transparent;
+    border: 0; }
+  .ic-demo-audio-content .track-seekbar-handler input[type=range]::-ms-fill-lower, .ic-demo-audio-content .track-seekbar-handler .ic-prifile-content-tab textarea[type=range]::-ms-fill-lower, .ic-prifile-content-tab .ic-demo-audio-content .track-seekbar-handler textarea[type=range]::-ms-fill-lower {
+    background: #E9E9E9;
+    border-radius: 0.75rem 0 0 0.75rem; }
+  .ic-demo-audio-content .track-seekbar-handler input[type=range]::-webkit-slider-thumb, .ic-demo-audio-content .track-seekbar-handler .ic-prifile-content-tab textarea[type=range]::-webkit-slider-thumb, .ic-prifile-content-tab .ic-demo-audio-content .track-seekbar-handler textarea[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 2px;
+    background: #ff6b1b;
+    cursor: pointer;
+    margin-top: -5px; }
+  .ic-demo-audio-content .track-seekbar-handler input[type=range]::-moz-range-thumb, .ic-demo-audio-content .track-seekbar-handler .ic-prifile-content-tab textarea[type=range]::-moz-range-thumb, .ic-prifile-content-tab .ic-demo-audio-content .track-seekbar-handler textarea[type=range]::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 2px;
+    background: #ff6b1b;
+    cursor: pointer;
+    margin-top: -5px; }
+  .ic-demo-audio-content .track-seekbar-handler input[type=range]::-ms-thumb, .ic-demo-audio-content .track-seekbar-handler .ic-prifile-content-tab textarea[type=range]::-ms-thumb, .ic-prifile-content-tab .ic-demo-audio-content .track-seekbar-handler textarea[type=range]::-ms-thumb {
+    height: 15px;
+    width: 15px;
+    border-radius: 2px;
+    background: #ff6b1b;
+    cursor: pointer;
+    margin-top: -5px; }
 
 .ic-online-test-result-area .thank-warper {
   background: #F9F9F9;
